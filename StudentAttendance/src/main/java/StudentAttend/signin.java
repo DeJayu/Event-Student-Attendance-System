@@ -1,26 +1,24 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package StudentAttend;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.Timer;
+
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-public class login extends javax.swing.JDialog {
-  
- 
-    
-    public login(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+public class signin extends javax.swing.JFrame {
+
+    /**
+     * Creates new form signup
+     */
+    public signin() {
         initComponents();
-        showpassword.setVisible(false);
-        txtpassword.setEchoChar((char)0);
+         txtpassword.setEchoChar((char)0);
+         showpassword.setVisible(false);
     }
 
     /**
@@ -32,27 +30,24 @@ public class login extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         signuppanel = new javax.swing.JPanel();
         label1 = new javax.swing.JLabel();
         btnsignup = new StudentAttend.MyButton();
         labelwelcome = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        txtusername = new StudentAttend.MyTextField();
         showpassword = new javax.swing.JCheckBox();
         btnsignin = new StudentAttend.MyButton();
         txtpassword = new StudentAttend.MyPasswordField();
+        txtusername = new StudentAttend.MyTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Login");
-        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         signuppanel.setBackground(new java.awt.Color(0, 102, 204));
         signuppanel.setForeground(new java.awt.Color(30, 30, 30));
 
         label1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         label1.setForeground(new java.awt.Color(255, 255, 255));
-        label1.setText("Still Havent Account?");
+        label1.setText("Still Havent Join Us?");
 
         btnsignup.setForeground(new java.awt.Color(255, 255, 255));
         btnsignup.setText("Sign Up");
@@ -70,32 +65,30 @@ public class login extends javax.swing.JDialog {
 
         labelwelcome.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         labelwelcome.setForeground(new java.awt.Color(255, 255, 255));
-        labelwelcome.setText("Welcome  User");
+        labelwelcome.setText("Welcome User");
 
         javax.swing.GroupLayout signuppanelLayout = new javax.swing.GroupLayout(signuppanel);
         signuppanel.setLayout(signuppanelLayout);
         signuppanelLayout.setHorizontalGroup(
             signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signuppanelLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
                         .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelwelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(signuppanelLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(72, 72, 72))
+                            .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(142, 142, 142))))
+                        .addGap(148, 148, 148))))
         );
         signuppanelLayout.setVerticalGroup(
             signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signuppanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(33, 33, 33)
                 .addComponent(labelwelcome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,34 +97,6 @@ public class login extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
-
-        txtusername.setBackground(new java.awt.Color(0, 0, 0,0));
-        txtusername.setText("Username");
-        txtusername.setBorderColor(new java.awt.Color(230, 245, 241));
-        txtusername.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\11185794_user_person_profile_avatar_people_icon (1).png"));
-        txtusername.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtusernameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtusernameFocusLost(evt);
-            }
-        });
-        txtusername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtusernameActionPerformed(evt);
-            }
-        });
-        txtusername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtusernameKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtusernameKeyTyped(evt);
-            }
-        });
-        jPanel2.add(txtusername);
-        txtusername.setBounds(20, 220, 250, 40);
 
         showpassword.setContentAreaFilled(false);
         showpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\9041325_eye_fill_icon (3).png"));
@@ -207,153 +172,159 @@ public class login extends javax.swing.JDialog {
         jPanel2.add(txtpassword);
         txtpassword.setBounds(20, 280, 250, 40);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        txtusername.setBackground(new java.awt.Color(0, 0, 0,0));
+        txtusername.setText("Username");
+        txtusername.setBorderColor(new java.awt.Color(230, 245, 241));
+        txtusername.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\11185794_user_person_profile_avatar_people_icon (1).png"));
+        txtusername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtusernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtusernameFocusLost(evt);
+            }
+        });
+        txtusername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusernameActionPerformed(evt);
+            }
+        });
+        txtusername.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtusernameKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtusernameKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtusername);
+        txtusername.setBounds(20, 220, 250, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
-        if(showpassword.isSelected()){
-          txtpassword.setEchoChar((char)0);
-        }else{
-          txtpassword.setEchoChar('*');
-        }
-    }//GEN-LAST:event_showpasswordActionPerformed
+    private void btnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignupActionPerformed
+        dispose();
+       new signup().setVisible(true);
 
-    private void txtusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusGained
-        if(txtusername.getText().equalsIgnoreCase("Username")){
-            txtusername.setText(null);
-        }
-                
-                
-    }//GEN-LAST:event_txtusernameFocusGained
-
-    private void txtusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusLost
-    if(txtusername.getText().isEmpty()){
-        txtusername.setText("Username");
-    }
-    }//GEN-LAST:event_txtusernameFocusLost
-
-    private void txtpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusGained
-       if(txtpassword.getText().equalsIgnoreCase("Password")){
-           txtpassword.setText(null);
-
-       }
-    }//GEN-LAST:event_txtpasswordFocusGained
-
-    private void txtpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusLost
-     if(txtpassword.getText().isEmpty()){
-         txtpassword.setText("Password");
-          txtpassword.setEchoChar((char)0);
- 
-     }
-    }//GEN-LAST:event_txtpasswordFocusLost
+    }//GEN-LAST:event_btnsignupActionPerformed
 
     private void showpasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_showpasswordStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_showpasswordStateChanged
 
-    private void txtpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtpasswordPropertyChange
+    private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
+        if(showpassword.isSelected()){
+            txtpassword.setEchoChar((char)0);
+        }else{
+            txtpassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_showpasswordActionPerformed
+
+    private void btnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsigninActionPerformed
+        dispose();
+  new main().setVisible(true);
   
+    }//GEN-LAST:event_btnsigninActionPerformed
+
+    private void txtpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtpasswordHierarchyChanged
+
+    }//GEN-LAST:event_txtpasswordHierarchyChanged
+
+    private void txtpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusGained
+        if(txtpassword.getText().equalsIgnoreCase("Password")){
+            txtpassword.setText(null);
+
+        }
+    }//GEN-LAST:event_txtpasswordFocusGained
+
+    private void txtpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusLost
+        if(txtpassword.getText().isEmpty()){
+            txtpassword.setText("Password");
+            txtpassword.setEchoChar((char)0);
+
+        }
+    }//GEN-LAST:event_txtpasswordFocusLost
+
+    private void txtpasswordInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtpasswordInputMethodTextChanged
+
+    }//GEN-LAST:event_txtpasswordInputMethodTextChanged
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void txtpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtpasswordPropertyChange
+
     }//GEN-LAST:event_txtpasswordPropertyChange
+
+    private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
+        txtpassword.setEchoChar('*');
+        if(txtpassword.getText().equalsIgnoreCase("Password") || txtpassword.getText().isEmpty()){
+            showpassword.setVisible(false);
+
+        }else{
+            showpassword.setVisible(true);
+
+        }
+    }//GEN-LAST:event_txtpasswordKeyPressed
+
+    private void txtpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyReleased
+
+    }//GEN-LAST:event_txtpasswordKeyReleased
+
+    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
+
+    }//GEN-LAST:event_txtpasswordKeyTyped
+
+    private void txtusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusGained
+    if(txtusername.getText().equalsIgnoreCase("Username")){
+        txtusername.setText(null);
+    }
+    }//GEN-LAST:event_txtusernameFocusGained
+
+    private void txtusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusLost
+     if(txtusername.getText().isEmpty()){
+         txtusername.setText("Username");
+     }
+    }//GEN-LAST:event_txtusernameFocusLost
 
     private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtusernameActionPerformed
 
-    private void txtpasswordInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtpasswordInputMethodTextChanged
-   
-    }//GEN-LAST:event_txtpasswordInputMethodTextChanged
-
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-  
-    }//GEN-LAST:event_txtpasswordActionPerformed
-
-    private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
-     txtpassword.setEchoChar('*');
-     if(txtpassword.getText().equalsIgnoreCase("Password") || txtpassword.getText().isEmpty()){
-          showpassword.setVisible(false);
-        
-     }else{
-         showpassword.setVisible(true);
-
-      }      
-    }//GEN-LAST:event_txtpasswordKeyPressed
-
-    private void txtpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtpasswordHierarchyChanged
-   
-    }//GEN-LAST:event_txtpasswordHierarchyChanged
-
-    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
-       
-    }//GEN-LAST:event_txtpasswordKeyTyped
-
-    private void txtpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyReleased
-  
-    }//GEN-LAST:event_txtpasswordKeyReleased
-
-    private void btnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsigninActionPerformed
-  dispose();   
-  new main().setVisible(true);
-    }//GEN-LAST:event_btnsigninActionPerformed
-
-    private void btnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignupActionPerformed
-  dispose();
- 
-
-    }//GEN-LAST:event_btnsignupActionPerformed
+    private void txtusernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameKeyReleased
 
     private void txtusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyTyped
-     if(evt.getSource() == txtusername){
-           txtusername.setCustomIcon2(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\22 (2).gif"));
-     }else{
-          txtusername.setCustomIcon2(null);
-  
-     }
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtusernameKeyTyped
-
-    private void txtusernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyReleased
-    if(txtusername.getText().isEmpty()){
-         txtusername.setCustomIcon2(null);
-     }else{
-         
-          txtusername.setCustomIcon2(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\22 (2).gif"));
-   
-     }
-    }//GEN-LAST:event_txtusernameKeyReleased
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -362,27 +333,21 @@ public class login extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(signin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the dialog */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                login dialog = new login(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+                new signin().setVisible(true);
             }
         });
     }
@@ -390,7 +355,6 @@ public class login extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private StudentAttend.MyButton btnsignin;
     private StudentAttend.MyButton btnsignup;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel labelwelcome;
