@@ -23,6 +23,7 @@ public class signup extends javax.swing.JFrame {
           txtpassword.setEchoChar((char)0);
          showpassword.setVisible(false);
          txtconfirmpassword.setEchoChar((char)0);
+         showconfirmpassword.setVisible(false);
     }
 
     /**
@@ -34,8 +35,13 @@ public class signup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        signuppanel = new javax.swing.JPanel();
+        label1 = new javax.swing.JLabel();
+        btnsignup = new customGUI.MyButton();
+        labelwelcome = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         showpassword = new javax.swing.JCheckBox();
+        showconfirmpassword = new javax.swing.JCheckBox();
         txtpassword = new customGUI.MyPasswordField();
         txtusername = new customGUI.MyTextField();
         txtfirstname = new customGUI.MyTextField();
@@ -47,19 +53,77 @@ public class signup extends javax.swing.JFrame {
         txtconfirmpassword = new customGUI.MyPasswordField();
         btnsignin = new customGUI.MyButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        signuppanel = new javax.swing.JPanel();
-        label1 = new javax.swing.JLabel();
-        btnsignup = new customGUI.MyButton();
-        labelwelcome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        signuppanel.setBackground(new java.awt.Color(39, 159, 217));
+        signuppanel.setForeground(new java.awt.Color(30, 30, 30));
+
+        label1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        label1.setForeground(new java.awt.Color(255, 255, 255));
+        label1.setText("Already Have an Account?");
+
+        btnsignup.setForeground(new java.awt.Color(255, 255, 255));
+        btnsignup.setText("Sign In");
+        btnsignup.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnsignup.setColor(new java.awt.Color(0, 0, 0));
+        btnsignup.setColorClick(new java.awt.Color(102, 102, 102));
+        btnsignup.setColorOver(new java.awt.Color(51, 51, 51));
+        btnsignup.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnsignup.setRadius(50);
+        btnsignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsignupActionPerformed(evt);
+            }
+        });
+
+        labelwelcome.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        labelwelcome.setForeground(new java.awt.Color(255, 255, 255));
+        labelwelcome.setText("Join Us User");
+
+        javax.swing.GroupLayout signuppanelLayout = new javax.swing.GroupLayout(signuppanel);
+        signuppanel.setLayout(signuppanelLayout);
+        signuppanelLayout.setHorizontalGroup(
+            signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signuppanelLayout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
+                        .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
+                        .addComponent(labelwelcome)
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
+                        .addComponent(label1)
+                        .addGap(118, 118, 118))))
+        );
+        signuppanelLayout.setVerticalGroup(
+            signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signuppanelLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(labelwelcome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
+        );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
         showpassword.setContentAreaFilled(false);
-        showpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\9041325_eye_fill_icon (3).png"));
-        showpassword.setSelectedIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\9034884_eye_off_icon (1).png"));
+        showpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\9041325_eye_fill_icon (3).png"));
+        showpassword.setSelectedIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\9034884_eye_off_icon (1).png"));
         showpassword.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 showpasswordStateChanged(evt);
@@ -72,6 +136,22 @@ public class signup extends javax.swing.JFrame {
         });
         jPanel2.add(showpassword);
         showpassword.setBounds(280, 350, 19, 20);
+
+        showconfirmpassword.setContentAreaFilled(false);
+        showconfirmpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\9041325_eye_fill_icon (3).png"));
+        showconfirmpassword.setSelectedIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\9034884_eye_off_icon (1).png"));
+        showconfirmpassword.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                showconfirmpasswordStateChanged(evt);
+            }
+        });
+        showconfirmpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showconfirmpasswordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showconfirmpassword);
+        showconfirmpassword.setBounds(280, 410, 19, 20);
 
         txtpassword.setText("Password");
         txtpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
@@ -254,7 +334,7 @@ public class signup extends javax.swing.JFrame {
         jPanel2.add(cbgender);
         cbgender.setBounds(30, 180, 120, 40);
 
-        txtconfirmpassword.setText("COnfirm PAssword");
+        txtconfirmpassword.setText("Confirm Password");
         txtconfirmpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
         txtconfirmpassword.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
@@ -312,80 +392,23 @@ public class signup extends javax.swing.JFrame {
         jPanel2.add(btnsignin);
         btnsignin.setBounds(50, 460, 246, 42);
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        jDateChooser1.setForeground(new java.awt.Color(122, 140, 141));
-        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jDateChooser1.setBackground(new java.awt.Color(0,0,0,0));
         jPanel2.add(jDateChooser1);
-        jDateChooser1.setBounds(160, 180, 154, 40);
-
-        signuppanel.setBackground(new java.awt.Color(39, 159, 217));
-        signuppanel.setForeground(new java.awt.Color(30, 30, 30));
-
-        label1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        label1.setForeground(new java.awt.Color(255, 255, 255));
-        label1.setText("Already Have an Account?");
-
-        btnsignup.setForeground(new java.awt.Color(255, 255, 255));
-        btnsignup.setText("Sign In");
-        btnsignup.setBorderColor(new java.awt.Color(0, 0, 0));
-        btnsignup.setColor(new java.awt.Color(0, 0, 0));
-        btnsignup.setColorClick(new java.awt.Color(102, 102, 102));
-        btnsignup.setColorOver(new java.awt.Color(51, 51, 51));
-        btnsignup.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        btnsignup.setRadius(50);
-        btnsignup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsignupActionPerformed(evt);
-            }
-        });
-
-        labelwelcome.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        labelwelcome.setForeground(new java.awt.Color(255, 255, 255));
-        labelwelcome.setText("Join Us User");
-
-        javax.swing.GroupLayout signuppanelLayout = new javax.swing.GroupLayout(signuppanel);
-        signuppanel.setLayout(signuppanelLayout);
-        signuppanelLayout.setHorizontalGroup(
-            signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signuppanelLayout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
-                .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
-                        .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
-                        .addComponent(labelwelcome)
-                        .addGap(101, 101, 101))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
-                        .addComponent(label1)
-                        .addGap(118, 118, 118))))
-        );
-        signuppanelLayout.setVerticalGroup(
-            signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signuppanelLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(labelwelcome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
-        );
+        jDateChooser1.setBounds(160, 180, 150, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(330, 330, 330)
-                .addComponent(signuppanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(320, 320, 320)
+                .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(signuppanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -413,6 +436,7 @@ public class signup extends javax.swing.JFrame {
     private void btnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsigninActionPerformed
         dispose();
     JOptionPane.showMessageDialog(null,"SuccessFully Created Account","Successfull",JOptionPane.INFORMATION_MESSAGE);
+    new signin().setVisible(true);
     }//GEN-LAST:event_btnsigninActionPerformed
 
     private void txtpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtpasswordHierarchyChanged
@@ -430,7 +454,7 @@ public class signup extends javax.swing.JFrame {
         if(txtpassword.getText().isEmpty()){
             txtpassword.setText("Password");
             txtpassword.setEchoChar((char)0);
-
+            showpassword.setVisible(false);
         }
     }//GEN-LAST:event_txtpasswordFocusLost
 
@@ -589,6 +613,9 @@ public class signup extends javax.swing.JFrame {
     private void txtconfirmpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtconfirmpasswordFocusLost
        if(txtconfirmpassword.getText().isEmpty()){
            txtconfirmpassword.setText("Confirm Password");
+              txtconfirmpassword.setEchoChar((char)0);
+              showconfirmpassword.setVisible(false);
+
        }
     }//GEN-LAST:event_txtconfirmpasswordFocusLost
 
@@ -605,7 +632,15 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_txtconfirmpasswordPropertyChange
 
     private void txtconfirmpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordKeyPressed
-        // TODO add your handling code here:
+         txtconfirmpassword.setEchoChar('*');
+        if(txtconfirmpassword.getText().equalsIgnoreCase("Password") || txtconfirmpassword.getText().isEmpty()){
+            showconfirmpassword.setVisible(false);
+            return;
+        }
+        
+            showconfirmpassword.setVisible(true);
+
+       
     }//GEN-LAST:event_txtconfirmpasswordKeyPressed
 
     private void txtconfirmpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordKeyReleased
@@ -615,6 +650,26 @@ public class signup extends javax.swing.JFrame {
     private void txtconfirmpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtconfirmpasswordKeyTyped
+
+    private void showconfirmpasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_showconfirmpasswordStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showconfirmpasswordStateChanged
+
+    private void showconfirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showconfirmpasswordActionPerformed
+   if(showconfirmpassword.isSelected()){
+            txtconfirmpassword.setEchoChar((char)0);
+        }else{
+            txtconfirmpassword.setEchoChar('*');
+        }
+   
+    }//GEN-LAST:event_showconfirmpasswordActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -661,6 +716,7 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel labelwelcome;
+    private javax.swing.JCheckBox showconfirmpassword;
     private javax.swing.JCheckBox showpassword;
     private javax.swing.JPanel signuppanel;
     private customGUI.MyPasswordField txtconfirmpassword;

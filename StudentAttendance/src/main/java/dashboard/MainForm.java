@@ -4,6 +4,9 @@
  */
 package dashboard;
 
+import accountsetting.accountsettings;
+import login.signin;
+
 /**
  *
  * @author Admin
@@ -51,6 +54,7 @@ public class MainForm extends javax.swing.JFrame {
         btndashboard.setText("DashBoard");
         btndashboard.setBorderColor(new java.awt.Color(39, 159, 217));
         btndashboard.setColor(new java.awt.Color(39, 159, 217));
+        btndashboard.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\image\\3669170_home_ic_icon.png"));
         btndashboard.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btndashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,11 +67,17 @@ public class MainForm extends javax.swing.JFrame {
         btnaccounts.setBorderColor(new java.awt.Color(39, 159, 217));
         btnaccounts.setColor(new java.awt.Color(39, 159, 217));
         btnaccounts.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnaccounts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaccountsActionPerformed(evt);
+            }
+        });
 
         btnInHistory.setBackground(new java.awt.Color(39, 159, 217));
         btnInHistory.setText("In/Out History");
         btnInHistory.setBorderColor(new java.awt.Color(39, 159, 217));
         btnInHistory.setColor(new java.awt.Color(39, 159, 217));
+        btnInHistory.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "8111410_history_time_clock_watch_timer_icon.png"));
         btnInHistory.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
 
         btnmenu.setBackground(new java.awt.Color(39, 159, 217));
@@ -97,7 +107,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(btnaccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(539, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         headerpanel.setBackground(java.awt.Color.white);
@@ -119,7 +129,12 @@ public class MainForm extends javax.swing.JFrame {
 
         headerpanel.add(profilepanel);
 
-        cbprofile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Setting", "Logout", " " }));
+        cbprofile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Setting", "Logout" }));
+        cbprofile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbprofileActionPerformed(evt);
+            }
+        });
         headerpanel.add(cbprofile);
         cbprofile.setBackground(new java.awt.Color(0,0,0,0));
 
@@ -130,16 +145,16 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(drawerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(headerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(headerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(drawerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(drawerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +167,23 @@ public class MainForm extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
        this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }//GEN-LAST:event_formWindowClosing
+
+    private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
+        if(cbprofile.getSelectedItem() == "Logout"){
+            dispose();
+            new signin().setVisible(true);          
+           cbprofile.setSelectedIndex(0);
+        }
+        if(cbprofile.getSelectedItem() == "Setting"){
+           new accountsettings(this,true).setVisible(true);
+           cbprofile.setSelectedIndex(0);
+        }
+        
+    }//GEN-LAST:event_cbprofileActionPerformed
+
+    private void btnaccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaccountsActionPerformed
+        jScrollPane1.setViewportView(new Accounts());
+    }//GEN-LAST:event_btnaccountsActionPerformed
 
     /**
      * @param args the command line arguments

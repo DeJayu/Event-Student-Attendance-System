@@ -29,19 +29,19 @@
           <Group type="102" attributes="0">
               <Component id="drawerpanel" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="headerpanel" min="-2" pref="1110" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="1110" max="-2" attributes="0"/>
+                  <Component id="headerpanel" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="1110" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="drawerpanel" min="-2" max="-2" attributes="0"/>
+          <Component id="drawerpanel" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <Component id="headerpanel" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="710" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="710" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -79,7 +79,7 @@
                   <Component id="btnaccounts" min="-2" pref="47" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnInHistory" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace pref="539" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,6 +96,9 @@
             </Property>
             <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
+            </Property>
+            <Property name="customIcon1" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;) + &quot;\\src\\main\\java\\image\\3669170_home_ic_icon.png&quot;)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="14" style="1"/>
@@ -121,6 +124,9 @@
               <Font name="SansSerif" size="14" style="1"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnaccountsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="customGUI.MyButton" name="btnInHistory">
           <Properties>
@@ -133,6 +139,9 @@
             </Property>
             <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
+            </Property>
+            <Property name="customIcon1" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;) + &quot;8111410_history_time_clock_watch_timer_icon.png&quot;)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="14" style="1"/>
@@ -199,14 +208,16 @@
         <Component class="javax.swing.JComboBox" name="cbprofile">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="3">
                 <StringItem index="0" value="Name"/>
                 <StringItem index="1" value="Setting"/>
                 <StringItem index="2" value="Logout"/>
-                <StringItem index="3" value=" "/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbprofileActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="cbprofile.setBackground(new java.awt.Color(0,0,0,0));"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
