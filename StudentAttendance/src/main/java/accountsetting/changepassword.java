@@ -20,6 +20,13 @@ public class changepassword extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         noti.setVisible(false);
+        txtnewpassword.setEchoChar((char)0);
+        txtconfirmpassword.setEchoChar((char)0);
+        txtoldpassword.setEchoChar((char)0);
+        showoldpassword.setVisible(false);
+        showpassword.setVisible(false);
+        showconfirmpassword.setVisible(false);
+        
     }
 
     /**
@@ -34,11 +41,12 @@ public class changepassword extends javax.swing.JDialog {
         headerpanel = new javax.swing.JPanel();
         headerlbl = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        showoldpassword = new javax.swing.JCheckBox();
         confirnbtn = new customGUI.MyButton();
         showpassword = new javax.swing.JCheckBox();
         showconfirmpassword = new javax.swing.JCheckBox();
         noti = new javax.swing.JLabel();
-        txtnewpassword1 = new customGUI.MyPasswordField();
+        txtoldpassword = new customGUI.MyPasswordField();
         txtnewpassword = new customGUI.MyPasswordField();
         txtconfirmpassword = new customGUI.MyPasswordField();
 
@@ -69,6 +77,22 @@ public class changepassword extends javax.swing.JDialog {
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setLayout(null);
+
+        showoldpassword.setContentAreaFilled(false);
+        showoldpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\9041325_eye_fill_icon (3).png"));
+        showoldpassword.setSelectedIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\9034884_eye_off_icon (1).png"));
+        showoldpassword.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                showoldpasswordStateChanged(evt);
+            }
+        });
+        showoldpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showoldpasswordActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showoldpassword);
+        showoldpassword.setBounds(280, 50, 19, 20);
 
         confirnbtn.setText("Confirm");
         confirnbtn.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -113,51 +137,51 @@ public class changepassword extends javax.swing.JDialog {
         jPanel1.add(noti);
         noti.setBounds(40, 200, 250, 16);
 
-        txtnewpassword1.setText("Old Password");
-        txtnewpassword1.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
-        txtnewpassword1.addHierarchyListener(new java.awt.event.HierarchyListener() {
+        txtoldpassword.setText("Old Password");
+        txtoldpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
+        txtoldpassword.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
-                txtnewpassword1HierarchyChanged(evt);
+                txtoldpasswordHierarchyChanged(evt);
             }
         });
-        txtnewpassword1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtoldpassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtnewpassword1FocusGained(evt);
+                txtoldpasswordFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtnewpassword1FocusLost(evt);
+                txtoldpasswordFocusLost(evt);
             }
         });
-        txtnewpassword1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        txtoldpassword.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtnewpassword1InputMethodTextChanged(evt);
+                txtoldpasswordInputMethodTextChanged(evt);
             }
         });
-        txtnewpassword1.addActionListener(new java.awt.event.ActionListener() {
+        txtoldpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnewpassword1ActionPerformed(evt);
+                txtoldpasswordActionPerformed(evt);
             }
         });
-        txtnewpassword1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        txtoldpassword.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                txtnewpassword1PropertyChange(evt);
+                txtoldpasswordPropertyChange(evt);
             }
         });
-        txtnewpassword1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtoldpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtnewpassword1KeyPressed(evt);
+                txtoldpasswordKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtnewpassword1KeyReleased(evt);
+                txtoldpasswordKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtnewpassword1KeyTyped(evt);
+                txtoldpasswordKeyTyped(evt);
             }
         });
-        jPanel1.add(txtnewpassword1);
-        txtnewpassword1.setBounds(30, 40, 280, 40);
+        jPanel1.add(txtoldpassword);
+        txtoldpassword.setBounds(30, 40, 280, 40);
 
         txtnewpassword.setText("New Password");
         txtnewpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
@@ -394,41 +418,67 @@ public class changepassword extends javax.swing.JDialog {
 
     }//GEN-LAST:event_showconfirmpasswordActionPerformed
 
-    private void txtnewpassword1HierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtnewpassword1HierarchyChanged
+    private void txtoldpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtoldpasswordHierarchyChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1HierarchyChanged
+    }//GEN-LAST:event_txtoldpasswordHierarchyChanged
 
-    private void txtnewpassword1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnewpassword1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1FocusGained
+    private void txtoldpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoldpasswordFocusGained
+    if(txtoldpassword.getText().equalsIgnoreCase("Old Password")){
+        txtoldpassword.setText(null);
+    }
+        
+    }//GEN-LAST:event_txtoldpasswordFocusGained
 
-    private void txtnewpassword1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnewpassword1FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1FocusLost
+    private void txtoldpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoldpasswordFocusLost
+       if(txtoldpassword.getText().isEmpty()){
+           txtoldpassword.setText("Old Password");
+       }
+    }//GEN-LAST:event_txtoldpasswordFocusLost
 
-    private void txtnewpassword1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtnewpassword1InputMethodTextChanged
+    private void txtoldpasswordInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtoldpasswordInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1InputMethodTextChanged
+    }//GEN-LAST:event_txtoldpasswordInputMethodTextChanged
 
-    private void txtnewpassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewpassword1ActionPerformed
+    private void txtoldpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldpasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1ActionPerformed
+    }//GEN-LAST:event_txtoldpasswordActionPerformed
 
-    private void txtnewpassword1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtnewpassword1PropertyChange
+    private void txtoldpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtoldpasswordPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1PropertyChange
+    }//GEN-LAST:event_txtoldpasswordPropertyChange
 
-    private void txtnewpassword1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewpassword1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1KeyPressed
+    private void txtoldpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldpasswordKeyPressed
+      txtoldpassword.setEchoChar('*');
+        if(txtoldpassword.getText().equalsIgnoreCase("Old Password") || txtoldpassword.getText().isEmpty()){
+            showoldpassword.setVisible(false);
+            txtoldpassword.setEchoChar((char)0);
+            return;
+        }
 
-    private void txtnewpassword1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewpassword1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1KeyReleased
+        showoldpassword.setVisible(true);
+    }//GEN-LAST:event_txtoldpasswordKeyPressed
 
-    private void txtnewpassword1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewpassword1KeyTyped
+    private void txtoldpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldpasswordKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewpassword1KeyTyped
+    }//GEN-LAST:event_txtoldpasswordKeyReleased
+
+    private void txtoldpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldpasswordKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtoldpasswordKeyTyped
+
+    private void showoldpasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_showoldpasswordStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showoldpasswordStateChanged
+
+    private void showoldpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showoldpasswordActionPerformed
+     if(showoldpassword.isSelected()){
+         txtoldpassword.setEchoChar((char)0);
+         return;
+     }
+        txtoldpassword.setEchoChar('*');
+        
+               
+    }//GEN-LAST:event_showoldpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,9 +530,10 @@ public class changepassword extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel noti;
     private javax.swing.JCheckBox showconfirmpassword;
+    private javax.swing.JCheckBox showoldpassword;
     private javax.swing.JCheckBox showpassword;
     private customGUI.MyPasswordField txtconfirmpassword;
     private customGUI.MyPasswordField txtnewpassword;
-    private customGUI.MyPasswordField txtnewpassword1;
+    private customGUI.MyPasswordField txtoldpassword;
     // End of variables declaration//GEN-END:variables
 }

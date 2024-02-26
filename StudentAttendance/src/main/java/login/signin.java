@@ -5,7 +5,7 @@
 package login;
 
 
-import dashboard.MainForm;
+import admin.MainForm;
 import javax.swing.JOptionPane;
 
 /**

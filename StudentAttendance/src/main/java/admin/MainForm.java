@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package dashboard;
+package admin;
 
 import accountsetting.accountsettings;
+import customGUI.MyMessage;
 import login.signin;
 
 /**
@@ -79,6 +80,11 @@ public class MainForm extends javax.swing.JFrame {
         btnInHistory.setColor(new java.awt.Color(39, 159, 217));
         btnInHistory.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "8111410_history_time_clock_watch_timer_icon.png"));
         btnInHistory.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnInHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInHistoryActionPerformed(evt);
+            }
+        });
 
         btnmenu.setBackground(new java.awt.Color(39, 159, 217));
         btnmenu.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\657904_hamburger_menu_move handle_order_icon.png"));
@@ -165,7 +171,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btndashboardActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-       this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+      new MyMessage(this,true).setVisible(true);
+      
     }//GEN-LAST:event_formWindowClosing
 
     private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
@@ -184,6 +191,10 @@ public class MainForm extends javax.swing.JFrame {
     private void btnaccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaccountsActionPerformed
         jScrollPane1.setViewportView(new Accounts());
     }//GEN-LAST:event_btnaccountsActionPerformed
+
+    private void btnInHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHistoryActionPerformed
+   jScrollPane1.setViewportView(new InOutAccounts());     
+    }//GEN-LAST:event_btnInHistoryActionPerformed
 
     /**
      * @param args the command line arguments

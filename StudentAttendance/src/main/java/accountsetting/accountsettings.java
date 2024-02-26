@@ -31,11 +31,10 @@ public class accountsettings extends javax.swing.JDialog {
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
-        myButton1 = new customGUI.MyButton();
-        myButton2 = new customGUI.MyButton();
-        myButton3 = new customGUI.MyButton();
+        btnchangeuser = new customGUI.MyButton();
+        btnchangepassword = new customGUI.MyButton();
         myButton4 = new customGUI.MyButton();
-        myButton5 = new customGUI.MyButton();
+        btnchangepersonal = new customGUI.MyButton();
         lblyearholder1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -63,36 +62,25 @@ public class accountsettings extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(39, 159, 217));
 
-        myButton1.setBackground(new java.awt.Color(39, 159, 217));
-        myButton1.setText("Change Profile");
-        myButton1.setBorderColor(new java.awt.Color(39, 159, 217));
-        myButton1.setColor(new java.awt.Color(39, 159, 217));
-        myButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        myButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnchangeuser.setBackground(new java.awt.Color(39, 159, 217));
+        btnchangeuser.setText("Change UserName");
+        btnchangeuser.setBorderColor(new java.awt.Color(39, 159, 217));
+        btnchangeuser.setColor(new java.awt.Color(39, 159, 217));
+        btnchangeuser.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnchangeuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton1ActionPerformed(evt);
+                btnchangeuserActionPerformed(evt);
             }
         });
 
-        myButton2.setBackground(new java.awt.Color(39, 159, 217));
-        myButton2.setText("Change UserName");
-        myButton2.setBorderColor(new java.awt.Color(39, 159, 217));
-        myButton2.setColor(new java.awt.Color(39, 159, 217));
-        myButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        myButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnchangepassword.setBackground(new java.awt.Color(39, 159, 217));
+        btnchangepassword.setText("Change Password");
+        btnchangepassword.setBorderColor(new java.awt.Color(39, 159, 217));
+        btnchangepassword.setColor(new java.awt.Color(39, 159, 217));
+        btnchangepassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnchangepassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton2ActionPerformed(evt);
-            }
-        });
-
-        myButton3.setBackground(new java.awt.Color(39, 159, 217));
-        myButton3.setText("Change Password");
-        myButton3.setBorderColor(new java.awt.Color(39, 159, 217));
-        myButton3.setColor(new java.awt.Color(39, 159, 217));
-        myButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        myButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton3ActionPerformed(evt);
+                btnchangepasswordActionPerformed(evt);
             }
         });
 
@@ -102,14 +90,14 @@ public class accountsettings extends javax.swing.JDialog {
         myButton4.setColor(new java.awt.Color(39, 159, 217));
         myButton4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        myButton5.setBackground(new java.awt.Color(39, 159, 217));
-        myButton5.setText("Change Personal Info");
-        myButton5.setBorderColor(new java.awt.Color(39, 159, 217));
-        myButton5.setColor(new java.awt.Color(39, 159, 217));
-        myButton5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        myButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnchangepersonal.setBackground(new java.awt.Color(39, 159, 217));
+        btnchangepersonal.setText("Change Personal Info");
+        btnchangepersonal.setBorderColor(new java.awt.Color(39, 159, 217));
+        btnchangepersonal.setColor(new java.awt.Color(39, 159, 217));
+        btnchangepersonal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnchangepersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton5ActionPerformed(evt);
+                btnchangepersonalActionPerformed(evt);
             }
         });
 
@@ -121,28 +109,25 @@ public class accountsettings extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnchangeuser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(myButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblyearholder1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(myButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(myButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(myButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnchangepersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnchangepassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(lblyearholder1)
                 .addGap(31, 31, 31)
-                .addComponent(myButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnchangepersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnchangeuser, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(myButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(myButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnchangepassword, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(myButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -327,21 +312,17 @@ public class accountsettings extends javax.swing.JDialog {
     
     }//GEN-LAST:event_formWindowClosed
 
-    private void myButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton5ActionPerformed
+    private void btnchangepersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchangepersonalActionPerformed
         new changepersonalinfo(null,true).setVisible(true);
-    }//GEN-LAST:event_myButton5ActionPerformed
+    }//GEN-LAST:event_btnchangepersonalActionPerformed
 
-    private void myButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton2ActionPerformed
+    private void btnchangeuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchangeuserActionPerformed
       new changeusername(null,true).setVisible(true);
-    }//GEN-LAST:event_myButton2ActionPerformed
+    }//GEN-LAST:event_btnchangeuserActionPerformed
 
-    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
-        new changeprofileimage(null,true).setVisible(true);
-    }//GEN-LAST:event_myButton1ActionPerformed
-
-    private void myButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton3ActionPerformed
+    private void btnchangepasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnchangepasswordActionPerformed
      new changepassword(null,true).setVisible(true);
-    }//GEN-LAST:event_myButton3ActionPerformed
+    }//GEN-LAST:event_btnchangepasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,6 +368,9 @@ public class accountsettings extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private customGUI.MyButton btnchangepassword;
+    private customGUI.MyButton btnchangepersonal;
+    private customGUI.MyButton btnchangeuser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -406,10 +390,6 @@ public class accountsettings extends javax.swing.JDialog {
     private javax.swing.JLabel lbllastnameholder;
     private javax.swing.JLabel lblyearholder;
     private javax.swing.JLabel lblyearholder1;
-    private customGUI.MyButton myButton1;
-    private customGUI.MyButton myButton2;
-    private customGUI.MyButton myButton3;
     private customGUI.MyButton myButton4;
-    private customGUI.MyButton myButton5;
     // End of variables declaration//GEN-END:variables
 }
