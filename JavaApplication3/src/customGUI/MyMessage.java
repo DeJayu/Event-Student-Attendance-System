@@ -4,6 +4,9 @@
  */
 package customGUI;
 
+import admin.MainForm;
+import javax.swing.JButton;
+
 
 
 /**
@@ -11,18 +14,21 @@ package customGUI;
  * @author Admin
  */
 public class MyMessage extends javax.swing.JDialog {
-    
-    private int choose;
-    
-    public int getChoose(){
-     return this.choose;
-    }
-    
-    public void setChoose(int choose){
-        this.choose = choose;
-    }
 
+
+   public void message(String msgtitle1,String msgbody1,String msgtype1,String choose1,String choose2){
+       chooseoption1.setText(choose1);
+       chooseoption2.setText(choose2);
+       messagetitle.setText(msgtitle1);
+       msgbody.setText(msgbody1);
+       msgtype.setText(msgtype1);
+       this.setVisible(true);
+     
+   }
    
+   public void chooseoptionOne(){
+      
+   }
     
     
     public MyMessage(java.awt.Frame parent, boolean modal) {
@@ -42,8 +48,8 @@ public class MyMessage extends javax.swing.JDialog {
         header = new javax.swing.JPanel();
         msgtype = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
-        myButton1 = new customGUI.MyButton();
-        myButton3 = new customGUI.MyButton();
+        chooseoption2 = new customGUI.MyButton();
+        chooseoption1 = new customGUI.MyButton();
         messagetitle = new javax.swing.JLabel();
         msgbody = new javax.swing.JLabel();
 
@@ -52,6 +58,9 @@ public class MyMessage extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -81,21 +90,21 @@ public class MyMessage extends javax.swing.JDialog {
         body.setBackground(java.awt.Color.white);
         body.setForeground(new java.awt.Color(0, 0, 0));
 
-        myButton1.setText("Cancel");
-        myButton1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        myButton1.setRadius(30);
-        myButton1.addActionListener(new java.awt.event.ActionListener() {
+        chooseoption2.setText("Cancel");
+        chooseoption2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        chooseoption2.setRadius(30);
+        chooseoption2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton1ActionPerformed(evt);
+                chooseoption2ActionPerformed(evt);
             }
         });
 
-        myButton3.setText("Ok");
-        myButton3.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        myButton3.setRadius(30);
-        myButton3.addActionListener(new java.awt.event.ActionListener() {
+        chooseoption1.setText("Ok");
+        chooseoption1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        chooseoption1.setRadius(30);
+        chooseoption1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton3ActionPerformed(evt);
+                chooseoption1ActionPerformed(evt);
             }
         });
 
@@ -115,9 +124,9 @@ public class MyMessage extends javax.swing.JDialog {
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
                         .addContainerGap(332, Short.MAX_VALUE)
-                        .addComponent(myButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chooseoption1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(chooseoption2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bodyLayout.createSequentialGroup()
                         .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(bodyLayout.createSequentialGroup()
@@ -138,8 +147,8 @@ public class MyMessage extends javax.swing.JDialog {
                 .addComponent(msgbody)
                 .addGap(101, 101, 101)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chooseoption2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chooseoption1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -159,27 +168,30 @@ public class MyMessage extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
     
-    private void myButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton3ActionPerformed
-            setChoose(1);
-            this.setVisible(false);
-       
-    }//GEN-LAST:event_myButton3ActionPerformed
+    private void chooseoption1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseoption1ActionPerformed
 
-    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
-            setChoose(2);
-            this.dispose();
+    }//GEN-LAST:event_chooseoption1ActionPerformed
+
+    private void chooseoption2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseoption2ActionPerformed
+
+   
        
-    }//GEN-LAST:event_myButton1ActionPerformed
+    }//GEN-LAST:event_chooseoption2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       setChoose(2);   
-       this.dispose();
+       
+
   
     }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -225,11 +237,11 @@ public class MyMessage extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private customGUI.MyButton chooseoption1;
+    private customGUI.MyButton chooseoption2;
     private javax.swing.JPanel header;
     private javax.swing.JLabel messagetitle;
     private javax.swing.JLabel msgbody;
     private javax.swing.JLabel msgtype;
-    private customGUI.MyButton myButton1;
-    private customGUI.MyButton myButton3;
     // End of variables declaration//GEN-END:variables
 }

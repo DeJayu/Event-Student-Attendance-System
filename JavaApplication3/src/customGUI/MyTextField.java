@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusAdapter;
+import java.awt.event.FocusListener;
 /**
  *
  * @author Admin
@@ -23,19 +24,17 @@ public class MyTextField extends JTextField{
     /**
      * @return the BorderColor
      */
-    
-//    public void focusgained(String name){
-//        if(this.getText().equalsIgnoreCase(name)){
-//            this.setText(null);
-//        }
-//    }
-//    
-//    public void focuslost(String name){
-//        if(this.getText().isEmpty()){
-//            this.setText(name);
-//        }
-//    }
-//    
+    public void focuseGained(JTextField text,String name){
+        if(text.getText().equalsIgnoreCase(name)){
+            text.setText(null);
+        }
+            
+    }
+    public void focusLost(JTextField text ,String name){
+        if(text.getText().isEmpty()){
+            text.setText(name);
+        }
+    }
     
     
     public Color getBorderColor() {

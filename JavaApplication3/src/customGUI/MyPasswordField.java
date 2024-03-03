@@ -14,6 +14,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 
 /**
@@ -22,6 +24,78 @@ import javax.swing.JPasswordField;
  */
 public class MyPasswordField extends JPasswordField{
 
+    /**
+     * @return the validation
+     */
+    public boolean isValidation() {
+        return validation;
+    }
+
+    /**
+     * @param validation the validation to set
+     */
+    public void setValidation(boolean validation) {
+        this.validation = validation;
+    }
+
+    /**
+     * @return the validation
+     */
+  
+     private boolean validation;
+    
+        public void focusGained(JPasswordField pass , String name, JCheckBox cb){
+            if(pass.getText().equalsIgnoreCase(name)){
+                pass.setText(null);
+                cb.setVisible(false);
+            }
+        }
+        
+        public void focusLost(JPasswordField pass , String name , JCheckBox cb){
+            if(pass.getText().isEmpty()){
+                pass.setText(name);
+                pass.setEchoChar((char)0);
+                cb.setVisible(false);
+                
+            }
+        }
+        
+        public void checkEmpty(JPasswordField pass,JCheckBox cb ,String name){
+            pass.setEchoChar('*');
+            if(pass.getText().isEmpty() || pass.getText().equalsIgnoreCase(name)){
+                cb.setVisible(false);
+                return;
+            }
+            
+            cb.setVisible(true);
+        }
+        
+
+       public void showpasswordChar(JCheckBox cb,JPasswordField pass ){
+         if(cb.isSelected()){
+            pass.setEchoChar((char)0);
+            return;
+        }
+            pass.setEchoChar('*');
+        
+
+    }
+    
+       public void checkvalidation(JLabel label,JLabel label2,JPasswordField pass,JPasswordField pass2){
+          String password1= new String(pass.getText());
+          String password2 = new String(pass2.getText());
+           
+           if(password1.equalsIgnoreCase(password2) ){
+               label.setVisible(false);
+               label2.setVisible(false);
+               setValidation(false) ;
+               return;
+           }
+           label.setVisible(true);
+           label2.setVisible(true);
+           setValidation(true) ;
+       }
+       
     /**
      * @return the CustomIcon1
      */

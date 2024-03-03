@@ -23,6 +23,7 @@ public class StudentAttend extends javax.swing.JDialog {
         initComponents();
         noti.setVisible(false);
         showconfirmpassword.setVisible(false);
+        txtconfirmpassword.setEchoChar((char)0);
         
     }
 
@@ -105,7 +106,7 @@ public class StudentAttend extends javax.swing.JDialog {
         jPanel1.add(noti);
         noti.setBounds(30, 170, 250, 16);
 
-        txtconfirmpassword.setText("Confirm new Password");
+        txtconfirmpassword.setText("Password");
         txtconfirmpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
         txtconfirmpassword.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {

@@ -140,7 +140,7 @@
         </Component>
         <Component class="customGUI.MyPasswordField" name="txtconfirmpassword">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Confirm new Password"/>
+            <Property name="text" type="java.lang.String" value="Password"/>
             <Property name="customIcon1" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;)+&quot;\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png&quot;)" type="code"/>
             </Property>

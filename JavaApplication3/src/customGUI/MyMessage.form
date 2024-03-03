@@ -7,10 +7,11 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <Events>
     <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
   </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -22,7 +23,6 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-3,0,0,2,8"/>
   </AuxValues>
 
   <Layout>
@@ -101,9 +101,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="332" max="32767" attributes="0"/>
-                          <Component id="myButton3" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="chooseoption1" min="-2" pref="82" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="myButton1" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="chooseoption2" min="-2" pref="82" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -132,8 +132,8 @@
                   <Component id="msgbody" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="myButton1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="myButton3" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="chooseoption2" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="chooseoption1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -141,7 +141,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="customGUI.MyButton" name="myButton1">
+        <Component class="customGUI.MyButton" name="chooseoption2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancel"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -150,10 +150,10 @@
             <Property name="radius" type="int" value="30"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseoption2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="customGUI.MyButton" name="myButton3">
+        <Component class="customGUI.MyButton" name="chooseoption1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ok"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -162,7 +162,7 @@
             <Property name="radius" type="int" value="30"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseoption1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="messagetitle">

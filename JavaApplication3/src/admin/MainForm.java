@@ -6,7 +6,8 @@ package admin;
 
 import accountsetting.accountsettings;
 import customGUI.MyMessage;
-import login.signin;
+import login.login;
+
 
 /**
  *
@@ -14,9 +15,9 @@ import login.signin;
  */
 public class MainForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainForm
-     */
+ 
+  
+    
     public MainForm() {
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
@@ -36,6 +37,7 @@ public class MainForm extends javax.swing.JFrame {
         btnaccounts = new customGUI.MyButton();
         btnInHistory = new customGUI.MyButton();
         btnmenu = new customGUI.MyButton();
+        btnInHistory1 = new customGUI.MyButton();
         headerpanel = new javax.swing.JPanel();
         profilepanel = new javax.swing.JPanel();
         cbprofile = new javax.swing.JComboBox<>();
@@ -55,7 +57,7 @@ public class MainForm extends javax.swing.JFrame {
         btndashboard.setText("DashBoard");
         btndashboard.setBorderColor(new java.awt.Color(39, 159, 217));
         btndashboard.setColor(new java.awt.Color(39, 159, 217));
-        btndashboard.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\main\\java\\image\\3669170_home_ic_icon.png"));
+        btndashboard.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\image\\3669170_home_ic_icon.png"));
         btndashboard.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btndashboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +80,7 @@ public class MainForm extends javax.swing.JFrame {
         btnInHistory.setText("In/Out History");
         btnInHistory.setBorderColor(new java.awt.Color(39, 159, 217));
         btnInHistory.setColor(new java.awt.Color(39, 159, 217));
-        btnInHistory.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "8111410_history_time_clock_watch_timer_icon.png"));
+        btnInHistory.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\image\\8111410_history_time_clock_watch_timer_icon.png"));
         btnInHistory.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnInHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,10 +89,22 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         btnmenu.setBackground(new java.awt.Color(39, 159, 217));
-        btnmenu.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\657904_hamburger_menu_move handle_order_icon.png"));
+        btnmenu.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\657904_hamburger_menu_move handle_order_icon.png"));
         btnmenu.setBorderColor(new java.awt.Color(39, 159, 217));
         btnmenu.setColor(new java.awt.Color(39, 159, 217));
         btnmenu.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+
+        btnInHistory1.setBackground(new java.awt.Color(39, 159, 217));
+        btnInHistory1.setText("Events");
+        btnInHistory1.setBorderColor(new java.awt.Color(39, 159, 217));
+        btnInHistory1.setColor(new java.awt.Color(39, 159, 217));
+        btnInHistory1.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\image\\8111410_history_time_clock_watch_timer_icon.png"));
+        btnInHistory1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnInHistory1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInHistory1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout drawerpanelLayout = new javax.swing.GroupLayout(drawerpanel);
         drawerpanel.setLayout(drawerpanelLayout);
@@ -98,10 +112,11 @@ public class MainForm extends javax.swing.JFrame {
             drawerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btndashboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnaccounts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnInHistory, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(btnInHistory, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
             .addGroup(drawerpanelLayout.createSequentialGroup()
                 .addComponent(btnmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(btnInHistory1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
         );
         drawerpanelLayout.setVerticalGroup(
             drawerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,6 +128,8 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(btnaccounts, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -152,7 +169,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(drawerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1110, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,14 +188,13 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btndashboardActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-      new MyMessage(this,true).setVisible(true);
-      
+   
     }//GEN-LAST:event_formWindowClosing
 
     private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
         if(cbprofile.getSelectedItem() == "Logout"){
             dispose();
-            new signin().setVisible(true);          
+            new login(null,false).setVisible(true);          
            cbprofile.setSelectedIndex(0);
         }
         if(cbprofile.getSelectedItem() == "Setting"){
@@ -195,6 +211,10 @@ public class MainForm extends javax.swing.JFrame {
     private void btnInHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHistoryActionPerformed
    jScrollPane1.setViewportView(new InOutAccounts());     
     }//GEN-LAST:event_btnInHistoryActionPerformed
+
+    private void btnInHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHistory1ActionPerformed
+   jScrollPane1.setViewportView(new Events());
+    }//GEN-LAST:event_btnInHistory1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +253,7 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customGUI.MyButton btnInHistory;
+    private customGUI.MyButton btnInHistory1;
     private customGUI.MyButton btnaccounts;
     private customGUI.MyButton btndashboard;
     private customGUI.MyButton btnmenu;

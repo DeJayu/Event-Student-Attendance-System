@@ -4,6 +4,8 @@
  */
 package accountsetting;
 
+import customGUI.MyTextField;
+
 /**
  *
  * @author Admin
@@ -204,15 +206,11 @@ public class changepersonalinfo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtfirstname1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfirstname1FocusGained
-        if(txtfirstname1.getText().equalsIgnoreCase("First Name")){
-            txtfirstname1.setText(null);
-        }
+      new MyTextField().focuseGained(txtfirstname1, "First Name");
     }//GEN-LAST:event_txtfirstname1FocusGained
 
     private void txtfirstname1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfirstname1FocusLost
-        if(txtfirstname1.getText().isEmpty()){
-            txtfirstname1.setText("First Name");
-        }
+       new MyTextField().focusLost(txtfirstname1, "First Name");
     }//GEN-LAST:event_txtfirstname1FocusLost
 
     private void txtfirstname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfirstname1ActionPerformed
@@ -228,15 +226,11 @@ public class changepersonalinfo extends javax.swing.JDialog {
     }//GEN-LAST:event_txtfirstname1KeyTyped
 
     private void txtlastnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtlastnameFocusGained
-        if(txtlastname.getText().equalsIgnoreCase("Last Name")){
-            txtlastname.setText(null);
-        }
+        new MyTextField().focuseGained(txtlastname, "Last Name");
     }//GEN-LAST:event_txtlastnameFocusGained
 
     private void txtlastnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtlastnameFocusLost
-        if(txtlastname.getText().isEmpty()){
-            txtlastname.setText("Last Name");
-        }
+        new MyTextField().focusLost(txtlastname, "Last Name");
     }//GEN-LAST:event_txtlastnameFocusLost
 
     private void txtlastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlastnameActionPerformed

@@ -4,6 +4,8 @@
  */
 package accountsetting;
 
+import customGUI.MyTextField;
+
 /**
  *
  * @author Admin
@@ -200,15 +202,11 @@ public class changeusername extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtoldusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoldusernameFocusGained
-        if(txtoldusername.getText().equalsIgnoreCase("Old Username")){
-            txtoldusername.setText(null);
-        }
+        new MyTextField().focuseGained(txtoldusername, "Old UserName");
     }//GEN-LAST:event_txtoldusernameFocusGained
 
     private void txtoldusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoldusernameFocusLost
-        if(txtoldusername.getText().isEmpty()){
-            txtoldusername.setText("Old Username");
-        }
+      new MyTextField().focusLost(txtoldusername, "Old Username");
     }//GEN-LAST:event_txtoldusernameFocusLost
 
     private void txtoldusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldusernameActionPerformed
@@ -224,15 +222,11 @@ public class changeusername extends javax.swing.JDialog {
     }//GEN-LAST:event_txtoldusernameKeyTyped
 
     private void txtnewusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnewusernameFocusGained
-        if(txtnewusername.getText().equalsIgnoreCase("New Username")){
-            txtnewusername.setText(null);
-        }
+        new MyTextField().focuseGained(txtnewusername, "New Username");
     }//GEN-LAST:event_txtnewusernameFocusGained
 
     private void txtnewusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnewusernameFocusLost
-        if(txtnewusername.getText().isEmpty()){
-            txtnewusername.setText("New Username");
-        }
+       new MyTextField().focusLost(txtnewusername, "New Username");
     }//GEN-LAST:event_txtnewusernameFocusLost
 
     private void txtnewusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewusernameActionPerformed
@@ -248,16 +242,11 @@ public class changeusername extends javax.swing.JDialog {
     }//GEN-LAST:event_txtnewusernameKeyTyped
 
     private void txtconfirmnewFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtconfirmnewFocusGained
-        if(txtconfirmnew.getText().equalsIgnoreCase("Confirm New Username")){
-            txtconfirmnew.setText(null);
-        }
-       
+        new MyTextField().focuseGained(txtconfirmnew, "Confirm New Username");
     }//GEN-LAST:event_txtconfirmnewFocusGained
 
     private void txtconfirmnewFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtconfirmnewFocusLost
-       if(txtconfirmnew.getText().isEmpty()){
-           txtconfirmnew.setText("Confirm New Username");
-       }
+      new MyTextField().focusLost(txtconfirmnew, "Confirm New Username");
     }//GEN-LAST:event_txtconfirmnewFocusLost
 
     private void txtconfirmnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmnewActionPerformed
