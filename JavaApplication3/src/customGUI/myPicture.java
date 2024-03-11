@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author Admin
  */
-public final class myPicture extends JPanel {
+public class myPicture extends JPanel {
 
    private BufferedImage img;
    

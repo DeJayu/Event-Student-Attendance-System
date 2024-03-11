@@ -6,6 +6,10 @@ package admin;
 
 import accountsetting.accountsettings;
 import customGUI.MyMessage;
+import customGUI.myPicture;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import login.login;
 
 
@@ -15,12 +19,34 @@ import login.login;
  */
 public class MainForm extends javax.swing.JFrame {
 
- 
+    /**
+     * @return the profilename
+     */
+    public String getProfilename() {
+        return profilename;
+    }
+
+    /**
+     * @param profilename the profilename to set
+     */
+    public void setProfilename(String profilename) {
+        this.profilename = profilename;
+    }
+
+    private String profilename;
   
     
     public MainForm() {
+        
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
+       DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbprofile.getModel();
+        cbprofile.addItem(profilename);
+        cbprofile.setSelectedItem(getProfilename());
+        cbprofile.addItem("Setting");
+        cbprofile.addItem("Logout");
+        System.out.print(getProfilename());
+         
     }
 
     /**
@@ -39,7 +65,7 @@ public class MainForm extends javax.swing.JFrame {
         btnmenu = new customGUI.MyButton();
         btnInHistory1 = new customGUI.MyButton();
         headerpanel = new javax.swing.JPanel();
-        profilepanel = new javax.swing.JPanel();
+        profilepanel = new myPicture("ATTENDANCE.png");
         cbprofile = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
 
@@ -69,6 +95,7 @@ public class MainForm extends javax.swing.JFrame {
         btnaccounts.setText("Accounts");
         btnaccounts.setBorderColor(new java.awt.Color(39, 159, 217));
         btnaccounts.setColor(new java.awt.Color(39, 159, 217));
+        btnaccounts.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\accounts.png"));
         btnaccounts.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnaccounts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +125,7 @@ public class MainForm extends javax.swing.JFrame {
         btnInHistory1.setText("Events");
         btnInHistory1.setBorderColor(new java.awt.Color(39, 159, 217));
         btnInHistory1.setColor(new java.awt.Color(39, 159, 217));
-        btnInHistory1.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\image\\8111410_history_time_clock_watch_timer_icon.png"));
+        btnInHistory1.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\image\\calendars.png"));
         btnInHistory1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnInHistory1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +179,6 @@ public class MainForm extends javax.swing.JFrame {
 
         headerpanel.add(profilepanel);
 
-        cbprofile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Setting", "Logout" }));
         cbprofile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbprofileActionPerformed(evt);

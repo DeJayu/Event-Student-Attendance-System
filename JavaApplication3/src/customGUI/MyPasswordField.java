@@ -43,7 +43,9 @@ public class MyPasswordField extends JPasswordField{
      */
   
      private boolean validation;
-    
+     
+     
+         //this class for the focus gained event for passwordfield
         public void focusGained(JPasswordField pass , String name, JCheckBox cb){
             if(pass.getText().equalsIgnoreCase(name)){
                 pass.setText(null);
@@ -51,6 +53,7 @@ public class MyPasswordField extends JPasswordField{
             }
         }
         
+        //this class is for focus lost event for passwordfield
         public void focusLost(JPasswordField pass , String name , JCheckBox cb){
             if(pass.getText().isEmpty()){
                 pass.setText(name);
@@ -60,6 +63,7 @@ public class MyPasswordField extends JPasswordField{
             }
         }
         
+        //this class check the value of the PasswordField if its empty
         public void checkEmpty(JPasswordField pass,JCheckBox cb ,String name){
             pass.setEchoChar('*');
             if(pass.getText().isEmpty() || pass.getText().equalsIgnoreCase(name)){
@@ -70,7 +74,7 @@ public class MyPasswordField extends JPasswordField{
             cb.setVisible(true);
         }
         
-
+        //show the password char of the PasswordField
        public void showpasswordChar(JCheckBox cb,JPasswordField pass ){
          if(cb.isSelected()){
             pass.setEchoChar((char)0);
@@ -81,11 +85,11 @@ public class MyPasswordField extends JPasswordField{
 
     }
     
+       
+       //this class check the password and confirm password if they the same value. 
        public void checkvalidation(JLabel label,JLabel label2,JPasswordField pass,JPasswordField pass2){
-          String password1= new String(pass.getText());
-          String password2 = new String(pass2.getText());
-           
-           if(password1.equalsIgnoreCase(password2) ){
+        
+           if(pass.getText().equalsIgnoreCase(pass2.getText()) ){
                label.setVisible(false);
                label2.setVisible(false);
                setValidation(false) ;
@@ -125,6 +129,8 @@ public class MyPasswordField extends JPasswordField{
         this.CustomIcon2 = CustomIcon2;
         initBorder();
     }
+    
+    //custome gui for passwordfield
     public MyPasswordField(){
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setBackground(new Color(0, 0, 0, 0));
@@ -135,19 +141,25 @@ public class MyPasswordField extends JPasswordField{
         
     }
 
+    
+    
     @Override
+    //custom rendering for gui of the passwordfield
     protected void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(new Color(230, 245, 241));
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 5, 5);
         super.paintComponent(g);
+        
+        //paint the icons in the passwordfield
         paintIcon(g);
     }
     
     private Icon CustomIcon1;
    private Icon CustomIcon2;
    
+   //custom gui for custom icons placements
      private void paintIcon(Graphics g){
         Graphics2D g2 = (Graphics2D)g;
         if (getCustomIcon1() != null){
@@ -164,7 +176,8 @@ public class MyPasswordField extends JPasswordField{
             
         }
     
-}
+}   
+     //code for the icons so that dont overlap with the text
     private void initBorder(){
         int left = 5;
         int right = 5;

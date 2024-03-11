@@ -4,8 +4,10 @@
  */
 package admin;
 
+import customGUI.MyTable;
 import customGUI.MyTextField;
 import customGUI.myPicture;
+
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -31,7 +34,7 @@ public class Accounts extends javax.swing.JPanel {
         btnupdate.setVisible(false);
         btndelete.setVisible(false);
         btncancel.setVisible(false);
-        
+        datePicker1.getComponentDateTextField().setEnabled(false);
         
     }
 
@@ -67,7 +70,7 @@ public class Accounts extends javax.swing.JPanel {
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         btnsearch1 = new customGUI.MyButton();
         studentpicture1 = new javax.swing.JLabel();
-        myPicture2 = new customGUI.myPicture("Admins.png");
+        myPicture2 = new customGUI.myPicture("girl.png");
         lbldesign5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         EventName = new javax.swing.JLabel();
@@ -77,6 +80,10 @@ public class Accounts extends javax.swing.JPanel {
         btndelete = new customGUI.MyButton();
         btnviewdata = new customGUI.MyButton();
         btncancel = new customGUI.MyButton();
+        myPicture3 = new customGUI.myPicture("boy.png");
+        lbldesign6 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        EventName1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(181, 181, 181));
 
@@ -93,6 +100,11 @@ public class Accounts extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtsearchFocusLost(evt);
+            }
+        });
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
             }
         });
 
@@ -141,6 +153,11 @@ public class Accounts extends javax.swing.JPanel {
 
         btnfilter.setText("Filter");
         btnfilter.setRadius(30);
+        btnfilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfilterActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -161,8 +178,8 @@ public class Accounts extends javax.swing.JPanel {
         jPanel2.add(txtidnum);
         txtidnum.setBounds(50, 20, 320, 40);
 
-        txtname.setBackground(new java.awt.Color(0, 0, 0,0));
         txtname.setText("Student Name");
+        txtname.setBackground(new java.awt.Color(0, 0, 0,0));
         txtname.setBorderColor(new java.awt.Color(230, 245, 241));
         txtname.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\11185794_user_person_profile_avatar_people_icon (1).png"));
         txtname.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -199,8 +216,8 @@ public class Accounts extends javax.swing.JPanel {
         jPanel2.add(cbyear);
         cbyear.setBounds(320, 80, 130, 40);
 
-        filetext.setBackground(new java.awt.Color(0, 0, 0,0));
         filetext.setText("Student Photo");
+        filetext.setBackground(new java.awt.Color(0, 0, 0,0));
         filetext.setBorderColor(new java.awt.Color(230, 245, 241));
         filetext.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\11185794_user_person_profile_avatar_people_icon (1).png"));
         filetext.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -275,12 +292,17 @@ public class Accounts extends javax.swing.JPanel {
 
         btnsearch1.setText("Search");
         btnsearch1.setRadius(30);
+        btnsearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearch1ActionPerformed(evt);
+            }
+        });
 
         studentpicture1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         myPicture2.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        lbldesign5.setText("Event Held:");
+        lbldesign5.setText("Girls:");
         lbldesign5.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign5.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -288,7 +310,7 @@ public class Accounts extends javax.swing.JPanel {
 
         EventName.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         EventName.setForeground(new java.awt.Color(255, 255, 255));
-        EventName.setText("Name");
+        EventName.setText("Numbers");
         jPanel4.add(EventName);
 
         javax.swing.GroupLayout myPicture2Layout = new javax.swing.GroupLayout(myPicture2);
@@ -296,14 +318,13 @@ public class Accounts extends javax.swing.JPanel {
         myPicture2Layout.setHorizontalGroup(
             myPicture2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myPicture2Layout.createSequentialGroup()
-                .addGroup(myPicture2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(myPicture2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(myPicture2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lbldesign5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, myPicture2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbldesign5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
         myPicture2Layout.setVerticalGroup(
             myPicture2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,51 +387,92 @@ public class Accounts extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
+        myPicture3.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        lbldesign6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        lbldesign6.setForeground(new java.awt.Color(255, 255, 255));
+        lbldesign6.setText("Boys:");
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0,0));
+
+        EventName1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        EventName1.setForeground(new java.awt.Color(255, 255, 255));
+        EventName1.setText("Numbers");
+        jPanel5.add(EventName1);
+
+        javax.swing.GroupLayout myPicture3Layout = new javax.swing.GroupLayout(myPicture3);
+        myPicture3.setLayout(myPicture3Layout);
+        myPicture3Layout.setHorizontalGroup(
+            myPicture3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(myPicture3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, myPicture3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbldesign6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
+        );
+        myPicture3Layout.setVerticalGroup(
+            myPicture3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(myPicture3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(lbldesign6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane2)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(246, 246, 246))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(txtsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(12, 12, 12)
                         .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(myPicture3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)))
                 .addGap(10, 10, 10))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(myPicture3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(studentpicture1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9))
         );
 
@@ -424,7 +486,7 @@ public class Accounts extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -453,19 +515,6 @@ public class Accounts extends javax.swing.JPanel {
         btncancel.setVisible(false);
     }//GEN-LAST:event_accountstableMouseClicked
     
-    private void filetextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetextActionPerformed
-   File f = new File(filetext.getText());
-        new myPicture().rizelabel(f, studentpicture1);
-    }//GEN-LAST:event_filetextActionPerformed
-
-    private void filetextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filetextFocusGained
-       new MyTextField().focuseGained(filetext, "Student Photo");
-    }//GEN-LAST:event_filetextFocusGained
-
-    private void filetextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filetextFocusLost
-        new MyTextField().focusLost(filetext,"Student Photo");
-    }//GEN-LAST:event_filetextFocusLost
-
     private void txtidnumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtidnumFocusGained
       new MyTextField().focuseGained(txtidnum, "Id Num#");
     }//GEN-LAST:event_txtidnumFocusGained
@@ -475,11 +524,11 @@ public class Accounts extends javax.swing.JPanel {
     }//GEN-LAST:event_txtidnumFocusLost
 
     private void txtnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnameFocusGained
-      new MyTextField().focuseGained(txtname, "Student Name");
+      new MyTextField().focuseGained(txtname, "Username");
     }//GEN-LAST:event_txtnameFocusGained
 
     private void txtnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnameFocusLost
-    new MyTextField().focusLost(txtname, "Student Name");
+    new MyTextField().focusLost(txtname, "Username");
     }//GEN-LAST:event_txtnameFocusLost
 
     private void txtsearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusGained
@@ -497,10 +546,39 @@ public class Accounts extends javax.swing.JPanel {
     btnupdate.setVisible(false);
     btncancel.setVisible(false);
     }//GEN-LAST:event_btncancelActionPerformed
+
+    private void btnfilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfilterActionPerformed
+
+        
+      
+    
+    }//GEN-LAST:event_btnfilterActionPerformed
+
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+    new MyTable().searchTableFilter(accountstable,txtsearch.getText());
+    }//GEN-LAST:event_txtsearchActionPerformed
+
+    private void btnsearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearch1ActionPerformed
+      new MyTable().searchTableFilter(accountstable,txtsearch.getText());
+    }//GEN-LAST:event_btnsearch1ActionPerformed
+
+    private void filetextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetextActionPerformed
+        File f = new File(filetext.getText());
+        new myPicture().rizelabel(f, studentpicture1);
+    }//GEN-LAST:event_filetextActionPerformed
+
+    private void filetextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filetextFocusLost
+        new MyTextField().focusLost(filetext,"Student Photo");
+    }//GEN-LAST:event_filetextFocusLost
+
+    private void filetextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filetextFocusGained
+        new MyTextField().focuseGained(filetext, "Student Photo");
+    }//GEN-LAST:event_filetextFocusGained
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel EventName;
+    private javax.swing.JLabel EventName1;
     private customGUI.MyTable accountstable;
     private customGUI.MyButton btnadd;
     private customGUI.MyButton btncancel;
@@ -518,6 +596,7 @@ public class Accounts extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBOD;
     private javax.swing.JLabel lblBOD1;
@@ -525,10 +604,12 @@ public class Accounts extends javax.swing.JPanel {
     private javax.swing.JLabel lbldesign3;
     private javax.swing.JLabel lbldesign4;
     private javax.swing.JLabel lbldesign5;
+    private javax.swing.JLabel lbldesign6;
     private javax.swing.JLabel lbldesigncourse;
     private javax.swing.JLabel lbldesignyear1;
     private customGUI.MyButton myButton1;
     private customGUI.myPicture myPicture2;
+    private customGUI.myPicture myPicture3;
     private javax.swing.JLabel studentpicture1;
     private customGUI.MyTextField txtidnum;
     private customGUI.MyTextField txtname;

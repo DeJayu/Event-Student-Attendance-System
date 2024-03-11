@@ -11,30 +11,32 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
 import javax.swing.JTextField;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusListener;
 /**
  *
  * @author Admin
  */
 public class MyTextField extends JTextField{
 
-    /**
-     * @return the BorderColor
-     */
+  
+    
+    //focus gained event for textfield
     public void focuseGained(JTextField text,String name){
         if(text.getText().equalsIgnoreCase(name)){
             text.setText(null);
         }
             
     }
+    
+    //focus lost event for textfield
     public void focusLost(JTextField text ,String name){
         if(text.getText().isEmpty()){
             text.setText(name);
         }
     }
+    
+ 
     
     
     public Color getBorderColor() {
@@ -100,6 +102,8 @@ public class MyTextField extends JTextField{
 
    private Color BorderColor;
     
+   
+   //custom gui for TextField
     public MyTextField() {
       
         setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -118,6 +122,8 @@ public class MyTextField extends JTextField{
      *
      * @param g
      */
+    
+    //renders of the custom gui for textfield
     @Override
     public void paintComponent(Graphics g){
         Graphics2D g2 = (Graphics2D) g;
@@ -129,6 +135,7 @@ public class MyTextField extends JTextField{
         paintIcon(g);
     }
     
+    //custom icon image placement
     private void paintIcon(Graphics g){
         Graphics2D g2 = (Graphics2D)g;
         if (getCustomIcon1() != null){
@@ -145,7 +152,9 @@ public class MyTextField extends JTextField{
             
         }
     
-}
+}   
+    
+  //code for the icons so that dont overlap with the text
     private void initBorder(){
         int left = 5;
         int right = 5;

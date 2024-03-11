@@ -4,7 +4,9 @@
  */
 package admin;
 
+import customGUI.MyTable;
 import customGUI.MyTextField;
+
 
 /**
  *
@@ -17,8 +19,19 @@ public class Events extends javax.swing.JPanel {
      */
     public Events() {
         initComponents();
+     datePicker1.getComponentDateTextField().setEnabled(false);
+     timePicker1.getComponentTimeTextField().setEnabled(false);
+     timePicker2.getComponentTimeTextField().setEnabled(false);
      
-        
+     timePicker1.getComponentIncreaseSpinnerButton().setVisible(true);
+     timePicker1.getComponentDecreaseSpinnerButton().setVisible(true);
+     timePicker1.getComponentDecreaseSpinnerButton().setFocusable(false);
+     timePicker1.getComponentIncreaseSpinnerButton().setFocusable(false);
+     
+     timePicker2.getComponentIncreaseSpinnerButton().setVisible(true);
+     timePicker2.getComponentDecreaseSpinnerButton().setVisible(true);
+     timePicker2.getComponentDecreaseSpinnerButton().setFocusable(false);
+     timePicker2.getComponentIncreaseSpinnerButton().setFocusable(false);
     }
 
     /**
@@ -40,12 +53,17 @@ public class Events extends javax.swing.JPanel {
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         timePicker1 = new com.github.lgooddatepicker.components.TimePicker();
         timePicker2 = new com.github.lgooddatepicker.components.TimePicker();
+        btneviewdata = new customGUI.MyButton();
+        btnadd = new customGUI.MyButton();
+        btnedit = new customGUI.MyButton();
+        btndelete = new customGUI.MyButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        myTable2 = new customGUI.MyTable();
+        accounttable = new customGUI.MyTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        myTable3 = new customGUI.MyTable();
+        eventtable = new customGUI.MyTable();
         txtsearch = new customGUI.MyTextField();
-        btnsearch1 = new customGUI.MyButton();
+        btnsearch = new customGUI.MyButton();
+        btnfilter = new customGUI.MyButton();
 
         setBackground(new java.awt.Color(181, 181, 181));
 
@@ -92,15 +110,35 @@ public class Events extends javax.swing.JPanel {
         lbldesignyear3.setForeground(java.awt.Color.black);
         lbldesignyear3.setText("Time Out");
         jPanel2.add(lbldesignyear3);
-        lbldesignyear3.setBounds(610, 0, 90, 16);
+        lbldesignyear3.setBounds(550, 0, 90, 16);
         jPanel2.add(datePicker1);
         datePicker1.setBounds(10, 80, 320, 40);
         jPanel2.add(timePicker1);
-        timePicker1.setBounds(590, 20, 140, 40);
+        timePicker1.setBounds(550, 20, 140, 40);
         jPanel2.add(timePicker2);
         timePicker2.setBounds(360, 20, 150, 40);
 
-        myTable2.setModel(new javax.swing.table.DefaultTableModel(
+        btneviewdata.setText("View Event Data");
+        btneviewdata.setRadius(30);
+        jPanel2.add(btneviewdata);
+        btneviewdata.setBounds(449, 110, 100, 26);
+
+        btnadd.setText("ADD");
+        btnadd.setRadius(30);
+        jPanel2.add(btnadd);
+        btnadd.setBounds(720, 110, 69, 26);
+
+        btnedit.setText("EDIT");
+        btnedit.setRadius(30);
+        jPanel2.add(btnedit);
+        btnedit.setBounds(640, 110, 69, 26);
+
+        btndelete.setText("DELETE");
+        btndelete.setRadius(30);
+        jPanel2.add(btndelete);
+        btndelete.setBounds(560, 110, 69, 26);
+
+        accounttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -126,14 +164,14 @@ public class Events extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(myTable2);
-        if (myTable2.getColumnModel().getColumnCount() > 0) {
-            myTable2.getColumnModel().getColumn(0).setHeaderValue("Id");
-            myTable2.getColumnModel().getColumn(1).setHeaderValue("Student Id");
-            myTable2.getColumnModel().getColumn(4).setHeaderValue("Year");
+        jScrollPane1.setViewportView(accounttable);
+        if (accounttable.getColumnModel().getColumnCount() > 0) {
+            accounttable.getColumnModel().getColumn(0).setHeaderValue("Id");
+            accounttable.getColumnModel().getColumn(1).setHeaderValue("Student Id");
+            accounttable.getColumnModel().getColumn(4).setHeaderValue("Year");
         }
 
-        myTable3.setModel(new javax.swing.table.DefaultTableModel(
+        eventtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -159,7 +197,7 @@ public class Events extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(myTable3);
+        jScrollPane3.setViewportView(eventtable);
 
         txtsearch.setText("Search");
         txtsearch.setBackground(java.awt.Color.white);
@@ -174,9 +212,27 @@ public class Events extends javax.swing.JPanel {
                 txtsearchFocusLost(evt);
             }
         });
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
 
-        btnsearch1.setText("Search");
-        btnsearch1.setRadius(30);
+        btnsearch.setText("Search");
+        btnsearch.setRadius(30);
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
+
+        btnfilter.setText("Filter");
+        btnfilter.setRadius(30);
+        btnfilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -194,8 +250,10 @@ public class Events extends javax.swing.JPanel {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(txtsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(103, 103, 103)))
+                                .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
                         .addGap(48, 48, 48)))
                 .addContainerGap())
         );
@@ -203,12 +261,13 @@ public class Events extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
@@ -247,10 +306,29 @@ public class Events extends javax.swing.JPanel {
         new MyTextField().focusLost(txtsearch,"Search");
     }//GEN-LAST:event_txtsearchFocusLost
 
+    private void btnfilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfilterActionPerformed
+  
+    }//GEN-LAST:event_btnfilterActionPerformed
+
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+        new MyTable().searchTableFilter(accounttable, txtsearch.getText());
+    }//GEN-LAST:event_txtsearchActionPerformed
+
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+     new MyTable().searchTableFilter(eventtable,txtsearch.getText());
+    }//GEN-LAST:event_btnsearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private customGUI.MyButton btnsearch1;
+    private customGUI.MyTable accounttable;
+    private customGUI.MyButton btnadd;
+    private customGUI.MyButton btndelete;
+    private customGUI.MyButton btnedit;
+    private customGUI.MyButton btneviewdata;
+    private customGUI.MyButton btnfilter;
+    private customGUI.MyButton btnsearch;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private customGUI.MyTable eventtable;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -259,8 +337,6 @@ public class Events extends javax.swing.JPanel {
     private javax.swing.JLabel lbldesignyear1;
     private javax.swing.JLabel lbldesignyear2;
     private javax.swing.JLabel lbldesignyear3;
-    private customGUI.MyTable myTable2;
-    private customGUI.MyTable myTable3;
     private com.github.lgooddatepicker.components.TimePicker timePicker1;
     private com.github.lgooddatepicker.components.TimePicker timePicker2;
     private customGUI.MyTextField txteventname;

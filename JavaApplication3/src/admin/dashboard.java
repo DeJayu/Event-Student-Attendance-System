@@ -4,6 +4,7 @@
  */
 package admin;
 
+import customGUI.MyTable;
 import customGUI.MyTextField;
 import customGUI.myPicture;
 import java.awt.Color;
@@ -46,7 +47,7 @@ public class dashboard extends javax.swing.JPanel {
         btnprint = new customGUI.MyButton();
         Search1 = new customGUI.MyButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        myTable1 = new customGUI.MyTable();
+        dashboardtable = new customGUI.MyTable();
         myPicture1 = new customGUI.myPicture("Students.png");
         lbldesign2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -73,9 +74,19 @@ public class dashboard extends javax.swing.JPanel {
                 txtsearchFocusLost(evt);
             }
         });
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
 
         Search.setText("Search");
         Search.setRadius(30);
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
 
         btnadd.setText("Attend");
         btnadd.setRadius(30);
@@ -96,8 +107,8 @@ public class dashboard extends javax.swing.JPanel {
 
         jScrollPane2.setBackground(new java.awt.Color(255, 153, 153));
 
-        myTable1.setBackground(new java.awt.Color(255, 255, 255));
-        myTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dashboardtable.setBackground(new java.awt.Color(255, 255, 255));
+        dashboardtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -123,12 +134,12 @@ public class dashboard extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        myTable1.setGridColor(new java.awt.Color(0, 0, 0));
-        myTable1.setOpaque(false);
-        myTable1.setRequestFocusEnabled(false);
-        myTable1.setShowGrid(false);
-        myTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(myTable1);
+        dashboardtable.setGridColor(new java.awt.Color(0, 0, 0));
+        dashboardtable.setOpaque(false);
+        dashboardtable.setRequestFocusEnabled(false);
+        dashboardtable.setShowGrid(false);
+        dashboardtable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(dashboardtable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -281,6 +292,14 @@ public class dashboard extends javax.swing.JPanel {
      new MyTextField().focusLost(txtsearch,"Search");
     }//GEN-LAST:event_txtsearchFocusLost
 
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+   new MyTable().searchTableFilter(dashboardtable,txtsearch.getText());
+    }//GEN-LAST:event_txtsearchActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        new MyTable().searchTableFilter(dashboardtable,txtsearch.getText());
+    }//GEN-LAST:event_SearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel EventName;
@@ -289,6 +308,7 @@ public class dashboard extends javax.swing.JPanel {
     private customGUI.MyButton btnadd;
     private customGUI.MyButton btnprint;
     private customGUI.MyButton btnprint1;
+    private customGUI.MyTable dashboardtable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -297,7 +317,6 @@ public class dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel lbldesign4;
     private customGUI.myPicture myPicture1;
     private customGUI.myPicture myPicture2;
-    private customGUI.MyTable myTable1;
     private javax.swing.JLabel totalstudents;
     private customGUI.MyTextField txtsearch;
     // End of variables declaration//GEN-END:variables

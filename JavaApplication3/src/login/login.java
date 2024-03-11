@@ -4,7 +4,7 @@
  */
 package login;
 
-import admin.MainForm;
+
 import customGUI.MyMessage;
 import customGUI.MyPasswordField;
 import customGUI.MyTextField;
@@ -15,7 +15,10 @@ import java.awt.event.KeyEvent;
 
 
 
-import javax.swing.JOptionPane;
+
+
+import sqlite.adminSqlite;
+import sqlite.loginAccount;
 
 
 
@@ -27,11 +30,15 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JDialog {
     
  
-    
+    public login(){
+        
+    }
     
     public login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+
         initComponents();
+        
         showpassword.setVisible(false);
         signupshowpassword.setVisible(false);
        showconfirmpassword.setVisible(false);
@@ -40,6 +47,12 @@ public class login extends javax.swing.JDialog {
         txtconfirmpassword.setEchoChar((char)0);
         lblvalid1.setVisible(false);
         lblvalid2.setVisible(false);
+        lblvalid3.setVisible(false);
+        datePicker2.getComponentDateTextField().setEnabled(false);
+        
+        new adminSqlite().addValueCourseCB(cbcourse);
+        new adminSqlite().addValueYearCB(cbyear);
+      
         
     }
 
@@ -74,6 +87,8 @@ public class login extends javax.swing.JDialog {
         datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
         lblvalid2 = new javax.swing.JLabel();
         lblvalid1 = new javax.swing.JLabel();
+        lblvalid3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         signuppanel = new javax.swing.JPanel();
         label1 = new javax.swing.JLabel();
         btnsignup = new customGUI.MyButton();
@@ -86,6 +101,11 @@ public class login extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusable(false);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,9 +127,9 @@ public class login extends javax.swing.JDialog {
         jPanel2.add(showpassword);
         showpassword.setBounds(260, 300, 19, 20);
 
-        btnsignin.setForeground(new java.awt.Color(255, 255, 255));
         btnsignin.setText("Sign In");
         btnsignin.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnsignin.setForeground(new java.awt.Color(255, 255, 255));
         btnsignin.setRadius(50);
         btnsignin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,7 +322,7 @@ public class login extends javax.swing.JDialog {
             }
         });
         jPanel3.add(txtusername1);
-        txtusername1.setBounds(30, 390, 280, 40);
+        txtusername1.setBounds(30, 370, 280, 40);
 
         txtidnum.setBackground(new java.awt.Color(0, 0, 0,0));
         txtidnum.setText("Id Number");
@@ -330,7 +350,7 @@ public class login extends javax.swing.JDialog {
             }
         });
         jPanel3.add(txtidnum);
-        txtidnum.setBounds(30, 160, 280, 40);
+        txtidnum.setBounds(30, 140, 280, 40);
 
         txtfirstname.setBackground(new java.awt.Color(0, 0, 0,0));
         txtfirstname.setText("First Name");
@@ -358,7 +378,7 @@ public class login extends javax.swing.JDialog {
             }
         });
         jPanel3.add(txtfirstname);
-        txtfirstname.setBounds(30, 220, 130, 40);
+        txtfirstname.setBounds(30, 200, 130, 40);
 
         txtlastname.setBackground(new java.awt.Color(0, 0, 0,0));
         txtlastname.setText("Last Name");
@@ -386,30 +406,30 @@ public class login extends javax.swing.JDialog {
             }
         });
         jPanel3.add(txtlastname);
-        txtlastname.setBounds(180, 220, 130, 40);
+        txtlastname.setBounds(180, 200, 130, 40);
 
+        cbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Course" }));
         cbcourse.setBackground(new java.awt.Color(0,0,0,0));
         cbcourse.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbcourse.setForeground(new java.awt.Color(122, 140, 141));
-        cbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Course" }));
         jPanel3.add(cbcourse);
-        cbcourse.setBounds(30, 330, 140, 40);
+        cbcourse.setBounds(30, 320, 140, 40);
 
         cbyear.setBackground(new java.awt.Color(0,0,0,0));
         cbyear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbyear.setForeground(new java.awt.Color(122, 140, 141));
         cbyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Year" }));
         jPanel3.add(cbyear);
-        cbyear.setBounds(200, 330, 110, 40);
+        cbyear.setBounds(190, 320, 120, 40);
 
+        cbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Gender", "Male", "Female", "Others" }));
         cbgender.setBackground(new java.awt.Color(0,0,0,0));
+        cbgender.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         cbgender.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbgender.setForeground(new java.awt.Color(122, 140, 141));
-        cbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Gender", "Male", "Female", "Others" }));
-        cbgender.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         cbgender.setRequestFocusEnabled(false);
         jPanel3.add(cbgender);
-        cbgender.setBounds(30, 280, 120, 40);
+        cbgender.setBounds(30, 260, 120, 40);
 
         txtconfirmpassword.setText("Confirm Password");
         txtconfirmpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\8491307_padlock_security_password_icon.png"));
@@ -457,9 +477,9 @@ public class login extends javax.swing.JDialog {
         jPanel3.add(txtconfirmpassword);
         txtconfirmpassword.setBounds(30, 520, 280, 40);
 
-        btnsignin1.setForeground(new java.awt.Color(255, 255, 255));
         btnsignin1.setText("Sign Up");
         btnsignin1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnsignin1.setForeground(new java.awt.Color(255, 255, 255));
         btnsignin1.setRadius(50);
         btnsignin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -469,10 +489,10 @@ public class login extends javax.swing.JDialog {
         jPanel3.add(btnsignin1);
         btnsignin1.setBounds(50, 580, 246, 42);
         jPanel3.add(datePicker2);
-        datePicker2.setBounds(150, 280, 160, 40);
+        datePicker2.setBounds(150, 260, 160, 40);
 
-        lblvalid2.setForeground(new java.awt.Color(255, 0, 0));
         lblvalid2.setText("The Confirm Password  didnt Match up! ");
+        lblvalid2.setForeground(new java.awt.Color(255, 0, 0));
         jPanel3.add(lblvalid2);
         lblvalid2.setBounds(30, 560, 300, 16);
 
@@ -480,6 +500,17 @@ public class login extends javax.swing.JDialog {
         lblvalid1.setForeground(new java.awt.Color(255, 0, 0));
         jPanel3.add(lblvalid1);
         lblvalid1.setBounds(30, 490, 240, 16);
+
+        lblvalid3.setForeground(new java.awt.Color(255, 0, 0));
+        lblvalid3.setText("Username is Already Have Taken Please Input Another");
+        jPanel3.add(lblvalid3);
+        lblvalid3.setBounds(30, 410, 290, 16);
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("BOD(Date Of Birth)");
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(150, 250, 150, 10);
 
         jTabbedPane1.addTab("tab2", jPanel3);
 
@@ -495,13 +526,13 @@ public class login extends javax.swing.JDialog {
         signuppanel.add(label1);
         label1.setBounds(190, 520, 250, 19);
 
-        btnsignup.setForeground(new java.awt.Color(255, 255, 255));
         btnsignup.setText("Sign Up");
         btnsignup.setBorderColor(new java.awt.Color(0, 0, 0));
         btnsignup.setColor(new java.awt.Color(0, 0, 0));
         btnsignup.setColorClick(new java.awt.Color(102, 102, 102));
         btnsignup.setColorOver(new java.awt.Color(51, 51, 51));
         btnsignup.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        btnsignup.setForeground(new java.awt.Color(255, 255, 255));
         btnsignup.setRadius(50);
         btnsignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -564,9 +595,10 @@ public class login extends javax.swing.JDialog {
     }//GEN-LAST:event_showpasswordActionPerformed
 
     private void btnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsigninActionPerformed
-        dispose();
-        new MainForm().setVisible(true);
-
+       
+    
+    new loginAccount(this,txtusername.getText(),txtpassword.getText());
+  
     }//GEN-LAST:event_btnsigninActionPerformed
 
     private void txtpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtpasswordHierarchyChanged
@@ -660,10 +692,15 @@ public class login extends javax.swing.JDialog {
     private void txtpassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassword1ActionPerformed
        new MyPasswordField().checkvalidation(lblvalid1,lblvalid2, txtpassword1,txtconfirmpassword);
        if(new MyPasswordField().isValidation() == false){
-           btnsignin1.setEnabled(false);
+           new MyMessage(null,false).message("REMINDER","The confirm password and pass didnt match please match the two to procceed", "INFORMATION", "OK","OK");
+             jTabbedPane1.setSelectedIndex(1);
+           
            return;
        }
-       btnsignin1.setEnabled(true);
+        jTabbedPane1.setSelectedIndex(0);
+        btnsignin3.setVisible(false);
+        btnsignup.setVisible(true);
+             
     }//GEN-LAST:event_txtpassword1ActionPerformed
 
     private void txtpassword1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtpassword1PropertyChange
@@ -799,10 +836,14 @@ public class login extends javax.swing.JDialog {
     private void txtconfirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmpasswordActionPerformed
    new MyPasswordField().checkvalidation(lblvalid1,lblvalid2, txtpassword1,txtconfirmpassword);
        if(new MyPasswordField().isValidation() == false){
-           btnsignin1.setEnabled(false);
+             jTabbedPane1.setSelectedIndex(1);
+             
+             new MyMessage(null,false).message("REMINDER", "The Confirm Password and Password Didnt Match! ","INFORMATION", "OK", "OK");
            return;
        }
-       btnsignin1.setEnabled(true);
+         jTabbedPane1.setSelectedIndex(0);
+         btnsignin3.setVisible(false);
+         btnsignup.setVisible(true);    
     }//GEN-LAST:event_txtconfirmpasswordActionPerformed
 
     private void txtconfirmpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtconfirmpasswordPropertyChange
@@ -824,10 +865,10 @@ public class login extends javax.swing.JDialog {
     private void btnsignin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin1ActionPerformed
        new MyPasswordField().checkvalidation(lblvalid1,lblvalid2, txtpassword1,txtconfirmpassword);
        if(new MyPasswordField().isValidation() == false){
-           btnsignin1.setEnabled(false);
+           new MyMessage(null,false).message("REMINDER","The Confirm Password and Password Dint Match Please Check","INFORMATION","OK", "OK");
            return;
        }
-       btnsignin1.setEnabled(true);
+       
        
       new MyMessage(null,true).message("SUCCESSFULLY", "The Account Successfully Created Is now waiting to accepted by Admin ", "INFORMATION", "THANKS", "THANKS");
        jTabbedPane1.setSelectedIndex(0);
@@ -849,6 +890,10 @@ public class login extends javax.swing.JDialog {
         label1.setText("Still Havent Join Us");
         
     }//GEN-LAST:event_btnsignin3ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -902,6 +947,7 @@ public class login extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cbgender;
     private javax.swing.JComboBox<String> cbyear;
     private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -911,6 +957,7 @@ public class login extends javax.swing.JDialog {
     private javax.swing.JLabel labelwelcome2;
     private javax.swing.JLabel lblvalid1;
     private javax.swing.JLabel lblvalid2;
+    private javax.swing.JLabel lblvalid3;
     private customGUI.myPicture myPicture2;
     private javax.swing.JCheckBox showconfirmpassword;
     private javax.swing.JCheckBox showpassword;

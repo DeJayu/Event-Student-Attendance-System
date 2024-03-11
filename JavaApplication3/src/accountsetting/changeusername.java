@@ -5,6 +5,8 @@
 package accountsetting;
 
 import customGUI.MyTextField;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,16 +14,21 @@ import customGUI.MyTextField;
  */
 public class changeusername extends javax.swing.JDialog {
     
+    
+    //check if the newusername and confirm username is match
     public void checkmatchup(){
         if(txtnewusername.getText() != txtconfirmnew.getText() ){
-          confirnbtn.setEnabled(false);
             noti.setVisible(true);
-      }else{
-          confirnbtn.setEnabled(true);
+            noti1.setVisible(true);
+            return;
+      }
+        
           noti.setVisible(false);
-        } 
+          noti1.setVisible(false);
+        
     } 
     
+   
     
     
     
@@ -30,6 +37,7 @@ public class changeusername extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         noti.setVisible(false);
+        noti1.setVisible(false);
     }
 
     /**
@@ -49,6 +57,7 @@ public class changeusername extends javax.swing.JDialog {
         txtnewusername = new customGUI.MyTextField();
         txtconfirmnew = new customGUI.MyTextField();
         noti = new javax.swing.JLabel();
+        noti1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -101,14 +110,6 @@ public class changeusername extends javax.swing.JDialog {
                 txtoldusernameActionPerformed(evt);
             }
         });
-        txtoldusername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtoldusernameKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtoldusernameKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtoldusername);
         txtoldusername.setBounds(40, 40, 250, 40);
 
@@ -129,14 +130,6 @@ public class changeusername extends javax.swing.JDialog {
                 txtnewusernameActionPerformed(evt);
             }
         });
-        txtnewusername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtnewusernameKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtnewusernameKeyTyped(evt);
-            }
-        });
         jPanel1.add(txtnewusername);
         txtnewusername.setBounds(40, 100, 250, 40);
 
@@ -152,27 +145,9 @@ public class changeusername extends javax.swing.JDialog {
                 txtconfirmnewFocusLost(evt);
             }
         });
-        txtconfirmnew.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtconfirmnewInputMethodTextChanged(evt);
-            }
-        });
         txtconfirmnew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtconfirmnewActionPerformed(evt);
-            }
-        });
-        txtconfirmnew.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtconfirmnewKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtconfirmnewKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtconfirmnewKeyTyped(evt);
             }
         });
         jPanel1.add(txtconfirmnew);
@@ -181,7 +156,12 @@ public class changeusername extends javax.swing.JDialog {
         noti.setForeground(new java.awt.Color(255, 0, 0));
         noti.setText("The username didnt match up to the new!");
         jPanel1.add(noti);
-        noti.setBounds(40, 200, 250, 16);
+        noti.setBounds(40, 140, 250, 16);
+
+        noti1.setForeground(new java.awt.Color(255, 0, 0));
+        noti1.setText("The username didnt match up to the new!");
+        jPanel1.add(noti1);
+        noti1.setBounds(40, 200, 250, 16);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,16 +190,8 @@ public class changeusername extends javax.swing.JDialog {
     }//GEN-LAST:event_txtoldusernameFocusLost
 
     private void txtoldusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldusernameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtoldusernameActionPerformed
-
-    private void txtoldusernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldusernameKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtoldusernameKeyReleased
-
-    private void txtoldusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldusernameKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtoldusernameKeyTyped
 
     private void txtnewusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnewusernameFocusGained
         new MyTextField().focuseGained(txtnewusername, "New Username");
@@ -230,16 +202,8 @@ public class changeusername extends javax.swing.JDialog {
     }//GEN-LAST:event_txtnewusernameFocusLost
 
     private void txtnewusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewusernameActionPerformed
-        // TODO add your handling code here:
+    checkmatchup();
     }//GEN-LAST:event_txtnewusernameActionPerformed
-
-    private void txtnewusernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewusernameKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnewusernameKeyReleased
-
-    private void txtnewusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewusernameKeyTyped
-      
-    }//GEN-LAST:event_txtnewusernameKeyTyped
 
     private void txtconfirmnewFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtconfirmnewFocusGained
         new MyTextField().focuseGained(txtconfirmnew, "Confirm New Username");
@@ -252,22 +216,6 @@ public class changeusername extends javax.swing.JDialog {
     private void txtconfirmnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmnewActionPerformed
         checkmatchup();
     }//GEN-LAST:event_txtconfirmnewActionPerformed
-
-    private void txtconfirmnewKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmnewKeyReleased
-       
-    }//GEN-LAST:event_txtconfirmnewKeyReleased
-
-    private void txtconfirmnewKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmnewKeyTyped
-   
-    }//GEN-LAST:event_txtconfirmnewKeyTyped
-
-    private void txtconfirmnewKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmnewKeyPressed
-        
-    }//GEN-LAST:event_txtconfirmnewKeyPressed
-
-    private void txtconfirmnewInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtconfirmnewInputMethodTextChanged
-         
-    }//GEN-LAST:event_txtconfirmnewInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -317,6 +265,7 @@ public class changeusername extends javax.swing.JDialog {
     private javax.swing.JPanel headerpanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel noti;
+    private javax.swing.JLabel noti1;
     private customGUI.MyTextField txtconfirmnew;
     private customGUI.MyTextField txtnewusername;
     private customGUI.MyTextField txtoldusername;
