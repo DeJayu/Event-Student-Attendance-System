@@ -50,6 +50,7 @@ public class MyPasswordField extends JPasswordField{
             if(pass.getText().equalsIgnoreCase(name)){
                 pass.setText(null);
                 cb.setVisible(false);
+                return;
             }
         }
         
@@ -59,7 +60,7 @@ public class MyPasswordField extends JPasswordField{
                 pass.setText(name);
                 pass.setEchoChar((char)0);
                 cb.setVisible(false);
-                
+                return;
             }
         }
         

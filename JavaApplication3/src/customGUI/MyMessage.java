@@ -17,8 +17,7 @@ public class MyMessage extends javax.swing.JDialog {
 
 
    public void message(String msgtitle1,String msgbody1,String msgtype1,String choose1,String choose2){
-       chooseoption1.setText(choose1);
-       chooseoption2.setText(choose2);
+      
        messagetitle.setText(msgtitle1);
        msgbody.setText(msgbody1);
        msgtype.setText(msgtype1);
@@ -48,8 +47,6 @@ public class MyMessage extends javax.swing.JDialog {
         header = new javax.swing.JPanel();
         msgtype = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
-        chooseoption2 = new customGUI.MyButton();
-        chooseoption1 = new customGUI.MyButton();
         messagetitle = new javax.swing.JLabel();
         msgbody = new javax.swing.JLabel();
 
@@ -90,24 +87,6 @@ public class MyMessage extends javax.swing.JDialog {
         body.setBackground(java.awt.Color.white);
         body.setForeground(new java.awt.Color(0, 0, 0));
 
-        chooseoption2.setText("Cancel");
-        chooseoption2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        chooseoption2.setRadius(30);
-        chooseoption2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chooseoption2ActionPerformed(evt);
-            }
-        });
-
-        chooseoption1.setText("Ok");
-        chooseoption1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        chooseoption1.setRadius(30);
-        chooseoption1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chooseoption1ActionPerformed(evt);
-            }
-        });
-
         messagetitle.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         messagetitle.setForeground(new java.awt.Color(0, 0, 0));
         messagetitle.setText("MESSAGE");
@@ -122,21 +101,13 @@ public class MyMessage extends javax.swing.JDialog {
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyLayout.createSequentialGroup()
-                        .addContainerGap(332, Short.MAX_VALUE)
-                        .addComponent(chooseoption1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(chooseoption2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bodyLayout.createSequentialGroup()
-                        .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(bodyLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(messagetitle))
-                            .addGroup(bodyLayout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(msgbody)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap()
+                        .addComponent(messagetitle))
+                    .addGroup(bodyLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(msgbody)))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,11 +116,7 @@ public class MyMessage extends javax.swing.JDialog {
                 .addComponent(messagetitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(msgbody)
-                .addGap(101, 101, 101)
-                .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chooseoption2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooseoption1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,16 +140,6 @@ public class MyMessage extends javax.swing.JDialog {
 
     
     
-    private void chooseoption1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseoption1ActionPerformed
-
-    }//GEN-LAST:event_chooseoption1ActionPerformed
-
-    private void chooseoption2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseoption2ActionPerformed
-
-   
-       
-    }//GEN-LAST:event_chooseoption2ActionPerformed
-
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
        
 
@@ -237,8 +194,6 @@ public class MyMessage extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
-    private customGUI.MyButton chooseoption1;
-    private customGUI.MyButton chooseoption2;
     private javax.swing.JPanel header;
     private javax.swing.JLabel messagetitle;
     private javax.swing.JLabel msgbody;

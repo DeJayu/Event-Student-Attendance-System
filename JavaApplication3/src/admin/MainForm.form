@@ -224,7 +224,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new myPicture(&quot;ATTENDANCE.png&quot;)"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new customGUI.MyPanel(&quot;ATTENDANCE.png&quot;)"/>
           </AuxValues>
 
           <Layout>

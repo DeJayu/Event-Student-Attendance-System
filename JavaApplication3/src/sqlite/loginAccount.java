@@ -5,12 +5,13 @@
 package sqlite;
 
 import admin.MainForm;
+import customGUI.MyMessage;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JDialog;
-import login.login;
+import login.SignIn;
 
 
 /**
@@ -19,7 +20,7 @@ import login.login;
  */
 public class loginAccount {
     
-    public loginAccount(JDialog dialog,String username,String password){
+    public loginAccount(String username,String password){
    
         String query = "SELECT * FROM LOGINPROCESS WHERE USERNAME = ? AND PASSWORD = ?";
          
@@ -32,20 +33,22 @@ public class loginAccount {
       ResultSet result = st.executeQuery();
  
   
-        if(result.next()){
-            
-            dialog.dispose();
-            String name = result.getString("USERNAME");
+        if(result.next()){      
+            new SignIn().dispose();
             MainForm main = new MainForm();
-             main.setProfilename(name);
             main.setVisible(true);
-
+            return;
         }
+        
+        new MyMessage(new SignIn(),true).message("Account Cannot Found","Wrong Account Or Password please Retype it Again", "INFORMATION", query, query);
+        
   
         con.close();
       }catch(SQLException e){
         e.printStackTrace();
       }
+      
+      
         
     }
     

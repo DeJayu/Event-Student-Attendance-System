@@ -6,11 +6,12 @@ package admin;
 
 import accountsetting.accountsettings;
 import customGUI.MyMessage;
-import customGUI.myPicture;
+import customGUI.MyPanel;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
-import login.login;
+import login.SignIn;
+
 
 
 /**
@@ -65,7 +66,7 @@ public class MainForm extends javax.swing.JFrame {
         btnmenu = new customGUI.MyButton();
         btnInHistory1 = new customGUI.MyButton();
         headerpanel = new javax.swing.JPanel();
-        profilepanel = new myPicture("ATTENDANCE.png");
+        profilepanel = new MyPanel("ATTENDANCE.png");
         cbprofile = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
 
@@ -220,7 +221,7 @@ public class MainForm extends javax.swing.JFrame {
     private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
         if(cbprofile.getSelectedItem() == "Logout"){
             dispose();
-            new login(null,false).setVisible(true);          
+          new SignIn().setVisible(true);
            cbprofile.setSelectedIndex(0);
         }
         if(cbprofile.getSelectedItem() == "Setting"){

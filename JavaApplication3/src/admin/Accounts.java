@@ -6,7 +6,7 @@ package admin;
 
 import customGUI.MyTable;
 import customGUI.MyTextField;
-import customGUI.myPicture;
+import customGUI.MyPanel;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import sqlite.adminSqlite;
 
 /**
  *
@@ -35,6 +36,8 @@ public class Accounts extends javax.swing.JPanel {
         btndelete.setVisible(false);
         btncancel.setVisible(false);
         datePicker1.getComponentDateTextField().setEnabled(false);
+        
+        new adminSqlite().addValueCB(cbyear, cbcourse);
         
     }
 
@@ -70,7 +73,7 @@ public class Accounts extends javax.swing.JPanel {
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         btnsearch1 = new customGUI.MyButton();
         studentpicture1 = new javax.swing.JLabel();
-        myPicture2 = new customGUI.myPicture("girl.png");
+        myPicture2 = new customGUI.MyPanel("girl.png");
         lbldesign5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         EventName = new javax.swing.JLabel();
@@ -80,7 +83,7 @@ public class Accounts extends javax.swing.JPanel {
         btndelete = new customGUI.MyButton();
         btnviewdata = new customGUI.MyButton();
         btncancel = new customGUI.MyButton();
-        myPicture3 = new customGUI.myPicture("boy.png");
+        myPicture3 = new customGUI.MyPanel("boy.png");
         lbldesign6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         EventName1 = new javax.swing.JLabel();
@@ -498,7 +501,7 @@ public class Accounts extends javax.swing.JPanel {
         chooser.setFileFilter(filter);
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
-        new myPicture().rizelabel(f, studentpicture1);
+        new MyPanel().rizelabel(f, studentpicture1);
         filetext.setText(f.getAbsolutePath());
     }//GEN-LAST:event_myButton1ActionPerformed
 
@@ -564,7 +567,7 @@ public class Accounts extends javax.swing.JPanel {
 
     private void filetextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetextActionPerformed
         File f = new File(filetext.getText());
-        new myPicture().rizelabel(f, studentpicture1);
+        new MyPanel().rizelabel(f, studentpicture1);
     }//GEN-LAST:event_filetextActionPerformed
 
     private void filetextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filetextFocusLost
@@ -608,8 +611,8 @@ public class Accounts extends javax.swing.JPanel {
     private javax.swing.JLabel lbldesigncourse;
     private javax.swing.JLabel lbldesignyear1;
     private customGUI.MyButton myButton1;
-    private customGUI.myPicture myPicture2;
-    private customGUI.myPicture myPicture3;
+    private customGUI.MyPanel myPicture2;
+    private customGUI.MyPanel myPicture3;
     private javax.swing.JLabel studentpicture1;
     private customGUI.MyTextField txtidnum;
     private customGUI.MyTextField txtname;

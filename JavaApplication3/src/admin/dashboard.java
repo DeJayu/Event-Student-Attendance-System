@@ -6,7 +6,7 @@ package admin;
 
 import customGUI.MyTable;
 import customGUI.MyTextField;
-import customGUI.myPicture;
+import customGUI.MyPanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -48,11 +48,11 @@ public class dashboard extends javax.swing.JPanel {
         Search1 = new customGUI.MyButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         dashboardtable = new customGUI.MyTable();
-        myPicture1 = new customGUI.myPicture("Students.png");
+        myPicture1 = new customGUI.MyPanel("Students.png");
         lbldesign2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         totalstudents = new javax.swing.JLabel();
-        myPicture2 = new customGUI.myPicture("Event.png");
+        myPicture2 = new customGUI.MyPanel("Event.png");
         lbldesign4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         EventName = new javax.swing.JLabel();
@@ -315,8 +315,8 @@ public class dashboard extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbldesign2;
     private javax.swing.JLabel lbldesign4;
-    private customGUI.myPicture myPicture1;
-    private customGUI.myPicture myPicture2;
+    private customGUI.MyPanel myPicture1;
+    private customGUI.MyPanel myPicture2;
     private javax.swing.JLabel totalstudents;
     private customGUI.MyTextField txtsearch;
     // End of variables declaration//GEN-END:variables
