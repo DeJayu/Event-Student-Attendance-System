@@ -50,38 +50,29 @@ public class MyTable extends JTable{
     }
    
    //multifilter the data in the table
-   public void searchTableFilter(JTable table,String query){
-       TableRowSorter<DefaultTableModel> myTableShoter = new TableRowSorter<DefaultTableModel>(dm);
-       
-       if(query != null){
-           for(int i= 0;i <= table.getColumnCount(); i++){
-           myTableShoter.setRowFilter(RowFilter.regexFilter("(?i)" + query, i));
-           }
-       }
-   }
    
-   
-   
-   public void twoTablefilter(JTable table,String query1,int columnfilter1,String query2,int columnfilter2){
-          
-            TableRowSorter<DefaultTableModel> myTableShorter = new TableRowSorter<DefaultTableModel>(dm);
-            RowFilter<DefaultTableModel, Object> filter1 = RowFilter.regexFilter("(?i)" + query1, columnfilter1);
-            RowFilter<DefaultTableModel, Object> filter2 = RowFilter.regexFilter("(?i)" + query2, columnfilter2);   
-  
-            
-         if(query1 != null && query2 != null){
-            myTableShorter.setRowFilter(RowFilter.andFilter(Arrays.asList(filter1,filter2)));
-       
-         }else if(query1 != null){
-             myTableShorter.setRowFilter(filter1);
-           
-         }else if(query2 != null){
-             myTableShorter.setRowFilter(filter2);
+   public void searchTableFilter(JTable table, String query) {
+    try {
+        TableRowSorter<DefaultTableModel> myTableShoter = new TableRowSorter<>(dm);
+        myTableShoter.setRowFilter(RowFilter.regexFilter("(?i)" + query));
+        table.setRowSorter(myTableShoter);
+    } catch (Exception e) {
+        System.err.println("Error occurred during filtering: " + e.getMessage());
+    }
+}
 
-         }
-         
-         table.setRowSorter(myTableShorter);
-   }
-   
- 
+    public void twoTablefilter(JTable table, String query1, int columnfilter1, String query2, int columnfilter2) {
+        TableRowSorter<DefaultTableModel> myTableShorter = new TableRowSorter<>(dm);
+        RowFilter<DefaultTableModel, Object> filter1 = RowFilter.regexFilter("(?i)" + query1, columnfilter1);
+        RowFilter<DefaultTableModel, Object> filter2 = RowFilter.regexFilter("(?i)" + query2, columnfilter2);
+
+        if (query1 != null && query2 != null) {
+            myTableShorter.setRowFilter(RowFilter.andFilter(Arrays.asList(filter1, filter2)));
+        } else if (query1 != null) {
+            myTableShorter.setRowFilter(filter1);
+        } else if (query2 != null) {
+            myTableShorter.setRowFilter(filter2);
+        }
+        table.setRowSorter(myTableShorter);
+    }
 }

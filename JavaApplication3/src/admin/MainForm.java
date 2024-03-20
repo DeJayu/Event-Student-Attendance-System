@@ -5,11 +5,9 @@
 package admin;
 
 import accountsetting.accountsettings;
-import customGUI.MyMessage;
 import customGUI.MyPanel;
-import javax.swing.ComboBoxModel;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import login.SignIn;
 
 
@@ -20,21 +18,20 @@ import login.SignIn;
  */
 public class MainForm extends javax.swing.JFrame {
 
-    /**
-     * @return the profilename
-     */
-    public String getProfilename() {
-        return profilename;
+
+    public ArrayList<Object> getUserinfo() {
+        return userinfo;
     }
 
-    /**
-     * @param profilename the profilename to set
-     */
-    public void setProfilename(String profilename) {
-        this.profilename = profilename;
+  
+    public void setUserinfo(ArrayList<Object> userinfo) {
+        this.userinfo = userinfo;
     }
 
-    private String profilename;
+    private ArrayList<Object> userinfo = new ArrayList<>();
+    
+    
+
   
     
     public MainForm() {
@@ -42,11 +39,8 @@ public class MainForm extends javax.swing.JFrame {
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbprofile.getModel();
-        cbprofile.addItem(profilename);
-        cbprofile.setSelectedItem(getProfilename());
-        cbprofile.addItem("Setting");
-        cbprofile.addItem("Logout");
-        System.out.print(getProfilename());
+
+      
          
     }
 
@@ -66,7 +60,7 @@ public class MainForm extends javax.swing.JFrame {
         btnmenu = new customGUI.MyButton();
         btnInHistory1 = new customGUI.MyButton();
         headerpanel = new javax.swing.JPanel();
-        profilepanel = new MyPanel("ATTENDANCE.png");
+        profilepanel = new customGUI.MyPanel("ATTENDANCE.png");
         cbprofile = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
 
@@ -225,8 +219,12 @@ public class MainForm extends javax.swing.JFrame {
            cbprofile.setSelectedIndex(0);
         }
         if(cbprofile.getSelectedItem() == "Setting"){
-           new accountsettings(this,true).setVisible(true);
+           accountsettings account = new accountsettings(this,true);
+           account.lblidholder.setText(String.valueOf(this.getUserinfo().get(0)));
+           account.setVisible(true);
+         
            cbprofile.setSelectedIndex(0);
+           
         }
         
     }//GEN-LAST:event_cbprofileActionPerformed
@@ -284,7 +282,7 @@ public class MainForm extends javax.swing.JFrame {
     private customGUI.MyButton btnaccounts;
     private customGUI.MyButton btndashboard;
     private customGUI.MyButton btnmenu;
-    private javax.swing.JComboBox<String> cbprofile;
+    public javax.swing.JComboBox<String> cbprofile;
     private javax.swing.JPanel drawerpanel;
     private javax.swing.JPanel headerpanel;
     private javax.swing.JScrollPane jScrollPane1;

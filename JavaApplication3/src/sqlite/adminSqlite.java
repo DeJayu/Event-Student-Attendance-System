@@ -34,24 +34,24 @@ public class adminSqlite {
     
     
     public void accountDatadisplay(JTable table)  {
+   String query = "SELECT * " +
+               "FROM USERINFO  " +
+               "INNER JOIN LOGINPROCESS LP ON IDNUMBER = LP.USERINFO_IDNUMBER";
 
         try {
             Connection con = new connection().getconnection();
             Statement st = con.createStatement();
-            String query= "SELECT USERINFO.IDNUMBER,USERINFO.NAME,USERINFO.GENDER,USERINFO.DEPARTMENT,USERINFO.YEAR,LOGINPROCESS.USERNAME FROM USERINFO"
-                    + " INNER JOIN LOGINPROCESS ON USERINFO.IDNUMBER = LOGINPROCESS.USERINFO_IDNUMBER";
-            
+           
             ResultSet result = st.executeQuery(query);
-            for(int id = 1;result.next();id++){
-              int idnumber = result.getInt("USERINFO.IDNUMBER");
-                String name = result.getString("USERINFO.NAME");
-                String gender = result.getString("USERNAME.GENDER");
-                String  department = result.getString("USERINFO.DEPARTMENT");
-                String year = result.getString("USERINFO.YEAR");
-                String username= result.getString("LOGINPROCESS.USERNAME");
-                
-               Object [] accountdata = {id,idnumber,name,gender,department,year,username};
-                
+            for(int id = 0;result.next();id++){
+                int rownum = (id + 1);
+              int idnumber = result.getInt("IDNUMBER");
+                String name = result.getString("NAME");
+                String gender = result.getString("GENDER");
+                String department = result.getString("DEPARTMENT");
+                String year = result.getString("YEAR");
+                String username = result.getString("USERNAME");
+               Object [] accountdata = {rownum,idnumber,name,department,gender,year,username};
                DefaultTableModel tblModel =(DefaultTableModel)table.getModel();
                tblModel.addRow(accountdata);
                 
@@ -102,8 +102,7 @@ public class adminSqlite {
            
             }
                   st.close();
-                  result.close();
-                  con.close();
+                                   con.close();
           
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -162,6 +161,7 @@ public class adminSqlite {
             st.setInt(3,(int) userData.get(3));
             st.executeUpdate(); 
            st.close();
+           
                 
         }
 
@@ -179,7 +179,9 @@ public class adminSqlite {
            st1.setBytes(7, imageData);
             st1.executeUpdate();
                st1.close();
+               
               con.close();
+              
             new MyMessage(null, false).message("SUCCESSFULLY CREATED AN ACCOUNT", "YOU SUCCESSFULLY CREATED AN ACCOUNT", "INFORMATION", "", "");
         }
         } catch (SQLException | FileNotFoundException ex) {
@@ -203,7 +205,6 @@ public class adminSqlite {
                 return result.getInt(1) > 0 ;
             }
              st.close();
-             result.close();
              con.close();
        
         } catch (SQLException ex) {
@@ -244,6 +245,11 @@ public class adminSqlite {
                }
             }else if (updateOperation == "USERNAME"){
                 query = "UPDATE LOGINPROCESS SET USERNAME = ? WHERE USERINFO_IDNUMBER";
+                if(!checkmatch("USERNAME",(int) studentinfo.get(0),(String) studentinfo.get(1))){
+                    new MyMessage(null,false).message("INCORRECT", "THE OLD USERNAME IS INCORRECT", "INFORMATION", "", "");
+                    return;
+                }
+              
             }
             
             query = "UPDATE USERINFO SET NAME = ? ,GENDER = ?,BOD = ? ,DEPARTMENT = ?,YEAR =? WHERE IDNUMBER = ? " ;
@@ -307,4 +313,3 @@ public class adminSqlite {
 
 }
 
-   

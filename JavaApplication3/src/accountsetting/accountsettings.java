@@ -6,15 +6,15 @@ package accountsetting;
 
 import accountsetting.changepersonalinfo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class accountsettings extends javax.swing.JDialog {
-
-    /**
-     * Creates new form settings
-     */
+ 
+   
     public accountsettings(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -40,10 +40,8 @@ public class accountsettings extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         lbldispay = new javax.swing.JLabel();
         lbldisplay2 = new javax.swing.JLabel();
-        lbldisplay3 = new javax.swing.JLabel();
         lblidholder = new javax.swing.JLabel();
-        lblfirstnameholder = new javax.swing.JLabel();
-        lbllastnameholder = new javax.swing.JLabel();
+        lblnameholder = new javax.swing.JLabel();
         lbldisplay4 = new javax.swing.JLabel();
         lbldisplay5 = new javax.swing.JLabel();
         lbldisplay6 = new javax.swing.JLabel();
@@ -155,23 +153,15 @@ public class accountsettings extends javax.swing.JDialog {
 
         lbldisplay2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbldisplay2.setForeground(new java.awt.Color(0, 0, 0));
-        lbldisplay2.setText("First Name:");
-
-        lbldisplay3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lbldisplay3.setForeground(new java.awt.Color(0, 0, 0));
-        lbldisplay3.setText("Last Name:");
+        lbldisplay2.setText("Name:");
 
         lblidholder.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblidholder.setForeground(new java.awt.Color(0, 0, 0));
         lblidholder.setText("IDNUMBER");
 
-        lblfirstnameholder.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lblfirstnameholder.setForeground(new java.awt.Color(0, 0, 0));
-        lblfirstnameholder.setText("FIRST NAME");
-
-        lbllastnameholder.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lbllastnameholder.setForeground(new java.awt.Color(0, 0, 0));
-        lbllastnameholder.setText("LAST NAME");
+        lblnameholder.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblnameholder.setForeground(new java.awt.Color(0, 0, 0));
+        lblnameholder.setText("FIRST NAME");
 
         lbldisplay4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lbldisplay4.setForeground(new java.awt.Color(0, 0, 0));
@@ -218,17 +208,11 @@ public class accountsettings extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblidholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(142, 142, 142))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lbldisplay3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbllastnameholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lbldisplay2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblfirstnameholder, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)))
-                        .addGap(109, 109, 109))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lbldisplay2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblnameholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(159, 159, 159))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -264,11 +248,7 @@ public class accountsettings extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbldisplay2)
-                            .addComponent(lblfirstnameholder))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbldisplay3)
-                            .addComponent(lbllastnameholder)))
+                            .addComponent(lblnameholder)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -375,20 +355,18 @@ public class accountsettings extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JLabel lblbirthdateholder;
-    private javax.swing.JLabel lbldepartmentholder;
+    public javax.swing.JLabel lblbirthdateholder;
+    public javax.swing.JLabel lbldepartmentholder;
     private javax.swing.JLabel lbldispay;
     private javax.swing.JLabel lbldisplay2;
-    private javax.swing.JLabel lbldisplay3;
     private javax.swing.JLabel lbldisplay4;
     private javax.swing.JLabel lbldisplay5;
     private javax.swing.JLabel lbldisplay6;
     private javax.swing.JLabel lbldisplay7;
-    private javax.swing.JLabel lblfirstnameholder;
-    private javax.swing.JLabel lblgenderholder;
-    private javax.swing.JLabel lblidholder;
-    private javax.swing.JLabel lbllastnameholder;
-    private javax.swing.JLabel lblyearholder;
+    public javax.swing.JLabel lblgenderholder;
+    public javax.swing.JLabel lblidholder;
+    public javax.swing.JLabel lblnameholder;
+    public javax.swing.JLabel lblyearholder;
     private javax.swing.JLabel lblyearholder1;
     private customGUI.MyButton myButton4;
     // End of variables declaration//GEN-END:variables

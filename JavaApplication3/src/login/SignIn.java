@@ -861,9 +861,9 @@ public class SignIn extends javax.swing.JFrame {
         
         if(f == null){
             if(cbgender.getSelectedItem().equals("Female")){
-                     f = new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\JavaApplication3\\src\\image\\girlprofile.jpg");
+                     f = new File(System.getProperty("user.dir") + "\\src\\image\\girlprofile.jpg");
             }
-                      f = new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\JavaApplication3\\src\\image\\boyprofile.jpg");
+                      f = new File(System.getProperty("user.dir")+"\\src\\image\\boyprofile.jpg");
         }
         System.out.print(f);
         new adminSqlite().addAccount(signupvalue, f, lblvalid1, lblvalid2, lblvalid4, lblvalid3);

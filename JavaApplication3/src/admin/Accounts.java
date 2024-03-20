@@ -36,7 +36,7 @@ public class Accounts extends javax.swing.JPanel {
         btndelete.setVisible(false);
         btncancel.setVisible(false);
         datePicker1.getComponentDateTextField().setEnabled(false);
-        
+        new adminSqlite().accountDatadisplay(accountstable);
         new adminSqlite().addValueCB(cbyear, cbcourse);
         
     }
@@ -116,10 +116,7 @@ public class Accounts extends javax.swing.JPanel {
         accountstable.setAutoCreateRowSorter(true);
         accountstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "#", "IdNum", "Name", "Department", "Gender", "Year", "Username"
@@ -366,7 +363,7 @@ public class Accounts extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
+                .addContainerGap(303, Short.MAX_VALUE)
                 .addComponent(btncancel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnviewdata, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -392,9 +389,9 @@ public class Accounts extends javax.swing.JPanel {
 
         myPicture3.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        lbldesign6.setText("Boys:");
         lbldesign6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign6.setForeground(new java.awt.Color(255, 255, 255));
-        lbldesign6.setText("Boys:");
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0,0));
 
@@ -469,8 +466,8 @@ public class Accounts extends javax.swing.JPanel {
                     .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(studentpicture1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -483,7 +480,7 @@ public class Accounts extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1106, Short.MAX_VALUE)
+            .addGap(0, 1113, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -506,11 +503,7 @@ public class Accounts extends javax.swing.JPanel {
     }//GEN-LAST:event_myButton1ActionPerformed
 
     private void accountstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountstableMouseClicked
-        int row = accountstable.getSelectedRow();
-        txtidnum.setText(accountstable.getValueAt(row, 1).toString());
-        txtname.setText(accountstable.getValueAt(row, 2).toString());
-       
-        
+     
         
         btnviewdata.setVisible(true);
         btndelete.setVisible(true);
