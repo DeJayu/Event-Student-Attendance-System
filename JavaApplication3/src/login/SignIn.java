@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package login;
+import sqliteAdmin.adminSqlite;
+import sqliteAdmin.loginAccount;
 import customGUI.*;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -12,15 +14,46 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import sqliteAdmin.event;
 
-import sqlite.*;
 /**
  *
  * @author Admin
  */
 public class SignIn extends javax.swing.JFrame {
-
+ private boolean file;
   private File f;
+  
+  public void addaccount(){
+      
+        ArrayList<Object> signupvalue = new ArrayList<>();
+       if(txtidnum.getText().equalsIgnoreCase("Id Number")|| txtidnum.getText().equalsIgnoreCase(null)){
+        new MyMessage(null, false).message("CREATE ACCOUNT FAILED", "PLEASE FILL OUT ALL THE INFORMATION IN THE FORM", "INFORMATION", "", "");
+     return;  
+               }
+          
+        signupvalue.addAll(Arrays.asList(txtusername1.getText(), txtpassword1.getText(), txtconfirmpassword.getText(),  Integer.parseInt(txtidnum.getText()) ,
+            txtfirstname.getText(), txtlastname.getText(), cbgender.getSelectedItem(), bod.getText(), cbcourse.getSelectedItem(), cbyear.getSelectedItem()));
+        if(new adminSqlite().addAccount(signupvalue, f,"Signup")){
+            
+            jTabbedPane1.setSelectedIndex(0);
+            btnsignin3.setVisible(false);
+            btnsignup.setVisible(true);
+          txtusername1.setText("Username");
+          txtpassword1.setText("Password");
+          txtconfirmpassword.setText("Confirm Password");
+          txtidnum.setText("Id Number");
+          txtfirstname.setText("First Name");
+          txtlastname.setText("Last Name");
+          bod.setText(null);
+          cbgender.setSelectedIndex(0);
+          cbcourse.insertItemAt("Course", 0);
+          cbcourse.setSelectedIndex(0);
+          cbyear.insertItemAt("Year", 0);
+          cbyear.setSelectedIndex(0);
+        
+        }
+  }
     public SignIn() {
         initComponents();
         showpassword.setVisible(false);
@@ -34,12 +67,14 @@ public class SignIn extends javax.swing.JFrame {
         lblvalid3.setVisible(false);
         lblvalid4.setVisible(false);
         bod.getComponentDateTextField().setEnabled(false);
+        bod.setText(null);
         cbcourse.insertItemAt("Course", 0);
         cbcourse.setSelectedIndex(0);
         cbyear.insertItemAt("Year", 0);
         cbyear.setSelectedIndex(0);
         new adminSqlite().addValueCB(cbyear, cbcourse);
-
+        
+     
     }
 
 
@@ -74,7 +109,7 @@ public class SignIn extends javax.swing.JFrame {
         cbyear = new javax.swing.JComboBox<>();
         lblvalid4 = new javax.swing.JLabel();
         myButton2 = new customGUI.MyButton();
-        jLabel2 = new javax.swing.JLabel();
+        studentpic = new javax.swing.JLabel();
         signuppanel = new javax.swing.JPanel();
         label1 = new javax.swing.JLabel();
         btnsignup = new customGUI.MyButton();
@@ -463,6 +498,11 @@ public class SignIn extends javax.swing.JFrame {
                 cbgenderMouseClicked(evt);
             }
         });
+        cbgender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbgenderActionPerformed(evt);
+            }
+        });
         jPanel3.add(cbgender);
         cbgender.setBounds(30, 320, 90, 40);
 
@@ -507,9 +547,9 @@ public class SignIn extends javax.swing.JFrame {
         jPanel3.add(myButton2);
         myButton2.setBounds(180, 90, 40, 40);
 
-        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(90, 20, 130, 110);
+        studentpic.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel3.add(studentpic);
+        studentpic.setBounds(90, 20, 130, 110);
 
         jTabbedPane1.addTab("tab2", jPanel3);
 
@@ -601,14 +641,20 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_showpasswordStateChanged
 
     private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
-        new MyPasswordField().showpasswordChar(showpassword, txtpassword);
+             new MyPasswordField().showpasswordChar(showpassword, txtpassword);
+
+        
     }//GEN-LAST:event_showpasswordActionPerformed
 
     private void btnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsigninActionPerformed
-     new loginAccount(txtusername.getText(),txtpassword.getText());
+      if(new loginAccount().loginAccs(txtusername.getText(), txtpassword.getText())){
      txtpassword.setText(null);
      txtusername.setText(null);
     txtpassword.setEchoChar((char)0);
+    this.dispose();
+    return;
+       }
+       
     }//GEN-LAST:event_btnsigninActionPerformed
 
     private void txtpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusGained
@@ -621,10 +667,13 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpasswordFocusLost
 
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-         new loginAccount(txtusername.getText(),txtpassword.getText());
+        if(new loginAccount().loginAccs(txtusername.getText(), txtpassword.getText())){
      txtpassword.setText(null);
      txtusername.setText(null);
     txtpassword.setEchoChar((char)0);
+    this.dispose();
+    return;
+       }
     }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
@@ -640,10 +689,12 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusernameFocusLost
 
     private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
-       new loginAccount(txtusername.getText(),txtpassword.getText());
+       if(new loginAccount().loginAccs(txtusername.getText(), txtpassword.getText())){
      txtpassword.setText(null);
      txtusername.setText(null);
     txtpassword.setEchoChar((char)0);
+    return;
+       }
     }//GEN-LAST:event_txtusernameActionPerformed
 
     private void signupshowpasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_signupshowpasswordStateChanged
@@ -679,16 +730,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtpassword1InputMethodTextChanged
 
     private void txtpassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassword1ActionPerformed
-        new MyPasswordField().checkvalidation(lblvalid1, lblvalid2, txtpassword1, txtconfirmpassword);
-        if (new MyPasswordField().isValidation() == false) {
-            new MyMessage(null, false).message("REMINDER", "The confirm password and pass didnt match please match the two to procceed", "INFORMATION", "OK", "OK");
-            jTabbedPane1.setSelectedIndex(1);
-
-            return;
-        }
-        jTabbedPane1.setSelectedIndex(0);
-        btnsignin3.setVisible(false);
-        btnsignup.setVisible(true);
+        addaccount();  
     }//GEN-LAST:event_txtpassword1ActionPerformed
 
     private void txtpassword1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtpassword1PropertyChange
@@ -716,7 +758,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusername1FocusLost
 
     private void txtusername1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusername1ActionPerformed
-        // TODO add your handling code here:
+           addaccount();  
     }//GEN-LAST:event_txtusername1ActionPerformed
 
     private void txtusername1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusername1KeyReleased
@@ -736,7 +778,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtidnumFocusLost
 
     private void txtidnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidnumActionPerformed
-        // TODO add your handling code here:
+        addaccount();  
     }//GEN-LAST:event_txtidnumActionPerformed
 
     private void txtidnumKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidnumKeyReleased
@@ -758,9 +800,6 @@ public class SignIn extends javax.swing.JFrame {
 
             txtidnum.setCustomIcon2(null);
         } else {
-
-            txtidnum.setCustomIcon2(new javax.swing.ImageIcon(System.getProperty("user.dir") + "\\src\\image\\22 (2).gif"));
-
         }
     }//GEN-LAST:event_txtidnumKeyTyped
 
@@ -773,7 +812,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfirstnameFocusLost
 
     private void txtfirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfirstnameActionPerformed
-        // TODO add your handling code here:
+      addaccount();  
     }//GEN-LAST:event_txtfirstnameActionPerformed
 
     private void txtfirstnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfirstnameKeyReleased
@@ -793,7 +832,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtlastnameFocusLost
 
     private void txtlastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlastnameActionPerformed
-        // TODO add your handling code here:
+          addaccount();  
     }//GEN-LAST:event_txtlastnameActionPerformed
 
     private void txtlastnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlastnameKeyReleased
@@ -821,16 +860,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtconfirmpasswordInputMethodTextChanged
 
     private void txtconfirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmpasswordActionPerformed
-        new MyPasswordField().checkvalidation(lblvalid1, lblvalid2, txtpassword1, txtconfirmpassword);
-        if (new MyPasswordField().isValidation() == false) {
-            jTabbedPane1.setSelectedIndex(1);
-
-            new MyMessage(null, false).message("REMINDER", "The Confirm Password and Password Didnt Match! ", "INFORMATION", "OK", "OK");
-            return;
-        }
-        jTabbedPane1.setSelectedIndex(0);
-        btnsignin3.setVisible(false);
-        btnsignup.setVisible(true);
+        addaccount();  
     }//GEN-LAST:event_txtconfirmpasswordActionPerformed
 
     private void txtconfirmpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtconfirmpasswordPropertyChange
@@ -850,26 +880,8 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_txtconfirmpasswordKeyTyped
 
     private void btnsignin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin1ActionPerformed
-       ArrayList<Object> signupvalue = new ArrayList<>();
-
-        signupvalue.addAll(Arrays.asList(txtusername1.getText(), txtpassword1.getText(), txtconfirmpassword.getText(), Integer.valueOf(txtidnum.getText()),
-            txtfirstname.getText(), txtlastname.getText(), cbgender.getSelectedItem(), bod.getText(), cbcourse.getSelectedItem(), cbyear.getSelectedItem()));
+         addaccount();  
         
-        for(int i = 0 ;i < signupvalue.size();i++){
-            System.out.println(signupvalue.get(i));
-        }
-        
-        if(f == null){
-            if(cbgender.getSelectedItem().equals("Female")){
-                     f = new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\JavaApplication3\\src\\image\\girlprofile.jpg");
-            }
-                      f = new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\JavaApplication3\\src\\image\\boyprofile.jpg");
-        }
-        System.out.print(f);
-        new adminSqlite().addAccount(signupvalue, f, lblvalid1, lblvalid2, lblvalid4, lblvalid3);
-        jTabbedPane1.setSelectedIndex(0);
-        btnsignin3.setVisible(false);
-        btnsignup.setVisible(true);
     }//GEN-LAST:event_btnsignin1ActionPerformed
 
     private void btnsignin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin3ActionPerformed
@@ -930,18 +942,28 @@ public class SignIn extends javax.swing.JFrame {
     FileNameExtensionFilter filter = new FileNameExtensionFilter("studentpicture",ImageIO.getReaderFileSuffixes());
     filechoose.setFileFilter(filter);
     filechoose.showOpenDialog(null);
+       f = filechoose.getSelectedFile();
     
-    if(filechoose.getSelectedFile() == null ){
-        if(cbgender.getSelectedItem().equals("Female") ){
-             f = new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\JavaApplication3\\src\\image\\girlprofile.jpg");
-        }else{
-            f = new File("C:\\Users\\Admin\\Documents\\NetBeansProjects\\JavaApplication3\\src\\image\\boyprofile.jpg");
-        }
+    
+    if(f != null){
+       file = true;
+       new MyPanel().rizelabel(f, studentpic);
+       return;
     }
     
-    f = filechoose.getSelectedFile();
-     new MyPanel().rizelabel(f, label1);
+    
     }//GEN-LAST:event_myButton2ActionPerformed
+
+    private void cbgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbgenderActionPerformed
+     if(f == null || !file ){
+        String defaultImageFileName = cbgender.getSelectedItem().equals("Female") ? "girlprofile.jpg" : "boyprofile.jpg";
+        f = new File(System.getProperty("user.dir") + "\\src\\image\\" + defaultImageFileName);
+        new MyPanel().rizelabel(f, studentpic);
+        file = false;
+        return ;
+    }
+    
+    }//GEN-LAST:event_cbgenderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -989,7 +1011,6 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbgender;
     private javax.swing.JComboBox<String> cbyear;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1008,13 +1029,14 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JCheckBox showpassword;
     private javax.swing.JPanel signuppanel;
     private javax.swing.JCheckBox signupshowpassword;
+    private javax.swing.JLabel studentpic;
     private customGUI.MyPasswordField txtconfirmpassword;
     private customGUI.MyTextField txtfirstname;
     private customGUI.MyTextField txtidnum;
     private customGUI.MyTextField txtlastname;
-    public static customGUI.MyPasswordField txtpassword;
+    public customGUI.MyPasswordField txtpassword;
     private customGUI.MyPasswordField txtpassword1;
-    private customGUI.MyTextField txtusername;
+    public customGUI.MyTextField txtusername;
     private customGUI.MyTextField txtusername1;
     // End of variables declaration//GEN-END:variables
 }

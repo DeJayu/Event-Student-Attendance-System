@@ -6,6 +6,11 @@ package admin;
 
 import customGUI.MyTable;
 import customGUI.MyTextField;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+import sqliteAdmin.adminSqlite;
+import sqliteAdmin.event;
 
 
 /**
@@ -19,19 +24,21 @@ public class Events extends javax.swing.JPanel {
      */
     public Events() {
         initComponents();
-     datePicker1.getComponentDateTextField().setEnabled(false);
-     timePicker1.getComponentTimeTextField().setEnabled(false);
-     timePicker2.getComponentTimeTextField().setEnabled(false);
+     txtdate.getComponentDateTextField().setEnabled(false);
+     txttimeout.getComponentTimeTextField().setEnabled(false);
+     txttimein.getComponentTimeTextField().setEnabled(false);
      
-     timePicker1.getComponentIncreaseSpinnerButton().setVisible(true);
-     timePicker1.getComponentDecreaseSpinnerButton().setVisible(true);
-     timePicker1.getComponentDecreaseSpinnerButton().setFocusable(false);
-     timePicker1.getComponentIncreaseSpinnerButton().setFocusable(false);
+     txttimeout.getComponentIncreaseSpinnerButton().setVisible(true);
+     txttimeout.getComponentDecreaseSpinnerButton().setVisible(true);
+     txttimeout.getComponentDecreaseSpinnerButton().setFocusable(false);
+     txttimeout.getComponentIncreaseSpinnerButton().setFocusable(false);
      
-     timePicker2.getComponentIncreaseSpinnerButton().setVisible(true);
-     timePicker2.getComponentDecreaseSpinnerButton().setVisible(true);
-     timePicker2.getComponentDecreaseSpinnerButton().setFocusable(false);
-     timePicker2.getComponentIncreaseSpinnerButton().setFocusable(false);
+     txttimein.getComponentIncreaseSpinnerButton().setVisible(true);
+     txttimein.getComponentDecreaseSpinnerButton().setVisible(true);
+     txttimein.getComponentDecreaseSpinnerButton().setFocusable(false);
+     txttimein.getComponentIncreaseSpinnerButton().setFocusable(false);
+     new event().displaydata(events);
+     holder.setVisible(false);
     }
 
     /**
@@ -50,17 +57,18 @@ public class Events extends javax.swing.JPanel {
         lbldesignyear1 = new javax.swing.JLabel();
         lbldesignyear2 = new javax.swing.JLabel();
         lbldesignyear3 = new javax.swing.JLabel();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
-        timePicker1 = new com.github.lgooddatepicker.components.TimePicker();
-        timePicker2 = new com.github.lgooddatepicker.components.TimePicker();
-        btneviewdata = new customGUI.MyButton();
+        txtdate = new com.github.lgooddatepicker.components.DatePicker();
+        txttimeout = new com.github.lgooddatepicker.components.TimePicker();
+        txttimein = new com.github.lgooddatepicker.components.TimePicker();
         btnadd = new customGUI.MyButton();
-        btnedit = new customGUI.MyButton();
         btndelete = new customGUI.MyButton();
+        btnupdate = new customGUI.MyButton();
+        btnedit = new customGUI.MyButton();
+        holder = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         accounttable = new customGUI.MyTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        eventtable = new customGUI.MyTable();
+        events = new customGUI.MyTable();
         txtsearch = new customGUI.MyTextField();
         btnsearch = new customGUI.MyButton();
         btnfilter = new customGUI.MyButton();
@@ -111,32 +119,54 @@ public class Events extends javax.swing.JPanel {
         lbldesignyear3.setText("Time Out");
         jPanel2.add(lbldesignyear3);
         lbldesignyear3.setBounds(550, 0, 90, 16);
-        jPanel2.add(datePicker1);
-        datePicker1.setBounds(10, 80, 320, 40);
-        jPanel2.add(timePicker1);
-        timePicker1.setBounds(550, 20, 140, 40);
-        jPanel2.add(timePicker2);
-        timePicker2.setBounds(360, 20, 150, 40);
-
-        btneviewdata.setText("View Event Data");
-        btneviewdata.setRadius(30);
-        jPanel2.add(btneviewdata);
-        btneviewdata.setBounds(449, 110, 100, 26);
+        jPanel2.add(txtdate);
+        txtdate.setBounds(10, 80, 320, 40);
+        jPanel2.add(txttimeout);
+        txttimeout.setBounds(550, 20, 140, 40);
+        jPanel2.add(txttimein);
+        txttimein.setBounds(360, 20, 150, 40);
 
         btnadd.setText("ADD");
         btnadd.setRadius(30);
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnadd);
         btnadd.setBounds(720, 110, 69, 26);
 
-        btnedit.setText("EDIT");
-        btnedit.setRadius(30);
-        jPanel2.add(btnedit);
-        btnedit.setBounds(640, 110, 69, 26);
-
         btndelete.setText("DELETE");
         btndelete.setRadius(30);
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
         jPanel2.add(btndelete);
-        btndelete.setBounds(560, 110, 69, 26);
+        btndelete.setBounds(470, 110, 69, 26);
+
+        btnupdate.setText("UPDATE");
+        btnupdate.setRadius(30);
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnupdate);
+        btnupdate.setBounds(560, 110, 69, 26);
+
+        btnedit.setText("EDIT");
+        btnedit.setRadius(30);
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnedit);
+        btnedit.setBounds(640, 110, 69, 26);
+        jPanel2.add(holder);
+        holder.setBounds(390, 80, 160, 20);
 
         accounttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,7 +201,7 @@ public class Events extends javax.swing.JPanel {
             accounttable.getColumnModel().getColumn(4).setHeaderValue("Year");
         }
 
-        eventtable.setModel(new javax.swing.table.DefaultTableModel(
+        events.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -197,7 +227,12 @@ public class Events extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(eventtable);
+        events.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventsMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(events);
 
         txtsearch.setText("Search");
         txtsearch.setBackground(java.awt.Color.white);
@@ -315,20 +350,57 @@ public class Events extends javax.swing.JPanel {
     }//GEN-LAST:event_txtsearchActionPerformed
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
-     new MyTable().searchTableFilter(eventtable,txtsearch.getText());
+     new MyTable().searchTableFilter(events,txtsearch.getText());
     }//GEN-LAST:event_btnsearchActionPerformed
+
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+      ArrayList<Object> addevents = new ArrayList<>();
+      addevents.addAll(Arrays.asList(txtdate.getText(),txteventname.getText(),txttimein.getText(),txttimeout.getText()));
+        new event().addevent(addevents);
+             new event().displaydata(events);
+
+    }//GEN-LAST:event_btnaddActionPerformed
+
+    private void eventsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventsMouseClicked
+       new event().getEventData(events, accounttable);
+           String date =events.getModel().getValueAt(events.getSelectedRow(), 0).toString();    
+           holder.setText(date);
+           
+           
+
+    }//GEN-LAST:event_eventsMouseClicked
+
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
+      new event().editdata(holder.getText());
+        btnedit.setVisible(false);
+       btnupdate.setVisible(true);
+    }//GEN-LAST:event_btneditActionPerformed
+
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+    btnupdate.setVisible(false);
+    btnedit.setVisible(true);
+    }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        int choose = JOptionPane.showConfirmDialog(null,"ARE YOU SURE YOU WANT TO DELETE THE EVENT AND THE DATA OF IT?", "DELETED?",JOptionPane.YES_NO_OPTION);
+        if(choose == JOptionPane.YES_OPTION){
+            new event().Deleteevent(holder.getText());
+            new event().displaydata(events);
+            return;
+        }
+    }//GEN-LAST:event_btndeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private customGUI.MyTable accounttable;
     private customGUI.MyButton btnadd;
     private customGUI.MyButton btndelete;
-    private customGUI.MyButton btnedit;
-    private customGUI.MyButton btneviewdata;
+    public customGUI.MyButton btnedit;
     private customGUI.MyButton btnfilter;
     private customGUI.MyButton btnsearch;
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private customGUI.MyTable eventtable;
+    private customGUI.MyButton btnupdate;
+    private customGUI.MyTable events;
+    public javax.swing.JLabel holder;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -337,10 +409,11 @@ public class Events extends javax.swing.JPanel {
     private javax.swing.JLabel lbldesignyear1;
     private javax.swing.JLabel lbldesignyear2;
     private javax.swing.JLabel lbldesignyear3;
-    private com.github.lgooddatepicker.components.TimePicker timePicker1;
-    private com.github.lgooddatepicker.components.TimePicker timePicker2;
-    private customGUI.MyTextField txteventname;
+    public com.github.lgooddatepicker.components.DatePicker txtdate;
+    public customGUI.MyTextField txteventname;
     private customGUI.MyTextField txtsearch;
+    public com.github.lgooddatepicker.components.TimePicker txttimein;
+    public com.github.lgooddatepicker.components.TimePicker txttimeout;
     // End of variables declaration//GEN-END:variables
   
 }

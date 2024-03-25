@@ -4,22 +4,34 @@
  */
 package accountsetting;
 
+import admin.MainForm;
 import customGUI.MyMessage;
 import customGUI.MyPasswordField;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JTextField;
 
-/**
- *
- * @author Admin
- */
+
+
 public class changepassword extends javax.swing.JDialog {
+
+       
+       public changepassword(java.awt.Frame parent, boolean modal,String id) {
+        super(parent, modal);
+        initComponents();
+        noti.setVisible(false);
+        noti.setVisible(false);
+        txtnewpassword.setEchoChar((char)0);
+        txtconfirmpassword.setEchoChar((char)0);
+        txtoldpassword.setEchoChar((char)0);
+        showoldpassword.setVisible(false);
+        shownewpassword.setVisible(false);
+        showconfirmpassword.setVisible(false);
+        Holder.setText(id);
+        Holder.setVisible(false);
+    }
+
     
-  
-    
-    
-    
-    
-            
        public changepassword(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -31,7 +43,6 @@ public class changepassword extends javax.swing.JDialog {
         showoldpassword.setVisible(false);
         shownewpassword.setVisible(false);
         showconfirmpassword.setVisible(false);
-        
     }
 
     /**
@@ -55,6 +66,7 @@ public class changepassword extends javax.swing.JDialog {
         txtnewpassword = new customGUI.MyPasswordField();
         txtconfirmpassword = new customGUI.MyPasswordField();
         noti1 = new javax.swing.JLabel();
+        Holder = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -98,6 +110,11 @@ public class changepassword extends javax.swing.JDialog {
         confirnbtn.setText("Confirm");
         confirnbtn.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         confirnbtn.setRadius(30);
+        confirnbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirnbtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(confirnbtn);
         confirnbtn.setBounds(282, 236, 64, 28);
 
@@ -206,6 +223,8 @@ public class changepassword extends javax.swing.JDialog {
         noti1.setText("The New Password didnt Match !");
         jPanel1.add(noti1);
         noti1.setBounds(30, 200, 250, 16);
+        jPanel1.add(Holder);
+        Holder.setBounds(240, 10, 90, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -303,6 +322,17 @@ public class changepassword extends javax.swing.JDialog {
       new MyPasswordField().checkEmpty(txtoldpassword, showoldpassword, "Old Password");
     }//GEN-LAST:event_txtoldpasswordKeyPressed
 
+    private void confirnbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirnbtnActionPerformed
+
+        ArrayList<Object> userdata = new ArrayList<>();
+        accountsetting.accountsettings setting = new accountsetting.accountsettings(null,true);
+        setting.validate();
+        setting.repaint();
+    userdata.addAll(Arrays.asList(Integer.parseInt(Holder.getText()),(String)txtoldpassword.getText(),(String)txtnewpassword.getText(),(String)txtconfirmpassword.getText()));
+        new sqliteAdmin.accountsettings().updateAccount(userdata, "PASSWORD");
+
+    }//GEN-LAST:event_confirnbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -347,6 +377,7 @@ public class changepassword extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel Holder;
     private customGUI.MyButton confirnbtn;
     private javax.swing.JLabel headerlbl;
     private javax.swing.JPanel headerpanel;

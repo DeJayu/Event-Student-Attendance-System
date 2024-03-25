@@ -4,40 +4,37 @@
  */
 package admin;
 
-import customGUI.MyTable;
 import customGUI.MyTextField;
 import customGUI.MyPanel;
+import customGUI.MyPasswordField;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import sqlite.adminSqlite;
+import sqliteAdmin.DataTableFilter;
+import sqliteAdmin.adminSqlite;
 
-/**
- *
- * @author Admin
- */
+
 public class Accounts extends javax.swing.JPanel {
 
-    /**
-     * Creates new form dashboard
-     */
+    private  File f ;
+    private boolean file;
     public Accounts() {
         initComponents();
         btnviewdata.setVisible(false);
+        btnedit1.setVisible(false);
         btnupdate.setVisible(false);
         btndelete.setVisible(false);
         btncancel.setVisible(false);
         datePicker1.getComponentDateTextField().setEnabled(false);
-        
+        txtpassword.setEchoChar((char)0);
+        new adminSqlite().accountDatadisplay(accountstable);
         new adminSqlite().addValueCB(cbyear, cbcourse);
+        new adminSqlite().studentGenderCount("Male", lblmale);
+        new adminSqlite().studentGenderCount("Female", lblfemale);
         
     }
 
@@ -56,13 +53,15 @@ public class Accounts extends javax.swing.JPanel {
         accountstable = new customGUI.MyTable();
         btnfilter = new customGUI.MyButton();
         jPanel2 = new javax.swing.JPanel();
+        showpassword = new javax.swing.JCheckBox();
+        txtpassword = new customGUI.MyPasswordField();
         txtidnum = new customGUI.MyTextField();
         txtname = new customGUI.MyTextField();
         cbgender = new javax.swing.JComboBox<>();
         cbcourse = new javax.swing.JComboBox<>();
         cbyear = new javax.swing.JComboBox<>();
         filetext = new customGUI.MyTextField();
-        myButton1 = new customGUI.MyButton();
+        btnaddpicture = new customGUI.MyButton();
         lblBOD = new javax.swing.JLabel();
         lbldesign1 = new javax.swing.JLabel();
         lbldesign3 = new javax.swing.JLabel();
@@ -71,22 +70,24 @@ public class Accounts extends javax.swing.JPanel {
         lbldesignyear1 = new javax.swing.JLabel();
         lblBOD1 = new javax.swing.JLabel();
         datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        txtusername = new customGUI.MyTextField();
         btnsearch1 = new customGUI.MyButton();
-        studentpicture1 = new javax.swing.JLabel();
         myPicture2 = new customGUI.MyPanel("girl.png");
         lbldesign5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        EventName = new javax.swing.JLabel();
+        lblfemale = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        btnedit1 = new customGUI.MyButton();
         btnadd = new customGUI.MyButton();
-        btnupdate = new customGUI.MyButton();
         btndelete = new customGUI.MyButton();
         btnviewdata = new customGUI.MyButton();
         btncancel = new customGUI.MyButton();
+        btnupdate = new customGUI.MyButton();
         myPicture3 = new customGUI.MyPanel("boy.png");
         lbldesign6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        EventName1 = new javax.swing.JLabel();
+        lblmale = new javax.swing.JLabel();
+        studentpicture1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(181, 181, 181));
 
@@ -116,10 +117,7 @@ public class Accounts extends javax.swing.JPanel {
         accountstable.setAutoCreateRowSorter(true);
         accountstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "#", "IdNum", "Name", "Department", "Gender", "Year", "Username"
@@ -166,6 +164,45 @@ public class Accounts extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel2.setLayout(null);
 
+        showpassword.setContentAreaFilled(false);
+        showpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\9041325_eye_fill_icon (3).png"));
+        showpassword.setSelectedIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\9034884_eye_off_icon (1).png"));
+        showpassword.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                showpasswordStateChanged(evt);
+            }
+        });
+        showpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showpasswordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showpassword);
+        showpassword.setBounds(680, 210, 19, 20);
+
+        txtpassword.setText("Password");
+        txtpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\8491307_padlock_security_password_icon.png"));
+        txtpassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtpasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtpasswordFocusLost(evt);
+            }
+        });
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
+        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpasswordKeyPressed(evt);
+            }
+        });
+        jPanel2.add(txtpassword);
+        txtpassword.setBounds(400, 200, 310, 40);
+
         txtidnum.setText("Id Num#");
         txtidnum.setBackground(new java.awt.Color(0, 0, 0,0));
         txtidnum.setBorderColor(new java.awt.Color(230, 245, 241));
@@ -179,7 +216,7 @@ public class Accounts extends javax.swing.JPanel {
             }
         });
         jPanel2.add(txtidnum);
-        txtidnum.setBounds(50, 20, 320, 40);
+        txtidnum.setBounds(50, 22, 320, 40);
 
         txtname.setText("Student Name");
         txtname.setBackground(new java.awt.Color(0, 0, 0,0));
@@ -194,30 +231,35 @@ public class Accounts extends javax.swing.JPanel {
             }
         });
         jPanel2.add(txtname);
-        txtname.setBounds(400, 20, 320, 40);
+        txtname.setBounds(400, 22, 320, 40);
 
+        cbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gender", "Male", "Female" }));
         cbgender.setBackground(new java.awt.Color(0,0,0,0));
+        cbgender.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         cbgender.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbgender.setForeground(new java.awt.Color(122, 140, 141));
-        cbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Gender", "Male", "Female", "Others" }));
-        cbgender.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         cbgender.setRequestFocusEnabled(false);
+        cbgender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbgenderActionPerformed(evt);
+            }
+        });
         jPanel2.add(cbgender);
-        cbgender.setBounds(50, 80, 130, 40);
+        cbgender.setBounds(50, 82, 130, 40);
 
+        cbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Course" }));
         cbcourse.setBackground(new java.awt.Color(0,0,0,0));
         cbcourse.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbcourse.setForeground(new java.awt.Color(122, 140, 141));
-        cbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Course" }));
         jPanel2.add(cbcourse);
-        cbcourse.setBounds(180, 80, 130, 40);
+        cbcourse.setBounds(180, 82, 130, 40);
 
+        cbyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year" }));
         cbyear.setBackground(new java.awt.Color(0,0,0,0));
         cbyear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbyear.setForeground(new java.awt.Color(122, 140, 141));
-        cbyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Year" }));
         jPanel2.add(cbyear);
-        cbyear.setBounds(320, 80, 130, 40);
+        cbyear.setBounds(320, 82, 130, 40);
 
         filetext.setText("Student Photo");
         filetext.setBackground(new java.awt.Color(0, 0, 0,0));
@@ -237,61 +279,76 @@ public class Accounts extends javax.swing.JPanel {
             }
         });
         jPanel2.add(filetext);
-        filetext.setBounds(50, 140, 580, 40);
+        filetext.setBounds(50, 142, 580, 40);
 
-        myButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/285633_image_icon (1).png"))); // NOI18N
-        myButton1.setRadius(10);
-        myButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnaddpicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/285633_image_icon (1).png"))); // NOI18N
+        btnaddpicture.setRadius(10);
+        btnaddpicture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myButton1ActionPerformed(evt);
+                btnaddpictureActionPerformed(evt);
             }
         });
-        jPanel2.add(myButton1);
-        myButton1.setBounds(640, 140, 42, 40);
+        jPanel2.add(btnaddpicture);
+        btnaddpicture.setBounds(640, 142, 42, 40);
 
+        lblBOD.setText("Student Photo:");
         lblBOD.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblBOD.setForeground(java.awt.Color.black);
-        lblBOD.setText("Student Photo:");
         jPanel2.add(lblBOD);
-        lblBOD.setBounds(60, 120, 120, 16);
+        lblBOD.setBounds(60, 122, 120, 16);
 
+        lbldesign1.setText("Id Number:");
         lbldesign1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesign1.setForeground(java.awt.Color.black);
-        lbldesign1.setText("Id Number:");
         jPanel2.add(lbldesign1);
-        lbldesign1.setBounds(50, 0, 80, 16);
+        lbldesign1.setBounds(50, 2, 80, 16);
 
+        lbldesign3.setText("Student Name:");
         lbldesign3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesign3.setForeground(java.awt.Color.black);
-        lbldesign3.setText("Student Name:");
         jPanel2.add(lbldesign3);
-        lbldesign3.setBounds(400, 0, 90, 16);
+        lbldesign3.setBounds(400, 2, 90, 16);
 
+        lbldesign4.setText("Gender:");
         lbldesign4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesign4.setForeground(java.awt.Color.black);
-        lbldesign4.setText("Gender:");
         jPanel2.add(lbldesign4);
-        lbldesign4.setBounds(60, 60, 90, 16);
+        lbldesign4.setBounds(60, 62, 90, 16);
 
+        lbldesigncourse.setText("Course:");
         lbldesigncourse.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesigncourse.setForeground(java.awt.Color.black);
-        lbldesigncourse.setText("Course:");
         jPanel2.add(lbldesigncourse);
-        lbldesigncourse.setBounds(180, 60, 90, 16);
+        lbldesigncourse.setBounds(180, 62, 90, 16);
 
+        lbldesignyear1.setText("Year:");
         lbldesignyear1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesignyear1.setForeground(java.awt.Color.black);
-        lbldesignyear1.setText("Year:");
         jPanel2.add(lbldesignyear1);
-        lbldesignyear1.setBounds(330, 60, 90, 16);
+        lbldesignyear1.setBounds(330, 62, 90, 16);
 
+        lblBOD1.setText("DOB(Date Of Birth):");
         lblBOD1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblBOD1.setForeground(java.awt.Color.black);
-        lblBOD1.setText("DOB(Date Of Birth):");
         jPanel2.add(lblBOD1);
-        lblBOD1.setBounds(480, 60, 120, 16);
+        lblBOD1.setBounds(480, 62, 120, 16);
         jPanel2.add(datePicker1);
-        datePicker1.setBounds(460, 80, 260, 40);
+        datePicker1.setBounds(460, 82, 260, 40);
+
+        txtusername.setText("Username");
+        txtusername.setBackground(new java.awt.Color(0, 0, 0,0));
+        txtusername.setBorderColor(new java.awt.Color(230, 245, 241));
+        txtusername.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\11185794_user_person_profile_avatar_people_icon (1).png"));
+        txtusername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtusernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtusernameFocusLost(evt);
+            }
+        });
+        jPanel2.add(txtusername);
+        txtusername.setBounds(50, 200, 330, 40);
 
         btnsearch1.setText("Search");
         btnsearch1.setRadius(30);
@@ -301,8 +358,6 @@ public class Accounts extends javax.swing.JPanel {
             }
         });
 
-        studentpicture1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         myPicture2.setBackground(new java.awt.Color(0, 0, 0,0));
 
         lbldesign5.setText("Girls:");
@@ -311,10 +366,10 @@ public class Accounts extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        EventName.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        EventName.setForeground(new java.awt.Color(255, 255, 255));
-        EventName.setText("Numbers");
-        jPanel4.add(EventName);
+        lblfemale.setText("Numbers");
+        lblfemale.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        lblfemale.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(lblfemale);
 
         javax.swing.GroupLayout myPicture2Layout = new javax.swing.GroupLayout(myPicture2);
         myPicture2.setLayout(myPicture2Layout);
@@ -340,18 +395,37 @@ public class Accounts extends javax.swing.JPanel {
         );
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,0));
+        jPanel1.setLayout(null);
+
+        btnedit1.setText("Edit");
+        btnedit1.setRadius(30);
+        jPanel1.add(btnedit1);
+        btnedit1.setBounds(650, 0, 90, 30);
 
         btnadd.setText("Add");
         btnadd.setRadius(30);
-
-        btnupdate.setText("Update");
-        btnupdate.setRadius(30);
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnadd);
+        btnadd.setBounds(753, 0, 90, 30);
 
         btndelete.setText("Delete");
         btndelete.setRadius(30);
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btndelete);
+        btndelete.setBounds(555, 0, 90, 30);
 
         btnviewdata.setText("View Student Data");
         btnviewdata.setRadius(30);
+        jPanel1.add(btnviewdata);
+        btnviewdata.setBounds(433, 0, 110, 30);
 
         btncancel.setText("Cancel");
         btncancel.setRadius(30);
@@ -360,48 +434,26 @@ public class Accounts extends javax.swing.JPanel {
                 btncancelActionPerformed(evt);
             }
         });
+        jPanel1.add(btncancel);
+        btncancel.setBounds(311, 0, 110, 30);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
-                .addComponent(btncancel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnviewdata, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnviewdata, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 6, Short.MAX_VALUE))
-        );
+        btnupdate.setText("Update");
+        btnupdate.setRadius(30);
+        jPanel1.add(btnupdate);
+        btnupdate.setBounds(651, 0, 90, 30);
 
         myPicture3.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        lbldesign6.setText("Boys:");
         lbldesign6.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign6.setForeground(new java.awt.Color(255, 255, 255));
-        lbldesign6.setText("Boys:");
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        EventName1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        EventName1.setForeground(new java.awt.Color(255, 255, 255));
-        EventName1.setText("Numbers");
-        jPanel5.add(EventName1);
+        lblmale.setText("Numbers");
+        lblmale.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        lblmale.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel5.add(lblmale);
 
         javax.swing.GroupLayout myPicture3Layout = new javax.swing.GroupLayout(myPicture3);
         myPicture3.setLayout(myPicture3Layout);
@@ -426,35 +478,33 @@ public class Accounts extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        studentpicture1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(259, 259, 259)
+                .addComponent(myPicture3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(txtsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
             .addComponent(jScrollPane2)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(246, 246, 246))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(myPicture3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)))
-                .addGap(10, 10, 10))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10)
-                .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -468,54 +518,71 @@ public class Accounts extends javax.swing.JPanel {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(studentpicture1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9))
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1106, Short.MAX_VALUE)
+            .addGap(0, 1113, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
+            .addGap(0, 674, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
+    private void btnaddpictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddpictureActionPerformed
       JFileChooser chooser = new JFileChooser();
       FileNameExtensionFilter filter =new FileNameExtensionFilter("studentImages",ImageIO.getReaderFileSuffixes());
         chooser.setFileFilter(filter);
         chooser.showOpenDialog(null);
-        File f = chooser.getSelectedFile();
-        new MyPanel().rizelabel(f, studentpicture1);
-        filetext.setText(f.getAbsolutePath());
-    }//GEN-LAST:event_myButton1ActionPerformed
-
-    private void accountstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountstableMouseClicked
-        int row = accountstable.getSelectedRow();
-        txtidnum.setText(accountstable.getValueAt(row, 1).toString());
-        txtname.setText(accountstable.getValueAt(row, 2).toString());
+        f = chooser.getSelectedFile();
+        if(f != null){
+            file = true;
+             new MyPanel().rizelabel(f, studentpicture1);
+            filetext.setText(f.getAbsolutePath());
+            return;
+        }
        
         
-        
-        btnviewdata.setVisible(true);
-        btndelete.setVisible(true);
-        btnupdate.setVisible(true);
-        btncancel.setVisible(false);
+    }//GEN-LAST:event_btnaddpictureActionPerformed
+
+    private void accountstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountstableMouseClicked
+        if(new adminSqlite().getDataSelected(accountstable,this)){
+            cbcourse.setEnabled(false);
+            cbyear.setEnabled(false);
+            cbgender.setEnabled(false);
+            txtidnum.setEnabled(false);
+            txtname.setEnabled(false);
+            filetext.setEnabled(false);
+            btnaddpicture.setEnabled(false);
+            btnadd.setEnabled(false);
+            btndelete.setVisible(true);
+            btncancel.setVisible(true);
+            btnedit1.setVisible(true);
+            btnviewdata.setVisible(true);
+            datePicker1.setEnabled(false);
+            txtusername.setEnabled(false);
+            txtpassword.setEnabled(false);
+        }
+    
     }//GEN-LAST:event_accountstableMouseClicked
     
     private void txtidnumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtidnumFocusGained
@@ -543,10 +610,10 @@ public class Accounts extends javax.swing.JPanel {
     }//GEN-LAST:event_txtsearchFocusLost
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
-    btnadd.setVisible(true);
+    btnadd.setEnabled(true);
     btnviewdata.setVisible(false);
     btndelete.setVisible(false);
-    btnupdate.setVisible(false);
+    btnedit1.setVisible(false);
     btncancel.setVisible(false);
     }//GEN-LAST:event_btncancelActionPerformed
 
@@ -558,11 +625,11 @@ public class Accounts extends javax.swing.JPanel {
     }//GEN-LAST:event_btnfilterActionPerformed
 
     private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
-    new MyTable().searchTableFilter(accountstable,txtsearch.getText());
+    new DataTableFilter().searchAccountdatafilter(txtsearch.getText(), accountstable);
     }//GEN-LAST:event_txtsearchActionPerformed
 
     private void btnsearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearch1ActionPerformed
-      new MyTable().searchTableFilter(accountstable,txtsearch.getText());
+    new DataTableFilter().searchAccountdatafilter(txtsearch.getText(), accountstable);
     }//GEN-LAST:event_btnsearch1ActionPerformed
 
     private void filetextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filetextActionPerformed
@@ -577,23 +644,83 @@ public class Accounts extends javax.swing.JPanel {
     private void filetextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filetextFocusGained
         new MyTextField().focuseGained(filetext, "Student Photo");
     }//GEN-LAST:event_filetextFocusGained
+
+    private void txtusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusGained
+      new MyTextField().focuseGained(txtusername,"Username");
+    }//GEN-LAST:event_txtusernameFocusGained
+
+    private void txtusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusLost
+      new MyTextField().focusLost(txtusername,"Username");
+    }//GEN-LAST:event_txtusernameFocusLost
+
+    private void txtpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusGained
+        new MyPasswordField().focusGained(txtpassword,"Password", showpassword);
+    }//GEN-LAST:event_txtpasswordFocusGained
+
+    private void txtpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusLost
+        new MyPasswordField().focusLost(txtpassword, "Password",showpassword);
+
+    }//GEN-LAST:event_txtpasswordFocusLost
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+    
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
+        new MyPasswordField().checkEmpty(txtpassword, showpassword, "Password");
+    }//GEN-LAST:event_txtpasswordKeyPressed
+
+    private void showpasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_showpasswordStateChanged
+
+    }//GEN-LAST:event_showpasswordStateChanged
+
+    private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
+        new MyPasswordField().showpasswordChar(showpassword, txtpassword);
+    }//GEN-LAST:event_showpasswordActionPerformed
+
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+       ArrayList<Object> data = new ArrayList<>();
+       data.addAll(Arrays.asList(txtusername.getText(),txtpassword.getText(),txtpassword.getText(),Integer.parseInt(txtidnum.getText()),txtname.getText(),
+               cbgender.getSelectedItem(),datePicker1.getText(),cbcourse.getSelectedItem(),cbyear.getSelectedItem()));
+       new adminSqlite().addAccount(data,f, "Account");
+       
+    }//GEN-LAST:event_btnaddActionPerformed
+
+    private void cbgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbgenderActionPerformed
+
+        if(f == null || !file ){
+        String defaultImageFileName = cbgender.getSelectedItem().equals("Female") ? "girlprofile.jpg" : "boyprofile.jpg";
+        f = new File(System.getProperty("user.dir") + "\\src\\image\\" + defaultImageFileName);
+       new MyPanel().rizelabel(f, studentpicture1);
+        file = false;
+        return ;
+    }
+        
+    }//GEN-LAST:event_cbgenderActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+     new adminSqlite().deleteAccount( Integer.parseInt(txtidnum.getText()));
+     new adminSqlite().accountDatadisplay(accountstable);
+       new adminSqlite().studentGenderCount("Male", lblmale);
+        new adminSqlite().studentGenderCount("Female", lblfemale);
+    }//GEN-LAST:event_btndeleteActionPerformed
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel EventName;
-    private javax.swing.JLabel EventName1;
-    private customGUI.MyTable accountstable;
+    public customGUI.MyTable accountstable;
     private customGUI.MyButton btnadd;
+    private customGUI.MyButton btnaddpicture;
     private customGUI.MyButton btncancel;
     private customGUI.MyButton btndelete;
+    private customGUI.MyButton btnedit1;
     private customGUI.MyButton btnfilter;
     private customGUI.MyButton btnsearch1;
     private customGUI.MyButton btnupdate;
     private customGUI.MyButton btnviewdata;
-    private javax.swing.JComboBox<String> cbcourse;
-    private javax.swing.JComboBox<String> cbgender;
-    private javax.swing.JComboBox<String> cbyear;
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    public javax.swing.JComboBox<String> cbcourse;
+    public javax.swing.JComboBox<String> cbgender;
+    public javax.swing.JComboBox<String> cbyear;
+    public com.github.lgooddatepicker.components.DatePicker datePicker1;
     private customGUI.MyTextField filetext;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -603,20 +730,24 @@ public class Accounts extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBOD;
     private javax.swing.JLabel lblBOD1;
-    private javax.swing.JLabel lbldesign1;
+    public javax.swing.JLabel lbldesign1;
     private javax.swing.JLabel lbldesign3;
     private javax.swing.JLabel lbldesign4;
     private javax.swing.JLabel lbldesign5;
     private javax.swing.JLabel lbldesign6;
     private javax.swing.JLabel lbldesigncourse;
     private javax.swing.JLabel lbldesignyear1;
-    private customGUI.MyButton myButton1;
+    private javax.swing.JLabel lblfemale;
+    private javax.swing.JLabel lblmale;
     private customGUI.MyPanel myPicture2;
     private customGUI.MyPanel myPicture3;
-    private javax.swing.JLabel studentpicture1;
-    private customGUI.MyTextField txtidnum;
-    private customGUI.MyTextField txtname;
+    private javax.swing.JCheckBox showpassword;
+    public javax.swing.JLabel studentpicture1;
+    public customGUI.MyTextField txtidnum;
+    public customGUI.MyTextField txtname;
+    public customGUI.MyPasswordField txtpassword;
     private customGUI.MyTextField txtsearch;
+    public customGUI.MyTextField txtusername;
     // End of variables declaration//GEN-END:variables
   
 }

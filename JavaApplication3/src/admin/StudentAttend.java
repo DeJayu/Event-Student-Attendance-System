@@ -5,6 +5,7 @@
 package admin;
 
 import accountsetting.*;
+import sqliteAdmin.adminSqlite;
 
 /**
  *
@@ -23,7 +24,7 @@ public class StudentAttend extends javax.swing.JDialog {
         initComponents();
         noti.setVisible(false);
         showconfirmpassword.setVisible(false);
-        txtconfirmpassword.setEchoChar((char)0);
+        txtpassword.setEchoChar((char)0);
         
     }
 
@@ -42,8 +43,8 @@ public class StudentAttend extends javax.swing.JDialog {
         confirnbtn = new customGUI.MyButton();
         showconfirmpassword = new javax.swing.JCheckBox();
         noti = new javax.swing.JLabel();
-        txtconfirmpassword = new customGUI.MyPasswordField();
-        txtoldusername = new customGUI.MyTextField();
+        txtpassword = new customGUI.MyPasswordField();
+        txtusername = new customGUI.MyTextField();
         confirnbtn1 = new customGUI.MyButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -82,6 +83,11 @@ public class StudentAttend extends javax.swing.JDialog {
         confirnbtn.setText("TIME OUT");
         confirnbtn.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         confirnbtn.setRadius(30);
+        confirnbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirnbtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(confirnbtn);
         confirnbtn.setBounds(270, 240, 80, 28);
 
@@ -106,83 +112,88 @@ public class StudentAttend extends javax.swing.JDialog {
         jPanel1.add(noti);
         noti.setBounds(30, 170, 250, 16);
 
-        txtconfirmpassword.setText("Password");
-        txtconfirmpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
-        txtconfirmpassword.addHierarchyListener(new java.awt.event.HierarchyListener() {
+        txtpassword.setText("Password");
+        txtpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\StudentAttend\\8491307_padlock_security_password_icon.png"));
+        txtpassword.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
-                txtconfirmpasswordHierarchyChanged(evt);
+                txtpasswordHierarchyChanged(evt);
             }
         });
-        txtconfirmpassword.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtpassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtconfirmpasswordFocusGained(evt);
+                txtpasswordFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtconfirmpasswordFocusLost(evt);
+                txtpasswordFocusLost(evt);
             }
         });
-        txtconfirmpassword.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        txtpassword.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtconfirmpasswordInputMethodTextChanged(evt);
+                txtpasswordInputMethodTextChanged(evt);
             }
         });
-        txtconfirmpassword.addActionListener(new java.awt.event.ActionListener() {
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtconfirmpasswordActionPerformed(evt);
+                txtpasswordActionPerformed(evt);
             }
         });
-        txtconfirmpassword.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        txtpassword.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                txtconfirmpasswordPropertyChange(evt);
+                txtpasswordPropertyChange(evt);
             }
         });
-        txtconfirmpassword.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtconfirmpasswordKeyPressed(evt);
+                txtpasswordKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtconfirmpasswordKeyReleased(evt);
+                txtpasswordKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtconfirmpasswordKeyTyped(evt);
+                txtpasswordKeyTyped(evt);
             }
         });
-        jPanel1.add(txtconfirmpassword);
-        txtconfirmpassword.setBounds(30, 120, 280, 40);
+        jPanel1.add(txtpassword);
+        txtpassword.setBounds(30, 120, 280, 40);
 
-        txtoldusername.setBackground(new java.awt.Color(0, 0, 0,0));
-        txtoldusername.setText("Username");
-        txtoldusername.setBorderColor(new java.awt.Color(230, 245, 241));
-        txtoldusername.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\11185794_user_person_profile_avatar_people_icon (1).png"));
-        txtoldusername.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtusername.setBackground(new java.awt.Color(0, 0, 0,0));
+        txtusername.setText("Username");
+        txtusername.setBorderColor(new java.awt.Color(230, 245, 241));
+        txtusername.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\main\\java\\image\\11185794_user_person_profile_avatar_people_icon (1).png"));
+        txtusername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtoldusernameFocusGained(evt);
+                txtusernameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtoldusernameFocusLost(evt);
+                txtusernameFocusLost(evt);
             }
         });
-        txtoldusername.addActionListener(new java.awt.event.ActionListener() {
+        txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtoldusernameActionPerformed(evt);
+                txtusernameActionPerformed(evt);
             }
         });
-        txtoldusername.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtusername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtoldusernameKeyReleased(evt);
+                txtusernameKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtoldusernameKeyTyped(evt);
+                txtusernameKeyTyped(evt);
             }
         });
-        jPanel1.add(txtoldusername);
-        txtoldusername.setBounds(30, 50, 280, 40);
+        jPanel1.add(txtusername);
+        txtusername.setBounds(30, 50, 280, 40);
 
         confirnbtn1.setText("TIME IN");
         confirnbtn1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         confirnbtn1.setRadius(30);
+        confirnbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirnbtn1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(confirnbtn1);
         confirnbtn1.setBounds(180, 240, 80, 28);
 
@@ -204,55 +215,55 @@ public class StudentAttend extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtconfirmpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordHierarchyChanged
+    private void txtpasswordHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_txtpasswordHierarchyChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtconfirmpasswordHierarchyChanged
+    }//GEN-LAST:event_txtpasswordHierarchyChanged
 
-    private void txtconfirmpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtconfirmpasswordFocusGained
-        if(txtconfirmpassword.getText().equalsIgnoreCase("Password")){
-            txtconfirmpassword.setText(null);
+    private void txtpasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusGained
+        if(txtpassword.getText().equalsIgnoreCase("Password")){
+            txtpassword.setText(null);
         }
-    }//GEN-LAST:event_txtconfirmpasswordFocusGained
+    }//GEN-LAST:event_txtpasswordFocusGained
 
-    private void txtconfirmpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtconfirmpasswordFocusLost
-        if(txtconfirmpassword.getText().isEmpty()){
-            txtconfirmpassword.setText("Password");
-            txtconfirmpassword.setEchoChar((char)0);
+    private void txtpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusLost
+        if(txtpassword.getText().isEmpty()){
+            txtpassword.setText("Password");
+            txtpassword.setEchoChar((char)0);
             showconfirmpassword.setVisible(false);
 
         }
-    }//GEN-LAST:event_txtconfirmpasswordFocusLost
+    }//GEN-LAST:event_txtpasswordFocusLost
 
-    private void txtconfirmpasswordInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtconfirmpasswordInputMethodTextChanged
+    private void txtpasswordInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtpasswordInputMethodTextChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtconfirmpasswordInputMethodTextChanged
+    }//GEN-LAST:event_txtpasswordInputMethodTextChanged
 
-    private void txtconfirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmpasswordActionPerformed
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtconfirmpasswordActionPerformed
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
-    private void txtconfirmpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtconfirmpasswordPropertyChange
+    private void txtpasswordPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtpasswordPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtconfirmpasswordPropertyChange
+    }//GEN-LAST:event_txtpasswordPropertyChange
 
-    private void txtconfirmpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordKeyPressed
-        txtconfirmpassword.setEchoChar('*');
-        if(txtconfirmpassword.getText().equalsIgnoreCase("Confirm New Password") || txtconfirmpassword.getText().isEmpty()){
+    private void txtpasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyPressed
+        txtpassword.setEchoChar('*');
+        if(txtpassword.getText().equalsIgnoreCase("Confirm New Password") || txtpassword.getText().isEmpty()){
             showconfirmpassword.setVisible(false);
             return;
         }
 
         showconfirmpassword.setVisible(true);
 
-    }//GEN-LAST:event_txtconfirmpasswordKeyPressed
+    }//GEN-LAST:event_txtpasswordKeyPressed
 
-    private void txtconfirmpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordKeyReleased
+    private void txtpasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtconfirmpasswordKeyReleased
+    }//GEN-LAST:event_txtpasswordKeyReleased
 
-    private void txtconfirmpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmpasswordKeyTyped
+    private void txtpasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpasswordKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtconfirmpasswordKeyTyped
+    }//GEN-LAST:event_txtpasswordKeyTyped
 
     private void showconfirmpasswordStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_showconfirmpasswordStateChanged
         // TODO add your handling code here:
@@ -260,41 +271,49 @@ public class StudentAttend extends javax.swing.JDialog {
 
     private void showconfirmpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showconfirmpasswordActionPerformed
         if(showconfirmpassword.isSelected()){
-            txtconfirmpassword.setEchoChar((char)0);
+            txtpassword.setEchoChar((char)0);
         }else{
-            txtconfirmpassword.setEchoChar('*');
+            txtpassword.setEchoChar('*');
         }
 
     }//GEN-LAST:event_showconfirmpasswordActionPerformed
 
-    private void txtoldusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoldusernameFocusGained
-        if(txtoldusername.getText().equalsIgnoreCase("Username")){
-            txtoldusername.setText(null);
+    private void txtusernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusGained
+        if(txtusername.getText().equalsIgnoreCase("Username")){
+            txtusername.setText(null);
         }
-    }//GEN-LAST:event_txtoldusernameFocusGained
+    }//GEN-LAST:event_txtusernameFocusGained
 
-    private void txtoldusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtoldusernameFocusLost
-        if(txtoldusername.getText().isEmpty()){
-            txtoldusername.setText("Username");
+    private void txtusernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusernameFocusLost
+        if(txtusername.getText().isEmpty()){
+            txtusername.setText("Username");
         }
-    }//GEN-LAST:event_txtoldusernameFocusLost
+    }//GEN-LAST:event_txtusernameFocusLost
 
-    private void txtoldusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldusernameActionPerformed
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtoldusernameActionPerformed
+    }//GEN-LAST:event_txtusernameActionPerformed
 
-    private void txtoldusernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldusernameKeyReleased
+    private void txtusernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtoldusernameKeyReleased
+    }//GEN-LAST:event_txtusernameKeyReleased
 
-    private void txtoldusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldusernameKeyTyped
+    private void txtusernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtusernameKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtoldusernameKeyTyped
+    }//GEN-LAST:event_txtusernameKeyTyped
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
       dispose();
       
     }//GEN-LAST:event_formWindowClosing
+
+    private void confirnbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirnbtn1ActionPerformed
+     new adminSqlite().admintimein(txtusername.getText(), txtpassword.getText());
+    }//GEN-LAST:event_confirnbtn1ActionPerformed
+
+    private void confirnbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirnbtnActionPerformed
+     new adminSqlite().admintimeout(txtusername.getText(), txtpassword.getText());
+    }//GEN-LAST:event_confirnbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,7 +368,7 @@ public class StudentAttend extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel noti;
     private javax.swing.JCheckBox showconfirmpassword;
-    private customGUI.MyPasswordField txtconfirmpassword;
-    private customGUI.MyTextField txtoldusername;
+    private customGUI.MyPasswordField txtpassword;
+    private customGUI.MyTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }

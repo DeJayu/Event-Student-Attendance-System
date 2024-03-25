@@ -65,14 +65,15 @@ public class MyPasswordField extends JPasswordField{
         }
         
         //this class check the value of the PasswordField if its empty
-        public void checkEmpty(JPasswordField pass,JCheckBox cb ,String name){
+        public void checkEmpty(MyPasswordField pass,JCheckBox cb ,String name){
             pass.setEchoChar('*');
+            cb.setVisible(true);
             if(pass.getText().isEmpty() || pass.getText().equalsIgnoreCase(name)){
                 cb.setVisible(false);
                 return;
             }
             
-            cb.setVisible(true);
+            
         }
         
         //show the password char of the PasswordField

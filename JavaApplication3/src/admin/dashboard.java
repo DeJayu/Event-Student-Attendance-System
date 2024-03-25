@@ -10,6 +10,7 @@ import customGUI.MyPanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import sqliteAdmin.event;
 
 /**
  *
@@ -24,9 +25,10 @@ public class dashboard extends javax.swing.JPanel {
    
     
     public dashboard() {
+        
         initComponents();
-    
-
+        
+ new event().displayeventname(jLabel1);
         
     }
 
@@ -55,14 +57,14 @@ public class dashboard extends javax.swing.JPanel {
         myPicture2 = new customGUI.MyPanel("Event.png");
         lbldesign4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        EventName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(181, 181, 181));
 
         jPanel4.setBackground(new java.awt.Color(181, 181, 181));
 
-        txtsearch.setBackground(new java.awt.Color(255, 255, 255));
         txtsearch.setText("Search");
+        txtsearch.setBackground(new java.awt.Color(255, 255, 255));
         txtsearch.setBorderColor(new java.awt.Color(181, 181, 181));
         txtsearch.setCustomIcon2(new javax.swing.ImageIcon(System.getProperty("user.dir")+ "\\src\\image\\3741750_bussiness_ecommerce_marketplace_onlinestore_search_icon (1).png"));
         txtsearch.setRadius(30);
@@ -107,23 +109,22 @@ public class dashboard extends javax.swing.JPanel {
 
         jScrollPane2.setBackground(new java.awt.Color(255, 153, 153));
 
-        dashboardtable.setBackground(new java.awt.Color(255, 255, 255));
         dashboardtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Department", "Timein", "Timeout"
+                "#", "ID", "Name", "Department", "Timein", "Timeout"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -134,6 +135,7 @@ public class dashboard extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        dashboardtable.setBackground(new java.awt.Color(255, 255, 255));
         dashboardtable.setGridColor(new java.awt.Color(0, 0, 0));
         dashboardtable.setOpaque(false);
         dashboardtable.setRequestFocusEnabled(false);
@@ -183,9 +185,9 @@ public class dashboard extends javax.swing.JPanel {
 
         myPicture1.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        lbldesign2.setText("Total Students Attends:");
         lbldesign2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign2.setForeground(new java.awt.Color(255, 255, 255));
-        lbldesign2.setText("Total Students Attends:");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,0));
 
@@ -220,16 +222,14 @@ public class dashboard extends javax.swing.JPanel {
 
         myPicture2.setBackground(new java.awt.Color(0, 0, 0,0));
 
+        lbldesign4.setText("Event Held:");
         lbldesign4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign4.setForeground(new java.awt.Color(255, 255, 255));
-        lbldesign4.setText("Event Held:");
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        EventName.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        EventName.setForeground(new java.awt.Color(255, 255, 255));
-        EventName.setText("Name");
-        jPanel2.add(EventName);
+        jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1);
 
         javax.swing.GroupLayout myPicture2Layout = new javax.swing.GroupLayout(myPicture2);
         myPicture2.setLayout(myPicture2Layout);
@@ -260,11 +260,11 @@ public class dashboard extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
+                .addGap(59, 59, 59)
                 .addComponent(myPicture2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(207, 207, 207)
+                .addGap(430, 430, 430)
                 .addComponent(myPicture1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(171, 171, 171))
+                .addGap(59, 59, 59))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -302,15 +302,15 @@ public class dashboard extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel EventName;
     private customGUI.MyButton Search;
     private customGUI.MyButton Search1;
     private customGUI.MyButton btnadd;
     private customGUI.MyButton btnprint;
     private customGUI.MyButton btnprint1;
     private customGUI.MyTable dashboardtable;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    public javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbldesign2;

@@ -4,7 +4,7 @@
  */
 package customGUI;
 
-import sqlite.adminSqlite;
+import sqliteAdmin.adminSqlite;
 
 /**
  *
@@ -17,8 +17,7 @@ public class filterdataAdmin extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
        
-        new adminSqlite().addValueCourseCB(cbcourse);
-        new adminSqlite().addValueCourseCB(cbyear);
+        new adminSqlite().addValueCB(cbcourse, cbyear);
         
     }
 

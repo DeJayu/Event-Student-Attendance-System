@@ -4,13 +4,9 @@
  */
 package admin;
 
-import accountsetting.accountsettings;
-import customGUI.MyMessage;
-import customGUI.MyPanel;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import login.SignIn;
+import sqliteAdmin.event;
 
 
 
@@ -20,33 +16,19 @@ import login.SignIn;
  */
 public class MainForm extends javax.swing.JFrame {
 
-    /**
-     * @return the profilename
-     */
-    public String getProfilename() {
-        return profilename;
-    }
 
-    /**
-     * @param profilename the profilename to set
-     */
-    public void setProfilename(String profilename) {
-        this.profilename = profilename;
-    }
 
-    private String profilename;
-  
+
+  public String eventname;
     
     public MainForm() {
-        
+        System.out.print(eventname);
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbprofile.getModel();
-        cbprofile.addItem(profilename);
-        cbprofile.setSelectedItem(getProfilename());
-        cbprofile.addItem("Setting");
-        cbprofile.addItem("Logout");
-        System.out.print(getProfilename());
+       
+
+      
          
     }
 
@@ -66,11 +48,14 @@ public class MainForm extends javax.swing.JFrame {
         btnmenu = new customGUI.MyButton();
         btnInHistory1 = new customGUI.MyButton();
         headerpanel = new javax.swing.JPanel();
-        profilepanel = new MyPanel("ATTENDANCE.png");
+        headerpanel1 = new javax.swing.JPanel();
+        profilepicture = new javax.swing.JLabel();
         cbprofile = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(298, 750));
+        setSize(new java.awt.Dimension(0, 0));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -162,31 +147,40 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         headerpanel.setBackground(java.awt.Color.white);
-        headerpanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 0, -2));
 
-        profilepanel.setBackground(new java.awt.Color(0, 51, 255));
-        profilepanel.setForeground(new java.awt.Color(255, 255, 255));
+        headerpanel1.setBackground(java.awt.Color.white);
+        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 0, 0);
+        flowLayout2.setAlignOnBaseline(true);
+        headerpanel1.setLayout(flowLayout2);
 
-        javax.swing.GroupLayout profilepanelLayout = new javax.swing.GroupLayout(profilepanel);
-        profilepanel.setLayout(profilepanelLayout);
-        profilepanelLayout.setHorizontalGroup(
-            profilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        profilepanelLayout.setVerticalGroup(
-            profilepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        headerpanel.add(profilepanel);
+        profilepicture.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        profilepicture.setMaximumSize(new java.awt.Dimension(40, 40));
+        profilepicture.setMinimumSize(new java.awt.Dimension(40, 40));
+        profilepicture.setPreferredSize(new java.awt.Dimension(40, 40));
+        headerpanel1.add(profilepicture);
 
         cbprofile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbprofileActionPerformed(evt);
             }
         });
-        headerpanel.add(cbprofile);
+        headerpanel1.add(cbprofile);
         cbprofile.setBackground(new java.awt.Color(0,0,0,0));
+
+        javax.swing.GroupLayout headerpanelLayout = new javax.swing.GroupLayout(headerpanel);
+        headerpanel.setLayout(headerpanelLayout);
+        headerpanelLayout.setHorizontalGroup(
+            headerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerpanelLayout.createSequentialGroup()
+                .addGap(982, 982, 982)
+                .addComponent(headerpanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+        );
+        headerpanelLayout.setVerticalGroup(
+            headerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerpanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1106, 671));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,13 +190,13 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(drawerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1098, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(drawerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(headerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(headerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
         );
@@ -212,24 +206,13 @@ public class MainForm extends javax.swing.JFrame {
 
     private void btndashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndashboardActionPerformed
           jScrollPane1.setViewportView(new dashboard());
+      
+
     }//GEN-LAST:event_btndashboardActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
    
     }//GEN-LAST:event_formWindowClosing
-
-    private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
-        if(cbprofile.getSelectedItem() == "Logout"){
-            dispose();
-          new SignIn().setVisible(true);
-           cbprofile.setSelectedIndex(0);
-        }
-        if(cbprofile.getSelectedItem() == "Setting"){
-           new accountsettings(this,true).setVisible(true);
-           cbprofile.setSelectedIndex(0);
-        }
-        
-    }//GEN-LAST:event_cbprofileActionPerformed
 
     private void btnaccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaccountsActionPerformed
         jScrollPane1.setViewportView(new Accounts());
@@ -242,6 +225,19 @@ public class MainForm extends javax.swing.JFrame {
     private void btnInHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHistory1ActionPerformed
    jScrollPane1.setViewportView(new Events());
     }//GEN-LAST:event_btnInHistory1ActionPerformed
+
+    private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
+          if(cbprofile.getSelectedItem() == "Logout"){
+            dispose();
+          new SignIn().setVisible(true);
+           cbprofile.setSelectedIndex(0);
+        }
+        if(cbprofile.getSelectedItem() == "Setting"){
+             String username = (String) cbprofile.getItemAt(0);
+         new sqliteAdmin.accountsettings().fetchuserData(username);
+           cbprofile.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_cbprofileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,10 +280,11 @@ public class MainForm extends javax.swing.JFrame {
     private customGUI.MyButton btnaccounts;
     private customGUI.MyButton btndashboard;
     private customGUI.MyButton btnmenu;
-    private javax.swing.JComboBox<String> cbprofile;
+    public javax.swing.JComboBox<String> cbprofile;
     private javax.swing.JPanel drawerpanel;
     private javax.swing.JPanel headerpanel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel profilepanel;
+    private javax.swing.JPanel headerpanel1;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel profilepicture;
     // End of variables declaration//GEN-END:variables
 }

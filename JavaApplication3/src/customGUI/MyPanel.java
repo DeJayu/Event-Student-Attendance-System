@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -80,6 +81,18 @@ public class MyPanel extends JPanel {
        
          try{
             BufferedImage img = ImageIO.read(f.getAbsoluteFile());      
+          Image img1 =  img.getScaledInstance(com.getWidth(), com.getHeight(), Image.SCALE_SMOOTH);
+           ImageIcon format = new ImageIcon(img1);
+            com.setIcon(format);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+  
+  }
+     
+       public void resizeimagelabel(ByteArrayInputStream bais,JLabel com){
+         try{
+            BufferedImage img = ImageIO.read(bais);      
           Image img1 =  img.getScaledInstance(com.getWidth(), com.getHeight(), Image.SCALE_SMOOTH);
            ImageIcon format = new ImageIcon(img1);
             com.setIcon(format);
