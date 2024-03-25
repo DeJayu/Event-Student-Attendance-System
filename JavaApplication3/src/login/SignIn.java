@@ -882,6 +882,24 @@ public class SignIn extends javax.swing.JFrame {
     private void btnsignin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin1ActionPerformed
          addaccount();  
         
+<<<<<<< HEAD
+=======
+        for(int i = 0 ;i < signupvalue.size();i++){
+            System.out.println(signupvalue.get(i));
+        }
+        
+        if(f == null){
+            if(cbgender.getSelectedItem().equals("Female")){
+                     f = new File(System.getProperty("user.dir") + "\\src\\image\\girlprofile.jpg");
+            }
+                      f = new File(System.getProperty("user.dir")+"\\src\\image\\boyprofile.jpg");
+        }
+        System.out.print(f);
+        new adminSqlite().addAccount(signupvalue, f, lblvalid1, lblvalid2, lblvalid4, lblvalid3);
+        jTabbedPane1.setSelectedIndex(0);
+        btnsignin3.setVisible(false);
+        btnsignup.setVisible(true);
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
     }//GEN-LAST:event_btnsignin1ActionPerformed
 
     private void btnsignin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin3ActionPerformed

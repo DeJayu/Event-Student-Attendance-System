@@ -6,7 +6,11 @@ package accountsetting;
 
 import accountsetting.changepersonalinfo;
 
+<<<<<<< HEAD
 
+=======
+import java.util.ArrayList;
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
 
 /**
  *
@@ -194,7 +198,11 @@ public class accountsettings extends javax.swing.JDialog {
                         .addComponent(lbldispay, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblidholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
                         .addGap(179, 179, 179))
+=======
+                        .addGap(142, 142, 142))
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(lbldisplay2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -236,8 +244,13 @@ public class accountsettings extends javax.swing.JDialog {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbldisplay2)
                             .addComponent(lblnameholder)))
+<<<<<<< HEAD
                     .addComponent(profilepicture, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+=======
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbldisplay7)
                     .addComponent(lblgenderholder))

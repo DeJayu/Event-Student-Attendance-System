@@ -96,10 +96,10 @@
       <SubComponents>
         <Component class="customGUI.MyButton" name="btndashboard">
           <Properties>
+            <Property name="text" type="java.lang.String" value="DashBoard"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DashBoard"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
@@ -119,10 +119,10 @@
         </Component>
         <Component class="customGUI.MyButton" name="btnaccounts">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Accounts"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Accounts"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
@@ -142,10 +142,10 @@
         </Component>
         <Component class="customGUI.MyButton" name="btnInHistory">
           <Properties>
+            <Property name="text" type="java.lang.String" value="In/Out History"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="In/Out History"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
@@ -165,11 +165,11 @@
         </Component>
         <Component class="customGUI.MyButton" name="btnmenu">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="9f" red="27" type="rgb"/>
-            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.ImageIcon(System.getProperty(&quot;user.dir&quot;)+&quot;\\src\\image\\657904_hamburger_menu_move handle_order_icon.png&quot;)" type="code"/>
+            </Property>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
@@ -184,10 +184,10 @@
         </Component>
         <Component class="customGUI.MyButton" name="btnInHistory1">
           <Properties>
+            <Property name="text" type="java.lang.String" value="Events"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Events"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
             </Property>
@@ -373,6 +373,24 @@
             </CodeStatement>
           </LayoutCode>
         </Container>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JComboBox" name="cbprofile">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbprofileActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="cbprofile.setBackground(new java.awt.Color(0,0,0,0));"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

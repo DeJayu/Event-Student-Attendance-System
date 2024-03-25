@@ -4,6 +4,12 @@
  */
 package admin;
 
+<<<<<<< HEAD
+=======
+import accountsetting.accountsettings;
+import customGUI.MyPanel;
+import java.util.ArrayList;
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
 import javax.swing.DefaultComboBoxModel;
 import login.SignIn;
 import sqliteAdmin.event;
@@ -16,17 +22,38 @@ import sqliteAdmin.event;
  */
 public class MainForm extends javax.swing.JFrame {
 
+<<<<<<< HEAD
 
 
 
   public String eventname;
+=======
+
+    public ArrayList<Object> getUserinfo() {
+        return userinfo;
+    }
+
+  
+    public void setUserinfo(ArrayList<Object> userinfo) {
+        this.userinfo = userinfo;
+    }
+
+    private ArrayList<Object> userinfo = new ArrayList<>();
+    
+    
+
+  
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
     
     public MainForm() {
         System.out.print(eventname);
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbprofile.getModel();
+<<<<<<< HEAD
        
+=======
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
 
       
          
@@ -48,8 +75,12 @@ public class MainForm extends javax.swing.JFrame {
         btnmenu = new customGUI.MyButton();
         btnInHistory1 = new customGUI.MyButton();
         headerpanel = new javax.swing.JPanel();
+<<<<<<< HEAD
         headerpanel1 = new javax.swing.JPanel();
         profilepicture = new javax.swing.JLabel();
+=======
+        profilepanel = new customGUI.MyPanel("ATTENDANCE.png");
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
         cbprofile = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
 
@@ -214,6 +245,26 @@ public class MainForm extends javax.swing.JFrame {
    
     }//GEN-LAST:event_formWindowClosing
 
+<<<<<<< HEAD
+=======
+    private void cbprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbprofileActionPerformed
+        if(cbprofile.getSelectedItem() == "Logout"){
+            dispose();
+          new SignIn().setVisible(true);
+           cbprofile.setSelectedIndex(0);
+        }
+        if(cbprofile.getSelectedItem() == "Setting"){
+           accountsettings account = new accountsettings(this,true);
+           account.lblidholder.setText(String.valueOf(this.getUserinfo().get(0)));
+           account.setVisible(true);
+         
+           cbprofile.setSelectedIndex(0);
+           
+        }
+        
+    }//GEN-LAST:event_cbprofileActionPerformed
+
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
     private void btnaccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaccountsActionPerformed
         jScrollPane1.setViewportView(new Accounts());
     }//GEN-LAST:event_btnaccountsActionPerformed

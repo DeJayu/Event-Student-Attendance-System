@@ -30,7 +30,10 @@ public class Accounts extends javax.swing.JPanel {
         btndelete.setVisible(false);
         btncancel.setVisible(false);
         datePicker1.getComponentDateTextField().setEnabled(false);
+<<<<<<< HEAD
         txtpassword.setEchoChar((char)0);
+=======
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
         new adminSqlite().accountDatadisplay(accountstable);
         new adminSqlite().addValueCB(cbyear, cbcourse);
         new adminSqlite().studentGenderCount("Male", lblmale);
@@ -437,10 +440,41 @@ public class Accounts extends javax.swing.JPanel {
         jPanel1.add(btncancel);
         btncancel.setBounds(311, 0, 110, 30);
 
+<<<<<<< HEAD
         btnupdate.setText("Update");
         btnupdate.setRadius(30);
         jPanel1.add(btnupdate);
         btnupdate.setBounds(651, 0, 90, 30);
+=======
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(303, Short.MAX_VALUE)
+                .addComponent(btncancel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnviewdata, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnviewdata, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
 
         myPicture3.setBackground(new java.awt.Color(0, 0, 0,0));
 
@@ -518,6 +552,7 @@ public class Accounts extends javax.swing.JPanel {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addGap(6, 6, 6)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,6 +565,17 @@ public class Accounts extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1, 1, 1))
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(studentpicture1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9))
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -553,6 +599,7 @@ public class Accounts extends javax.swing.JPanel {
       FileNameExtensionFilter filter =new FileNameExtensionFilter("studentImages",ImageIO.getReaderFileSuffixes());
         chooser.setFileFilter(filter);
         chooser.showOpenDialog(null);
+<<<<<<< HEAD
         f = chooser.getSelectedFile();
         if(f != null){
             file = true;
@@ -583,6 +630,20 @@ public class Accounts extends javax.swing.JPanel {
             txtpassword.setEnabled(false);
         }
     
+=======
+        File f = chooser.getSelectedFile();
+        new MyPanel().rizelabel(f, studentpicture1);
+        filetext.setText(f.getAbsolutePath());
+    }//GEN-LAST:event_myButton1ActionPerformed
+
+    private void accountstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountstableMouseClicked
+     
+        
+        btnviewdata.setVisible(true);
+        btndelete.setVisible(true);
+        btnupdate.setVisible(true);
+        btncancel.setVisible(false);
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
     }//GEN-LAST:event_accountstableMouseClicked
     
     private void txtidnumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtidnumFocusGained

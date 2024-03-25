@@ -425,11 +425,14 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
+<<<<<<< HEAD
         </Component>
         <Component class="javax.swing.JLabel" name="profilepicture">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
+=======
+>>>>>>> 9237722770797b693506cae8976c09f61803ae22
         </Component>
       </SubComponents>
     </Container>
