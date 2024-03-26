@@ -7,9 +7,12 @@ package admin;
 import admin.Events;
 import admin.InOutAccounts;
 import admin.dashboard;
+import customGUI.MyMessage;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import login.SignIn;
 import sqliteAdmin.event;
+import sqliteAdmin.loginAccount;
 
 
 
@@ -22,13 +25,13 @@ public class MainForm extends javax.swing.JFrame {
 
 
 
-  public String eventname;
+  
     
     public MainForm() {
-        System.out.print(eventname);
+       
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
-       DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbprofile.getModel();
+ 
        
 
       
@@ -199,7 +202,7 @@ public class MainForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(drawerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(headerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(headerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
         );
@@ -214,7 +217,16 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btndashboardActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-   
+        int i =JOptionPane.showConfirmDialog(null, "ARE WANT SURE TO LOGOUT OUT?", "LOGOUT?", JOptionPane.YES_NO_OPTION);
+        if(i == JOptionPane.YES_OPTION){
+            new loginAccount().logoutrecord(cbprofile.getItemAt(0));
+            this.dispose();
+            new MyMessage(null,true).message("LOGOUT", "YOU SUCCESSFULLY LOGOUT", "INFORMATION", "", "");
+            return;
+        }
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void btnaccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaccountsActionPerformed

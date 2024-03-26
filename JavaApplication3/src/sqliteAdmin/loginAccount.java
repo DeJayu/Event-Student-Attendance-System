@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import login.SignIn;
 
 
@@ -59,7 +61,7 @@ public class loginAccount {
                      main.cbprofile.insertItemAt("Setting", 1);
                      main.cbprofile.insertItemAt("Logout", 2);
                 main.setVisible(true);
-            
+            this.loginrecord(name);
                           return true;
             }
              
@@ -69,7 +71,12 @@ public class loginAccount {
            new MyPanel().resizeimagelabel(convert, main.profilepicture);
            main.cbprofile.insertItemAt("Setting", 1);
            main.cbprofile.insertItemAt("Logout", 2);
+            new adminSqlite().studentdata(idnumber, new student.dashboard().dashboardtable);
+            this.loginrecord(name);
+        
+           
            main.setVisible(true);
+          
            con.close();
            return true;
         }
@@ -84,8 +91,55 @@ public class loginAccount {
     }
     
    
+    public void loginrecord(String name) {
+    String insertQuery = "INSERT INTO INOUT(TIMEIN, DATE, USERNAME) VALUES (?, ?, ?)";
+    try (Connection con = new connection().getconnection();
+         PreparedStatement st = con.prepareStatement(insertQuery)) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mma");
+        Date currentDate = new Date();
+        String formattedDate = dateFormat.format(currentDate);
+        String timeString = timeFormat.format(currentDate);
+        
+      
+
+        st.setString(1, timeString);
+        st.setString(2, formattedDate);
+        st.setString(3, name);
+        st.executeUpdate();
+        st.close();
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
     
-       
+}
+
+
+
+public void logoutrecord(String name) {
+   String updateQuery = "UPDATE INOUT SET TIMEOUT = ? WHERE USERNAME = ? AND TIMEOUT IS NULL";
+   try (Connection con = new connection().getconnection();
+         PreparedStatement st = con.prepareStatement(updateQuery)) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mma");
+        String formattedDate = dateFormat.format(new Date());
+
+        st.setString(1, formattedDate);
+        st.setString(2, name);
+
+        int affectedRows = st.executeUpdate();
+        if (affectedRows > 0) {
+            new MyMessage(null, true).message("LOGOUT", "SUCCESSFULLY LOGOUT", "INFORMATION", "", "");
+           
+        }
+
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+
     }
     
     

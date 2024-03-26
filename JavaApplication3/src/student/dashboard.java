@@ -7,6 +7,8 @@ package student;
 import admin.*;
 import customGUI.MyTable;
 import customGUI.MyTextField;
+import sqliteAdmin.event;
+import sqliteAdmin.studentSqlite;
 
 
 /**
@@ -23,6 +25,7 @@ public class dashboard extends javax.swing.JPanel {
     
     public dashboard() {
         initComponents();
+ 
     
 
         
@@ -41,10 +44,9 @@ public class dashboard extends javax.swing.JPanel {
         txtsearch = new customGUI.MyTextField();
         Search = new customGUI.MyButton();
         btnadd = new customGUI.MyButton();
-        btnprint1 = new customGUI.MyButton();
-        btnprint = new customGUI.MyButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         dashboardtable = new customGUI.MyTable();
+        btnadd1 = new customGUI.MyButton();
         myPicture1 = new customGUI.MyPanel("Students.png");
         lbldesign2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -85,19 +87,13 @@ public class dashboard extends javax.swing.JPanel {
             }
         });
 
-        btnadd.setText("Attend");
+        btnadd.setText("TimeIn");
         btnadd.setRadius(30);
         btnadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnaddActionPerformed(evt);
             }
         });
-
-        btnprint1.setText("Export");
-        btnprint1.setRadius(30);
-
-        btnprint.setText("Print");
-        btnprint.setRadius(30);
 
         jScrollPane2.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -110,14 +106,14 @@ public class dashboard extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Event", "Date", "Timein", "Timeout"
+                "Date", "Event", "Timein", "Timeout"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false
+                false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -135,6 +131,14 @@ public class dashboard extends javax.swing.JPanel {
         dashboardtable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(dashboardtable);
 
+        btnadd1.setText("Timeout");
+        btnadd1.setRadius(30);
+        btnadd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadd1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -149,10 +153,8 @@ public class dashboard extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnprint1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnprint, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114))
+                        .addComponent(btnadd1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(184, 184, 184))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1116, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -165,8 +167,7 @@ public class dashboard extends javax.swing.JPanel {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnprint1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnadd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                 .addContainerGap())
@@ -197,7 +198,7 @@ public class dashboard extends javax.swing.JPanel {
                     .addGroup(myPicture1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(lbldesign2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         myPicture1Layout.setVerticalGroup(
             myPicture1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +235,7 @@ public class dashboard extends javax.swing.JPanel {
                     .addGroup(myPicture2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(lbldesign4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         myPicture2Layout.setVerticalGroup(
             myPicture2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +254,7 @@ public class dashboard extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(myPicture2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(430, 430, 430)
+                .addGap(358, 358, 358)
                 .addComponent(myPicture1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(59, 59, 59))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,9 +271,6 @@ public class dashboard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
-      
-        new StudentAttend(null,true).setVisible(true);
-      
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void txtsearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsearchFocusGained
@@ -291,14 +289,17 @@ public class dashboard extends javax.swing.JPanel {
         new MyTable().searchTableFilter(dashboardtable,txtsearch.getText());
     }//GEN-LAST:event_SearchActionPerformed
 
+    private void btnadd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadd1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnadd1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel EventName;
     private customGUI.MyButton Search;
     private customGUI.MyButton btnadd;
-    private customGUI.MyButton btnprint;
-    private customGUI.MyButton btnprint1;
-    private customGUI.MyTable dashboardtable;
+    private customGUI.MyButton btnadd1;
+    public customGUI.MyTable dashboardtable;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

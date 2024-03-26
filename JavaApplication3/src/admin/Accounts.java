@@ -20,6 +20,25 @@ import sqliteAdmin.adminSqlite;
 
 public class Accounts extends javax.swing.JPanel {
 
+    public void disable(boolean choose,boolean reapread){
+          cbcourse.setEnabled(choose);
+            cbyear.setEnabled(choose);
+            cbgender.setEnabled(choose);
+            txtidnum.setEnabled(choose);
+            txtname.setEnabled(choose);
+            filetext.setEnabled(choose);
+            btnaddpicture.setEnabled(choose);
+            btnadd.setEnabled(choose);
+            btndelete.setVisible(reapread);
+            btncancel.setVisible(reapread);
+            btnedit1.setVisible(reapread);
+            btnviewdata.setVisible(reapread);
+            datePicker1.setEnabled(choose);
+            txtusername.setEnabled(choose);
+            txtpassword.setEnabled(choose);
+    }
+    
+    
     private  File f ;
     private boolean file;
     public Accounts() {
@@ -162,7 +181,6 @@ public class Accounts extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jPanel2.setLayout(null);
 
         showpassword.setContentAreaFilled(false);
         showpassword.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\9041325_eye_fill_icon (3).png"));
@@ -177,8 +195,6 @@ public class Accounts extends javax.swing.JPanel {
                 showpasswordActionPerformed(evt);
             }
         });
-        jPanel2.add(showpassword);
-        showpassword.setBounds(680, 210, 19, 20);
 
         txtpassword.setText("Password");
         txtpassword.setCustomIcon1(new javax.swing.ImageIcon(System.getProperty("user.dir")+"\\src\\image\\8491307_padlock_security_password_icon.png"));
@@ -200,8 +216,6 @@ public class Accounts extends javax.swing.JPanel {
                 txtpasswordKeyPressed(evt);
             }
         });
-        jPanel2.add(txtpassword);
-        txtpassword.setBounds(400, 200, 310, 40);
 
         txtidnum.setText("Id Num#");
         txtidnum.setBackground(new java.awt.Color(0, 0, 0,0));
@@ -215,8 +229,6 @@ public class Accounts extends javax.swing.JPanel {
                 txtidnumFocusLost(evt);
             }
         });
-        jPanel2.add(txtidnum);
-        txtidnum.setBounds(50, 22, 320, 40);
 
         txtname.setText("Student Name");
         txtname.setBackground(new java.awt.Color(0, 0, 0,0));
@@ -230,8 +242,6 @@ public class Accounts extends javax.swing.JPanel {
                 txtnameFocusLost(evt);
             }
         });
-        jPanel2.add(txtname);
-        txtname.setBounds(400, 22, 320, 40);
 
         cbgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gender", "Male", "Female" }));
         cbgender.setBackground(new java.awt.Color(0,0,0,0));
@@ -244,22 +254,16 @@ public class Accounts extends javax.swing.JPanel {
                 cbgenderActionPerformed(evt);
             }
         });
-        jPanel2.add(cbgender);
-        cbgender.setBounds(50, 82, 130, 40);
 
         cbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Course" }));
         cbcourse.setBackground(new java.awt.Color(0,0,0,0));
         cbcourse.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbcourse.setForeground(new java.awt.Color(122, 140, 141));
-        jPanel2.add(cbcourse);
-        cbcourse.setBounds(180, 82, 130, 40);
 
         cbyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year" }));
         cbyear.setBackground(new java.awt.Color(0,0,0,0));
         cbyear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cbyear.setForeground(new java.awt.Color(122, 140, 141));
-        jPanel2.add(cbyear);
-        cbyear.setBounds(320, 82, 130, 40);
 
         filetext.setText("Student Photo");
         filetext.setBackground(new java.awt.Color(0, 0, 0,0));
@@ -278,8 +282,6 @@ public class Accounts extends javax.swing.JPanel {
                 filetextActionPerformed(evt);
             }
         });
-        jPanel2.add(filetext);
-        filetext.setBounds(50, 142, 580, 40);
 
         btnaddpicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/285633_image_icon (1).png"))); // NOI18N
         btnaddpicture.setRadius(10);
@@ -288,52 +290,34 @@ public class Accounts extends javax.swing.JPanel {
                 btnaddpictureActionPerformed(evt);
             }
         });
-        jPanel2.add(btnaddpicture);
-        btnaddpicture.setBounds(640, 142, 42, 40);
 
         lblBOD.setText("Student Photo:");
         lblBOD.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblBOD.setForeground(java.awt.Color.black);
-        jPanel2.add(lblBOD);
-        lblBOD.setBounds(60, 122, 120, 16);
 
         lbldesign1.setText("Id Number:");
         lbldesign1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesign1.setForeground(java.awt.Color.black);
-        jPanel2.add(lbldesign1);
-        lbldesign1.setBounds(50, 2, 80, 16);
 
         lbldesign3.setText("Student Name:");
         lbldesign3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesign3.setForeground(java.awt.Color.black);
-        jPanel2.add(lbldesign3);
-        lbldesign3.setBounds(400, 2, 90, 16);
 
         lbldesign4.setText("Gender:");
         lbldesign4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesign4.setForeground(java.awt.Color.black);
-        jPanel2.add(lbldesign4);
-        lbldesign4.setBounds(60, 62, 90, 16);
 
         lbldesigncourse.setText("Course:");
         lbldesigncourse.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesigncourse.setForeground(java.awt.Color.black);
-        jPanel2.add(lbldesigncourse);
-        lbldesigncourse.setBounds(180, 62, 90, 16);
 
         lbldesignyear1.setText("Year:");
         lbldesignyear1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbldesignyear1.setForeground(java.awt.Color.black);
-        jPanel2.add(lbldesignyear1);
-        lbldesignyear1.setBounds(330, 62, 90, 16);
 
         lblBOD1.setText("DOB(Date Of Birth):");
         lblBOD1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblBOD1.setForeground(java.awt.Color.black);
-        jPanel2.add(lblBOD1);
-        lblBOD1.setBounds(480, 62, 120, 16);
-        jPanel2.add(datePicker1);
-        datePicker1.setBounds(460, 82, 260, 40);
 
         txtusername.setText("Username");
         txtusername.setBackground(new java.awt.Color(0, 0, 0,0));
@@ -347,8 +331,92 @@ public class Accounts extends javax.swing.JPanel {
                 txtusernameFocusLost(evt);
             }
         });
-        jPanel2.add(txtusername);
-        txtusername.setBounds(50, 200, 330, 40);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(lbldesign1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(270, 270, 270)
+                .addComponent(lbldesign3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(txtidnum, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(lbldesign4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(lbldesigncourse, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(lbldesignyear1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(lblBOD1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(cbgender, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(cbcourse, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cbyear, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(lblBOD, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(filetext, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnaddpicture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addComponent(showpassword))
+                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbldesign1)
+                    .addComponent(lbldesign3))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtidnum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbldesign4)
+                    .addComponent(lbldesigncourse)
+                    .addComponent(lbldesignyear1)
+                    .addComponent(lblBOD1))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbgender, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbcourse, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbyear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblBOD)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(filetext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnaddpicture, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(showpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         btnsearch1.setText("Search");
         btnsearch1.setRadius(30);
@@ -399,6 +467,11 @@ public class Accounts extends javax.swing.JPanel {
 
         btnedit1.setText("Edit");
         btnedit1.setRadius(30);
+        btnedit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnedit1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnedit1);
         btnedit1.setBounds(650, 0, 90, 30);
 
@@ -424,6 +497,11 @@ public class Accounts extends javax.swing.JPanel {
 
         btnviewdata.setText("View Student Data");
         btnviewdata.setRadius(30);
+        btnviewdata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewdataActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnviewdata);
         btnviewdata.setBounds(433, 0, 110, 30);
 
@@ -518,25 +596,23 @@ public class Accounts extends javax.swing.JPanel {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnfilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1))
+                    .addComponent(studentpicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1113, Short.MAX_VALUE)
+            .addGap(0, 1115, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -566,22 +642,8 @@ public class Accounts extends javax.swing.JPanel {
 
     private void accountstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountstableMouseClicked
        if(new adminSqlite().getDataSelected(accountstable,this)){
-        
-        cbcourse.setEnabled(false);
-            cbyear.setEnabled(false);
-            cbgender.setEnabled(false);
-            txtidnum.setEnabled(false);
-            txtname.setEnabled(false);
-            filetext.setEnabled(false);
-            btnaddpicture.setEnabled(false);
-            btnadd.setEnabled(false);
-            btndelete.setVisible(true);
-            btncancel.setVisible(true);
-            btnedit1.setVisible(true);
-            btnviewdata.setVisible(true);
-            datePicker1.setEnabled(false);
-            txtusername.setEnabled(false);
-            txtpassword.setEnabled(false);
+        disable(false,true);
+      
         }
     }//GEN-LAST:event_accountstableMouseClicked
     
@@ -684,6 +746,7 @@ public class Accounts extends javax.swing.JPanel {
                cbgender.getSelectedItem(),datePicker1.getText(),cbcourse.getSelectedItem(),cbyear.getSelectedItem()));
        new adminSqlite().addAccount(data,f, "Account");
        
+       
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void cbgenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbgenderActionPerformed
@@ -702,6 +765,15 @@ public class Accounts extends javax.swing.JPanel {
      new adminSqlite().deleteAccount( Integer.parseInt(txtidnum.getText()));
      new adminSqlite().accountDatadisplay(accountstable);
     }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void btnedit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnedit1ActionPerformed
+   disable(true,true);
+   btnedit1.setVisible(false);
+    }//GEN-LAST:event_btnedit1ActionPerformed
+
+    private void btnviewdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewdataActionPerformed
+      new adminSqlite().viewstudentdata(Integer.parseInt(txtidnum.getText()));
+    }//GEN-LAST:event_btnviewdataActionPerformed
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

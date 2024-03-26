@@ -10,6 +10,7 @@ import customGUI.MyPanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import sqliteAdmin.DataTableFilter;
 import sqliteAdmin.event;
 
 /**
@@ -28,8 +29,10 @@ public class dashboard extends javax.swing.JPanel {
         
         initComponents();
         
- new event().displayeventname(jLabel1);
-        
+    new event().displayeventname(jLabel1);
+       new event().studentattend(dashboardtable);
+    new event().displayStudentAttend(totalstudents);
+ 
     }
 
     /**
@@ -63,8 +66,8 @@ public class dashboard extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(181, 181, 181));
 
-        txtsearch.setText("Search");
         txtsearch.setBackground(new java.awt.Color(255, 255, 255));
+        txtsearch.setText("Search");
         txtsearch.setBorderColor(new java.awt.Color(181, 181, 181));
         txtsearch.setCustomIcon2(new javax.swing.ImageIcon(System.getProperty("user.dir")+ "\\src\\image\\3741750_bussiness_ecommerce_marketplace_onlinestore_search_icon (1).png"));
         txtsearch.setRadius(30);
@@ -185,13 +188,13 @@ public class dashboard extends javax.swing.JPanel {
 
         myPicture1.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        lbldesign2.setText("Total Students Attends:");
         lbldesign2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign2.setForeground(new java.awt.Color(255, 255, 255));
+        lbldesign2.setText("Total Students Attends:");
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        totalstudents.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        totalstudents.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         totalstudents.setForeground(new java.awt.Color(255, 255, 255));
         totalstudents.setText("Name");
         jPanel1.add(totalstudents);
@@ -222,13 +225,15 @@ public class dashboard extends javax.swing.JPanel {
 
         myPicture2.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        lbldesign4.setText("Event Held:");
         lbldesign4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         lbldesign4.setForeground(new java.awt.Color(255, 255, 255));
+        lbldesign4.setText("Event Held:");
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0,0));
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Name");
         jPanel2.add(jLabel1);
 
         javax.swing.GroupLayout myPicture2Layout = new javax.swing.GroupLayout(myPicture2);
@@ -274,7 +279,7 @@ public class dashboard extends javax.swing.JPanel {
                     .addComponent(myPicture2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myPicture1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,7 +298,7 @@ public class dashboard extends javax.swing.JPanel {
     }//GEN-LAST:event_txtsearchFocusLost
 
     private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
-   new MyTable().searchTableFilter(dashboardtable,txtsearch.getText());
+        new DataTableFilter().searchdashboardfilterdata(txtsearch.getText(), dashboardtable);
     }//GEN-LAST:event_txtsearchActionPerformed
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed

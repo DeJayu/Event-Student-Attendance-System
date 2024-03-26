@@ -11,6 +11,11 @@ import java.sql.ResultSet;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sqliteAdmin.connection;
 
 public class DataTableFilter {
@@ -84,38 +89,63 @@ public class DataTableFilter {
        while(model.getRowCount() > 0){
          model.removeRow(0);
        }
-   String query = "SELECT * FROM USERINFO INNER JOIN LOGINPROCESS LP ON IDNUMBER = LP.USERINFO_IDNUMBER WHERE LOWER(NAME) LIKE(?) OR "
-           + "LOWER(IDNUMBER) LIKE(?) OR LOWER(LP.USERNAME) LIKE (?)";
-   String query2 = "SELECT TIMEIN,TIMEOUT FROM ATTENDANCE WHERE IDNUMBER = ?";
+   String query = "SELECT * FROM USERINFO INNER JOIN ATTENDANCE ATT ON USERINFO.IDNUMBER = ATT.IDNUMBER WHERE LOWER(NAME) LIKE(?) OR "
+           + "LOWER(USERINFO.IDNUMBER) LIKE(?)";
+  
        try(Connection con = new connection().getconnection()){
            PreparedStatement st = con.prepareStatement(query);
            st.setString(1, "%"+ textfilder +"%");
            st.setString(2, "%"+ textfilder +"%");
-           st.setString(3, "%"+ textfilder +"%");
            ResultSet rs = st.executeQuery();
-           
-        for(int i = 0;rs.next();i++){
-               int row = i + 1;
-               int idnumber = rs.getInt("IDNUMBER");
-               String name = rs.getString("NAME");
-               String department = rs.getString("DEPARTMENT");
-               st.close();
-               rs.close();
-               PreparedStatement st1 = con.prepareStatement(query2);
-               st1.setInt(1, idnumber);
-               ResultSet rs1 = st.executeQuery();
-               if(rs1.next()){
-                   String timein = rs1.getString("TIMEIN");
-                   String timeout = rs1.getString("TIMEOUT");
-                   
-                   Object [] data ={row,idnumber,name,department,timein,timeout};
-                   model.addRow(data);
-               }
-           }
-
+                SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy/MM/dd");   
+            Date date = new Date(); 
+            Date parsedDate;
+            parsedDate = originalFormat.parse(originalFormat.format(date));
+            SimpleDateFormat desiredFormat = new SimpleDateFormat("MMMM dd, yyyy");
+            String formattedDate = desiredFormat.format(parsedDate);
+            int y =1;
+            while(rs.next()){
+            int idnumber = rs.getInt("IDNUMBER");
+            String name = rs.getString("NAME");
+            String department = rs.getString("DEPARTMENT");
+            String timein = rs.getString("TIMEIN");
+            String timeout = rs.getString("TIMEOUT");
+            Object [] data ={y,idnumber,name,department,timein,timeout};
+            y++;
+            }
+            
+        if(model.getRowCount()== 0 || textfilder.equalsIgnoreCase("Search") ){
+            st.close();
+            rs.close();
+            String query3 = "SELECT * FROM ATTENDANCE INNER JOIN USERINFO US ON IDNUMBER =US.IDNUMBER WHERE DATE = ?";
+             PreparedStatement st1 = con.prepareStatement(query3);
+             st1.setString(1, formattedDate);
+             ResultSet rs1 = st.executeQuery();
+             System.out.print("dsas");
+             for(int i = 0; rs.next();i++){
+                int rowid = i +1;
+                        System.out.print("sdasdasdas");
+                int id = rs1.getInt("IDNUMBER");
+                String name = rs1.getString("NAME");
+                String department = rs1.getString("DEPARTMENT");
+                String timein = rs1.getString("TIMEIN");
+                String timeout = rs1.getString("TIMEOUT");
+                Object [] data = {rowid,id,name,department,timein,timeout};
+                model.addRow(data);
+             }
+             
+        }
        }catch(SQLException ex){
            ex.printStackTrace();
+       } catch (ParseException ex) {
+        ex.printStackTrace();
        }
+       
+       
+       
+       
+       
+       
        
    }
 }

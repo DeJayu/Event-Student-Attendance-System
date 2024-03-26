@@ -39,6 +39,7 @@ public class Events extends javax.swing.JPanel {
      txttimein.getComponentIncreaseSpinnerButton().setFocusable(false);
      new event().displaydata(events);
      holder.setVisible(false);
+     txtdate.getComponentPopupMenu();
     }
 
     /**
@@ -355,15 +356,16 @@ public class Events extends javax.swing.JPanel {
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
       ArrayList<Object> addevents = new ArrayList<>();
-      addevents.addAll(Arrays.asList(txtdate.getText(),txteventname.getText(),txttimein.getText(),txttimeout.getText()));
-        new event().addevent(addevents);
-             new event().displaydata(events);
+      addevents.addAll(Arrays.asList(txtdate.getText(),txteventname.getText(),txttimein.getText().toUpperCase(),txttimeout.getText().toUpperCase()));
+      
+        new event().addevent(addevents,events);
+
 
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void eventsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventsMouseClicked
        new event().getEventData(events, accounttable);
-           String date =events.getModel().getValueAt(events.getSelectedRow(), 0).toString();    
+           String date =events.getModel().getValueAt(events.getSelectedRow(), 1).toString();    
            holder.setText(date);
            
            
@@ -385,6 +387,7 @@ public class Events extends javax.swing.JPanel {
         int choose = JOptionPane.showConfirmDialog(null,"ARE YOU SURE YOU WANT TO DELETE THE EVENT AND THE DATA OF IT?", "DELETED?",JOptionPane.YES_NO_OPTION);
         if(choose == JOptionPane.YES_OPTION){
             new event().Deleteevent(holder.getText());
+            System.out.print(holder.getText());
             new event().displaydata(events);
             return;
         }

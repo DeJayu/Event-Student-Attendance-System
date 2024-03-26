@@ -647,11 +647,11 @@ private boolean file;
 
     private void btnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsigninActionPerformed
        if(new loginAccount().loginAccs(txtusername.getText(), txtpassword.getText())){
-     txtpassword.setText(null);
-     txtusername.setText(null);
-    txtpassword.setEchoChar((char)0);
-    this.dispose();
-    return;
+            txtpassword.setText(null);
+            txtusername.setText(null);
+           txtpassword.setEchoChar((char)0);
+           this.dispose();
+           return;
        }
     }//GEN-LAST:event_btnsigninActionPerformed
 
@@ -900,10 +900,18 @@ private boolean file;
     }//GEN-LAST:event_txtconfirmpasswordKeyTyped
 
     private void btnsignin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin1ActionPerformed
-       ArrayList<Object> signupvalue = new ArrayList<>();
-  for(int i = 0 ;i < signupvalue.size();i++){
-            System.out.println(signupvalue.get(i));
-        }
+     if(bod.getText() == null && bod.getText().isEmpty()){
+      new MyMessage(null, false).message("CREATE ACCOUNT FAILED", "PLEASE FILL OUT ALL THE INFORMATION IN THE FORM", "INFORMATION", "", "");
+      return;
+     }
+     
+        
+        
+        ArrayList<Object> signupvalue = new ArrayList<>();
+        signupvalue.addAll(Arrays.asList(txtusername1.getText(), txtpassword1.getText(), txtconfirmpassword.getText(), Integer.valueOf(txtidnum.getText()),
+            txtfirstname.getText(), txtlastname.getText(), cbgender.getSelectedItem(), bod.getText(), cbcourse.getSelectedItem(), cbyear.getSelectedItem()));
+        
+ 
         
         if(f == null){
             if(cbgender.getSelectedItem().equals("Female")){
@@ -911,11 +919,26 @@ private boolean file;
             }
                       f = new File(System.getProperty("user.dir")+"\\src\\image\\boyprofile.jpg");
         }
-        System.out.print(f);
-        new adminSqlite().addAccount(signupvalue, f,"Signup");
-        jTabbedPane1.setSelectedIndex(0);
-        btnsignin3.setVisible(false);
-        btnsignup.setVisible(true);
+       
+        
+        if(new adminSqlite().addAccount(signupvalue, f,"Signup")){
+            txtusername1.setText("Username");
+            txtpassword1.setText("Password");
+            txtconfirmpassword.setText("Confirm Password");
+            txtidnum.setText("Id Number");
+            txtfirstname.setText("First Name");
+            txtlastname.setText("Last Name");
+            cbgender.setSelectedIndex(0);
+            cbcourse.insertItemAt("Course", 0);
+            cbcourse.setSelectedIndex(0);
+            cbyear.insertItemAt("Year", 0);
+            cbyear.setSelectedIndex(0);
+            bod.setText(null);
+            jTabbedPane1.setSelectedIndex(0);
+            btnsignin3.setVisible(false);
+            btnsignup.setVisible(true);
+        };
+    
     }//GEN-LAST:event_btnsignin1ActionPerformed
 
     private void btnsignin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsignin3ActionPerformed

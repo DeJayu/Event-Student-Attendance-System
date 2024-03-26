@@ -24,7 +24,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="myPicture2" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="430" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
               <Component id="myPicture1" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
@@ -38,7 +38,7 @@
                   <Component id="myPicture2" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="myPicture1" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -65,10 +65,8 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="btnadd" min="-2" pref="64" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnprint1" min="-2" pref="64" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="btnprint" min="-2" pref="64" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                          <Component id="btnadd1" min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jScrollPane2" pref="1116" max="32767" attributes="0"/>
@@ -86,8 +84,7 @@
                       <Component id="txtsearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Search" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnadd" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnprint1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnprint" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnadd1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" pref="543" max="32767" attributes="0"/>
@@ -128,24 +125,12 @@
         </Component>
         <Component class="customGUI.MyButton" name="btnadd">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Attend"/>
+            <Property name="text" type="java.lang.String" value="TimeIn"/>
             <Property name="radius" type="int" value="30"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnaddActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="customGUI.MyButton" name="btnprint1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Export"/>
-            <Property name="radius" type="int" value="30"/>
-          </Properties>
-        </Component>
-        <Component class="customGUI.MyButton" name="btnprint">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Print"/>
-            <Property name="radius" type="int" value="30"/>
-          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <Properties>
@@ -166,8 +151,8 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Event" type="java.lang.Object"/>
                     <Column editable="false" title="Date" type="java.lang.String"/>
+                    <Column editable="true" title="Event" type="java.lang.Object"/>
                     <Column editable="false" title="Timein" type="java.lang.String"/>
                     <Column editable="false" title="Timeout" type="java.lang.String"/>
                   </Table>
@@ -206,9 +191,21 @@
                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="customGUI.MyButton" name="btnadd1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Timeout"/>
+            <Property name="radius" type="int" value="30"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnadd1ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="customGUI.MyPanel" name="myPicture1">
@@ -235,7 +232,7 @@
                           <Component id="lbldesign2" min="-2" pref="230" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -311,7 +308,7 @@
                           <Component id="lbldesign4" min="-2" pref="230" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

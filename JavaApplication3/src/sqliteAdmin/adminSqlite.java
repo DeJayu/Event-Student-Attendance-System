@@ -5,6 +5,7 @@
 package sqliteAdmin;
 
 import admin.Accounts;
+import admin.ViewStudentData;
 import customGUI.MyMessage;
 import customGUI.MyPanel;
 import java.io.ByteArrayInputStream;
@@ -109,6 +110,8 @@ public class adminSqlite {
         
          
      try (Connection con = new connection().getconnection()) {
+         
+         
          
           if(file == null){
               String defaultpicture = userData.get(6).equals("Male") ? "boyprofile.jpg" : "girlprofile.jpg";              
@@ -406,7 +409,7 @@ public class adminSqlite {
                     String formattedDate = desiredFormat.format(currentDate);
                     String timeString = timeFormat.format(currentDate);
 
-                    if (checkAttendance(idnumber, formattedDate)) {
+                    if (checkAttendance(idnumber, formattedDate,"TIMEIN")) {
                          new MyMessage(null, true).message("TIMEIN", "YOU ALREADY TIME IN ", "INFORMATION", role, role);
 
                         return; 
@@ -454,7 +457,7 @@ public class adminSqlite {
                return false;
        }
        
-    private boolean checkAttendance(int idnumber, String formattedDate) {
+    private boolean checkAttendance(int idnumber, String formattedDate,String method) {
         String query = "SELECT * FROM ATTENDANCE WHERE IDNUMBER = ? AND DATE = ?";
         try (Connection con = new connection().getconnection()) {
             PreparedStatement st = con.prepareStatement(query);
@@ -463,8 +466,13 @@ public class adminSqlite {
             ResultSet result = st.executeQuery();
             if (result.next()) {
                   String timeIn = result.getString("TIMEIN");
-                if (timeIn != null && !timeIn.isEmpty()) {
+                  String timeout = result.getString("TIMEOUT");
+                if (timeIn != null && !timeIn.isEmpty() && method.equalsIgnoreCase("TIMEIN")) {
                     st.close();
+                    result.close();
+                    return true; 
+                }else if(timeout != null && !timeout.isEmpty() && method.equalsIgnoreCase("TIMEOUT")){
+                       st.close();
                     result.close();
                     return true; 
                 }
@@ -490,16 +498,21 @@ public class adminSqlite {
                   rs.close();
                   if(role.equalsIgnoreCase("Student")){
 
-                        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm a");
-                        SimpleDateFormat timeformat = new SimpleDateFormat("HH:mm a");
-                        Date date = new Date();
-                        Date parsedDate;
+                    SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy/MM/dd");
+                    SimpleDateFormat timeformat = new SimpleDateFormat("h:mma"); 
+                    Date date = new Date();
+                    Date parsedDate;
 
-                        parsedDate = originalFormat.parse(originalFormat.format(date));
-                        SimpleDateFormat desiredFormat = new SimpleDateFormat("MMMM dd,yyyy");
-                        String formattedDate = desiredFormat.format(parsedDate);
-                        String timeString = timeformat.format(date);
-                        
+                    parsedDate = originalFormat.parse(originalFormat.format(date));
+                    SimpleDateFormat desiredFormat = new SimpleDateFormat("MMMM dd, yyyy");
+                    String formattedDate = desiredFormat.format(parsedDate);
+                    String timeString = timeformat.format(date);
+                    
+                       if (checkAttendance(idnumber, formattedDate,"TIMEOUT")) {
+                         new MyMessage(null, true).message("TIMEOUT", "YOU ALREADY TIME OUT FOR TODAY ", "INFORMATION", role, role);
+                        return; 
+                    }
+                    System.out.print(timeString);
                         
                         PreparedStatement st1 = con.prepareStatement(query1);
                         st1.setString(1, timeString);
@@ -527,6 +540,89 @@ public class adminSqlite {
            ex.printStackTrace();
         }
        }
+       
+       
+       public void viewstudentdata(int idnum){
+           String query="SELECT * FROM USERINFO WHERE IDNUMBER = ?";
+           try(Connection con = new connection().getconnection()){
+               PreparedStatement st = con.prepareStatement(query);
+               st.setInt(1, idnum);
+               ResultSet rs = st.executeQuery();
+               if(rs.next()){
+                   ViewStudentData data = new ViewStudentData(null,true);
+                   data.idnumber.setText(String.valueOf(rs.getInt("IDNUMBER")));
+                   data.name.setText(rs.getString("NAME"));
+                   data.gender.setText( rs.getString("GENDER"));
+                   data.bod.setText(rs.getString("BOD"));
+                   data.department.setText(rs.getString("DEPARTMENT"));
+                   data.year.setText(  rs.getString("YEAR"));
+                   byte [] image1 = rs.getBytes("PICTURE");
+                   ByteArrayInputStream bais = new ByteArrayInputStream(image1);
+                   new MyPanel().resizeimagelabel(bais, data.studentpicture);
+                   this.studentdata(idnum, data.myTable1);
+                   data.setVisible(true);
+                   
+                   
+                   
+               }
+           }catch(SQLException e){
+               e.printStackTrace();
+           }
+       }
+       
+        
+    public void studentdata(int idnum ,JTable j){
+        DefaultTableModel model = (DefaultTableModel)j.getModel();
+        
+        while(model.getRowCount()>0){
+            model.removeRow(0);
+        }
+    String query = "SELECT ATTENDANCE.DATE AS ATTENDANCE_DATE, EVENT.DATE AS EVENT_DATE, EVENT.EVENTNAME, ATTENDANCE.TIMEIN, ATTENDANCE.TIMEOUT " +
+               "FROM ATTENDANCE INNER JOIN EVENT ON ATTENDANCE.DATE = EVENT.DATE " +
+               "WHERE ATTENDANCE.IDNUMBER = ?";
+
+        try(Connection con = new connection().getconnection()){
+            PreparedStatement st = con.prepareStatement(query);
+            st.setInt(1, idnum);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                String Date = rs.getString("EVENT_DATE");
+                String eventname = rs.getString("EVENTNAME");
+                String timein = rs.getString("TIMEIN");
+                String timeout = rs.getString("TIMEOUT");
+                String [] data ={Date,eventname,timein,timeout};
+                model.addRow(data);
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    public void history(JTable j){
+        String query = "SELECT * FROM INOUT";
+        DefaultTableModel model = (DefaultTableModel)j.getModel();
+        while(model.getRowCount() > 0){
+            model.removeRow(0);
+        }
+        try(Connection con = new connection().getconnection()){
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            int i = 0;
+            while(rs.next()){
+                int idnum = i;
+                String username = rs.getString("USERNAME");
+                String date = rs.getString("DATE");
+                String timein = rs.getString("TIMEIN");
+                String timeout = rs.getString("TIMEOUT");
+                Object [] time ={idnum,date,username,timein,timeout};
+                model.addRow(time);
+                i++;
+            }
+        }catch(SQLException ex ){
+            ex.printStackTrace();
+        }
+        
+        
+    }
        
     
      }

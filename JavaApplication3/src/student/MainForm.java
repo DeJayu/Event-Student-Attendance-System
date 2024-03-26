@@ -7,6 +7,7 @@ package student;
 import admin.*;
 import javax.swing.DefaultComboBoxModel;
 import login.SignIn;
+import sqliteAdmin.adminSqlite;
 
 
 
@@ -25,10 +26,11 @@ public class MainForm extends javax.swing.JFrame {
         
         initComponents();
          jScrollPane1.setViewportView(new dashboard());
-       DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) cbprofile.getModel();
+        
+    
 
       
-         
+        
     }
 
     /**
