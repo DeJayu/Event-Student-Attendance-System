@@ -94,7 +94,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="customGUI.MyButton" name="btndashboard">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btndashboard">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
@@ -117,7 +117,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndashboardActionPerformed"/>
           </Events>
         </Component>
-        <Component class="customGUI.MyButton" name="btnaccounts">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btnaccounts">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
@@ -140,7 +140,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnaccountsActionPerformed"/>
           </Events>
         </Component>
-        <Component class="customGUI.MyButton" name="btnInHistory">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btnInHistory">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
@@ -163,7 +163,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInHistoryActionPerformed"/>
           </Events>
         </Component>
-        <Component class="customGUI.MyButton" name="btnmenu">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btnmenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>
@@ -182,7 +182,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="customGUI.MyButton" name="btnInHistory1">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btnInHistory1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d9" green="9f" red="27" type="rgb"/>

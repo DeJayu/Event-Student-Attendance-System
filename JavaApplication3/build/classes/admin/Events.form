@@ -110,7 +110,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="customGUI.MyTextField" name="txteventname">
+            <Component class="UserInterface.CustomComponents.MyTextField" name="txteventname">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Event Name"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -230,7 +230,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="customGUI.MyButton" name="btnadd">
+            <Component class="UserInterface.CustomComponents.MyButton" name="btnadd">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ADD"/>
                 <Property name="radius" type="int" value="30"/>
@@ -244,7 +244,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="customGUI.MyButton" name="btndelete">
+            <Component class="UserInterface.CustomComponents.MyButton" name="btndelete">
               <Properties>
                 <Property name="text" type="java.lang.String" value="DELETE"/>
                 <Property name="radius" type="int" value="30"/>
@@ -258,7 +258,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="customGUI.MyButton" name="btnupdate">
+            <Component class="UserInterface.CustomComponents.MyButton" name="btnupdate">
               <Properties>
                 <Property name="text" type="java.lang.String" value="UPDATE"/>
                 <Property name="radius" type="int" value="30"/>
@@ -272,7 +272,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="customGUI.MyButton" name="btnedit">
+            <Component class="UserInterface.CustomComponents.MyButton" name="btnedit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="EDIT"/>
                 <Property name="radius" type="int" value="30"/>
@@ -308,7 +308,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="customGUI.MyTable" name="accounttable">
+            <Component class="UserInterface.CustomComponents.MyTable" name="accounttable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="4">
@@ -362,7 +362,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="customGUI.MyTable" name="events">
+            <Component class="UserInterface.CustomComponents.MyTable" name="events">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="4">
@@ -394,7 +394,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="customGUI.MyTextField" name="txtsearch">
+        <Component class="UserInterface.CustomComponents.MyTextField" name="txtsearch">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -414,7 +414,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtsearchActionPerformed"/>
           </Events>
         </Component>
-        <Component class="customGUI.MyButton" name="btnsearch">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btnsearch">
           <Properties>
             <Property name="text" type="java.lang.String" value="Search"/>
             <Property name="radius" type="int" value="30"/>
@@ -423,7 +423,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnsearchActionPerformed"/>
           </Events>
         </Component>
-        <Component class="customGUI.MyButton" name="btnfilter">
+        <Component class="UserInterface.CustomComponents.MyButton" name="btnfilter">
           <Properties>
             <Property name="text" type="java.lang.String" value="Filter"/>
             <Property name="radius" type="int" value="30"/>

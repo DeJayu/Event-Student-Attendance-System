@@ -54,7 +54,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="customGUI.MyButton" name="btnsearch">
+    <Component class="UserInterface.CustomComponents.MyButton" name="btnsearch">
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
         <Property name="radius" type="int" value="30"/>
@@ -63,7 +63,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnsearchActionPerformed"/>
       </Events>
     </Component>
-    <Component class="customGUI.MyTextField" name="txtsearch">
+    <Component class="UserInterface.CustomComponents.MyTextField" name="txtsearch">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -82,7 +82,7 @@
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtsearchFocusLost"/>
       </Events>
     </Component>
-    <Component class="customGUI.MyButton" name="btnsearch1">
+    <Component class="UserInterface.CustomComponents.MyButton" name="btnsearch1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Filter"/>
         <Property name="radius" type="int" value="30"/>
@@ -103,7 +103,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="customGUI.MyTable" name="myTable1">
+        <Component class="UserInterface.CustomComponents.MyTable" name="myTable1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new java.awt.Color(255,255,255)" type="code"/>
